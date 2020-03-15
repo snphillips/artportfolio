@@ -27,6 +27,8 @@ code {
 
 header{
   text-align: left;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2rem;
 }
 
 ul {
@@ -38,11 +40,12 @@ li {
 }
 
 
-.cv {
+.cv,
+.contact,
+.about {
   text-align: left;
 }
 
 .contact {
-  text-align: left;
 
 }

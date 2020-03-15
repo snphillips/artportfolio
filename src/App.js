@@ -3,10 +3,10 @@ import React from 'react';
 // import './App.css';
 import './index.css';
 import Header from './Header';
-import CV from './CV';
+// import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
-import About from './About';
+// import About from './About';
 import Art from './Art';
 
 
@@ -32,7 +32,6 @@ export default class App extends React.Component {
       <aside>
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
-        <CV parentState={this.state}/>
         <Contact parentState={this.state}/>
       </aside>
       <Art parentState={this.state}/>
@@ -41,3 +40,6 @@ export default class App extends React.Component {
   }
 }
 
+
+        // <CV parentState={this.state}/>
+        // <About parentState={this.state}/>
