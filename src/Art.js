@@ -3,10 +3,24 @@ import './index.css';
 
 
 
-function Art() {
+export default class Art extends React.Component {
+
+
+
+
+
+
+
+
+
+  render() {
   return (
     <div className="contact">(insert art images)</div>
   );
+  }
+
+
+
 }
 
-export default Art;
+

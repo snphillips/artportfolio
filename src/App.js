@@ -6,20 +6,38 @@ import Header from './Header';
 import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
+import About from './About';
 import Art from './Art';
 
 
 
-function App() {
-  return (
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // This binding (if there is any)
+
+
+    this.state = {
+      showingArt: ''
+    };
+  }
+
+
+
+
+  render(){
+    return (
     <div className="App">
-      <Header/>
-      <Navigation/>
-      <CV/>
-      <Contact />
-      <Art />
+      <aside>
+        <Header parentState={this.state}/>
+        <Navigation parentState={this.state}/>
+        <CV parentState={this.state}/>
+        <Contact parentState={this.state}/>
+      </aside>
+      <Art parentState={this.state}/>
     </div>
   );
+  }
 }
 
-export default App;
