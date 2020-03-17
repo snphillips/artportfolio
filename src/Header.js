@@ -7,9 +7,9 @@ import './index.css';
 function Header() {
   return (
     <header className="header">
-      Sarah
-      Nicole
-      Phillips
+      Sarah<br/>
+      Nicole<br/>
+      Phillips<br/>
     </header>
   );
 }

@@ -28,7 +28,7 @@ export default class App extends React.Component {
 
   render(){
     return (
-    <div className="App">
+    <div className="App container">
       <aside>
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>

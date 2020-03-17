@@ -10,20 +10,20 @@ const allArtWorks = [
   "description": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape."
 },
 {
-  "title": "Office Solution2",
+  "title": "(insert title)",
   "year": 2014,
   "media": "collage made with discarded envelopes",
-  "link": "https://i.imgur.com/SXdLEtP.jpg",
+  "link": "https://i.imgur.com/0SY8xMv.jpg",
   "dims": "22\"x30\"",
   "available": false,
   "price": 0,
   "description": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape."
 },
 {
-  "title": "Office Solution3",
+  "title": "(insert title)",
   "year": 2014,
   "media": "collage made with discarded envelopes",
-  "link": "https://i.imgur.com/SXdLEtP.jpg",
+  "link": "https://i.imgur.com/3hLAn2f.jpg",
   "dims": "22\"x30\"",
   "available": false,
   "price": 0,
