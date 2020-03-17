@@ -36,6 +36,7 @@ aside {
   max-width: 300px;
   /*background-color: pink;*/
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -72,7 +73,7 @@ Gallery
   /* grid layout */
   display: grid;
   /* 3 columns */
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
 }
 
@@ -90,6 +91,20 @@ img {
   max-width: 100%;
 }
 
+
+
+/*=========================
+Media Queries - computer screens
+==========================*/
+@media (max-width: 1400px) {
+
+  .gallery {
+    /* 1 columns */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+
+ }
 
 
 /*=========================
