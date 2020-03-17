@@ -19,6 +19,7 @@ body {
 
 .container {
   display: flex;
+  flex-direction: row;
 }
 
 code {
@@ -37,10 +38,11 @@ aside {
   margin-right: 1rem;
 }
 
-header{
+h1 {
   text-align: left;
   font-family: 'Fjalla One', sans-serif;
   font-size: 2rem;
+  margin: .5rem 0;
 }
 
 
@@ -69,11 +71,9 @@ Gallery
 .gallery {
   /* grid layout */
   display: grid;
-  /* 4 columns */
+  /* 3 columns */
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
-  /*background-color: bisque;*/
-
 }
 
 
@@ -81,6 +81,60 @@ Gallery
   text-align: left;
 }
 
+.art-titlecard-info {
+  font-size: .8rem;
+
+}
+
 img {
   max-width: 100%;
 }
+
+
+
+/*=========================
+Media Queries - small computer
+==========================*/
+@media (max-width: 1000px) {
+
+  .gallery {
+    /* 1 columns */
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+
+ }
+
+
+/*=========================
+Media Queries - tablets
+==========================*/
+@media (max-width: 700px) {
+
+  .gallery {
+    /* 1 columns */
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+  }
+
+ }
+
+
+ /*=========================
+Media Queries - phones
+==========================*/
+@media (max-width: 400px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery {
+    /* 1 columns */
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+  }
+
+
+ }

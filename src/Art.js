@@ -24,9 +24,9 @@ export default class Art extends React.Component {
               return(
                 <div className="art-card">
                   <img className="art-img" src={item.link} />
-                    <div className="art-titlecard-info">{item.title}</div>
-                    <div className="art-titlecard-info">{item.year}</div>
-                    <div className="art-titlecard-info">{item.dims}</div>
+                  <div className="art-titlecard-info">{item.title}</div>
+                  <div className="art-titlecard-info">{item.year}</div>
+                  <div className="art-titlecard-info">{item.dims}</div>
                 </div>
                 )
                })

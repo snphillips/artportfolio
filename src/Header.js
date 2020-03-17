@@ -6,11 +6,11 @@ import './index.css';
 
 function Header() {
   return (
-    <header className="header">
+    <h1 className="header">
       Sarah<br/>
       Nicole<br/>
       Phillips<br/>
-    </header>
+    </h1>
   );
 }
 
