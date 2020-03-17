@@ -5,9 +5,9 @@ import './index.css';
 import Header from './Header';
 // import CV from './CV';
 import Navigation from './Navigation';
-import Contact from './Contact';
+// import Contact from './Contact';
 // import About from './About';
-import Art from './Art';
+import Gallery from './Gallery';
 
 
 
@@ -32,14 +32,14 @@ export default class App extends React.Component {
       <aside>
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
-        <Contact parentState={this.state}/>
       </aside>
-      <Art parentState={this.state}/>
+      <Gallery parentState={this.state}/>
     </div>
   );
   }
 }
 
 
+        // <Contact parentState={this.state}/>
         // <CV parentState={this.state}/>
         // <About parentState={this.state}/>

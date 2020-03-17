@@ -15,6 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 1rem;
   text-align: left;
+  font-family: 'Source Serif Pro', serif;
 }
 
 .container {
@@ -49,10 +50,11 @@ h1 {
 
 ul {
   text-align: left;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 li {
-
 }
 
 .cv,
@@ -70,41 +72,29 @@ li {
 Gallery
 ==========================*/
 .gallery {
-  /* grid layout */
-  display: grid;
-  /* 3 columns */
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 
 .art-card {
   text-align: left;
+  flex-grow: 1;
+  width: 20%;
+  max-width: 20%;
+  padding: .75rem;
 }
 
 .art-titlecard-info {
   font-size: .8rem;
-
 }
 
 img {
   max-width: 100%;
+  border: 1px solid #efefef;
 }
 
 
-
-/*=========================
-Media Queries - computer screens
-==========================*/
-@media (max-width: 1400px) {
-
-  .gallery {
-    /* 1 columns */
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-  }
-
- }
 
 
 /*=========================
@@ -113,9 +103,8 @@ Media Queries - small computer
 @media (max-width: 1000px) {
 
   .gallery {
-    /* 1 columns */
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
+    /* 2 columns */
+    width: 30%;
   }
 
  }
@@ -127,9 +116,8 @@ Media Queries - tablets
 @media (max-width: 700px) {
 
   .gallery {
-    /* 1 columns */
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1rem;
+    /* 2 columns */
+    width: 50%;
   }
 
  }
@@ -147,8 +135,7 @@ Media Queries - phones
 
   .gallery {
     /* 1 columns */
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 1rem;
+    width: 100%;
   }
 
 
