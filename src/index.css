@@ -33,7 +33,8 @@ Aside
 ==========================*/
 aside {
   /* how is this 50%? */
-  width: 50%;
+  /*width: 50%;*/
+  min-width: 150px;
   max-width: 300px;
   /*background-color: pink;*/
   margin-right: 1rem;
@@ -81,7 +82,6 @@ Gallery
   text-align: left;
   flex-grow: 1;
   width: 20%;
-  max-width: 20%;
   padding: .75rem;
 }
 
@@ -102,8 +102,7 @@ Media Queries - small computer
 ==========================*/
 @media (max-width: 1000px) {
 
-  .gallery {
-    /* 2 columns */
+  .art-card {
     width: 30%;
   }
 
@@ -115,7 +114,7 @@ Media Queries - tablets
 ==========================*/
 @media (max-width: 700px) {
 
-  .gallery {
+  .art-card {
     /* 2 columns */
     width: 50%;
   }
@@ -129,11 +128,10 @@ Media Queries - phones
 @media (max-width: 400px) {
 
   .container {
-    display: flex;
     flex-direction: column;
   }
 
-  .gallery {
+  .art-card {
     /* 1 columns */
     width: 100%;
   }
