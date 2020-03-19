@@ -16,6 +16,7 @@ body {
   text-align: left;
   font-family: 'Source Serif Pro', serif;
   padding: 1rem;
+  color: #1a1a1a;
 }
 
 .container {
@@ -32,8 +33,7 @@ code {
 Aside
 ==========================*/
 aside {
-  /* how is this 50%? */
-  /*width: 50%;*/
+  text-align: left;
   min-width: 150px;
   max-width: 300px;
   /*background-color: pink;*/
@@ -46,13 +46,25 @@ h1 {
   font-family: 'Fjalla One', sans-serif;
   font-size: 2rem;
   margin: .5rem 0;
+  color: #000;
+}
+
+.tagline {
+  font-size: .8rem;
+  font-style: italic;
+  margin-bottom: -6px;
 }
 
 
+
+
 ul {
+  display: inline-block;
   text-align: left;
   list-style-type: none;
   padding-left: 0;
+  border-top: 2px solid #ddd;
+  padding-top: 1rem;
 }
 
 li {
@@ -142,7 +154,7 @@ Media Queries - tablets
     width: 50%;
   }
 
- }
+}
 
 
 /*=========================
@@ -163,6 +175,10 @@ Media Queries - phones
     width: 100%;
     margin-right: .5rem;
     margin-bottom: unset;
+  }
+
+  .tagline {
+    display: none;
   }
 
   .art-card {

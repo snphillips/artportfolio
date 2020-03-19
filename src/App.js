@@ -5,7 +5,7 @@ import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
-import Gallery from './Gallery';
+import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
 
 
 
@@ -32,7 +32,7 @@ export default class App extends React.Component {
         <Navigation parentState={this.state}/>
       </aside>
       <section>
-        <Gallery parentState={this.state}/>
+        <GalleryEnvelopeCollages parentState={this.state}/>
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
         <CV parentState={this.state}/>

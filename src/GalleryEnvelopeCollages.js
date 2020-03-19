@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.css';
-import allArtWorks from "./allArtWorks.js";
+import envelopeCollages from "./envelopeCollages.js";
 
 
 
-export default class Gallery extends React.Component {
+export default class GalleryEnvelopeCollages extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +17,7 @@ export default class Gallery extends React.Component {
 // make the price a readable format
 formatPrice() {
 
-  allArtWorks.map( item => {
+  envelopeCollages.map( item => {
 
     console.log("price before: ", item.price)
 
@@ -39,13 +39,9 @@ formatPrice() {
 
 
 componentDidMount() {
-  console.log("allArtWorks: ", allArtWorks)
+  console.log("envelopeCollages: ", envelopeCollages)
   this.formatPrice()
 }
-
-
-
-
 
 
 
@@ -64,7 +60,7 @@ componentDidMount() {
   return (
     <div className="gallery">
 
-             {allArtWorks.map( item => {
+             {envelopeCollages.map( item => {
               return(
                 <div className="art-card">
                   <img className="art-img" src={item.link} />
@@ -85,5 +81,5 @@ componentDidMount() {
 
 }
 
-                  // <div className="art-titlecard-info">{item.price}</div>
+
 

@@ -1,4 +1,4 @@
-const allArtWorks = [
+const envelopeCollages = [
 {
   "title": "Drop Ceiling",
   "year": 2017,
@@ -133,4 +133,4 @@ const allArtWorks = [
 }
 ]
 
-export default allArtWorks
+export default envelopeCollages
