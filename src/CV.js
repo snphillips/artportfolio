@@ -8,21 +8,21 @@ import './index.css';
 function CV() {
   return (
 
-    <div className="cv">
+    <div id="cv">
 
-      <h2>cv</h2>
+      <h2>CV</h2>
 
-      <h3>EDUCATION:</h3>
+      <h3>Education:</h3>
       <p>2006 MFA in printmaking, Brooklyn College, City University of New York (CUNY). Brooklyn, NY.</p>
       <p>2003 B,A. magna cum laude. The University of Toronto. Toronto, ON.</p>
 
-      <h3>SELECTED SOLO EXHIBITIONS:</h3>
+      <h3>Selected Solo Exhibitions:</h3>
       <p>2017 Gold Card, Courthouse Gallery at Lake George Arts Project – Lake George, NY.</p>
       <p>2014 All the Benefits, All the Rewards, Court Tree Collective – Brooklyn, NY.</p>
       <p>2014 You’ve Been Selected, McKinley Arts and Culture Center in Reno, NV.</p>
       <p>2009 Security Landscapes, Eyelevel BQE – Brooklyn, NY.</p>
 
-      <h3>SELECTED GROUP EXHIBITIONS SCREENINGS ★:</h3>
+      <h3>Selected Group Exhibitions & Screenings★:</h3>
       <h4>2016</h4>
       <p>The Residents,Eisentrager-Howard Gallery atthe University of Nebraska–Lincoln city campus. Lincoln, NE.</p>
       <p>Vanishing Point, Curated by Arthur Bruso  Raymond E. Mingst. Art House, Jersey City, NJ.</p>
@@ -89,7 +89,7 @@ function CV() {
       <h4>2003</h4>
       <p>Pause (The Bookmark Project), The Koffler Gallery – Toronto, ON.</p>
 
-      <h3>PERMANENT COLLECTIONS:</h3>
+      <h3>Permanent Collections:</h3>
       <p>NYU Langone Hospital Network</p>
       <p>Kimmel Harding Nelson Center. Nebraska City, NE.</p>
       <p>LAM Hotel Group, Brooklyn, NY.</p>
@@ -99,10 +99,10 @@ function CV() {
       <p>The Air Sickness Bag Museum. Hull, MA.</p>
       <p>Various private collections across Canada and the USA.</p>
 
-      <h3>PUPLIC ART:</h3>
+      <h3>Public Art:</h3>
       <p>Cats in Repose, 2016, painted pedestrian barrier for NYC’s Department of Transportation. Location: East 161st Street  Grand Concourse, The Bronx, NY.</p>
 
-      <h3>AWARDS  RESIDENCIES:</h3>
+      <h3>Awards & Residencies:</h3>
       <p>2015 Residency at Kimmel Harding Nelson Center. Nebraska City, NE.</p>
       <p>2014 Brooklyn Arts Council Grant, New York City Department of Cultural Affairs – Brooklyn, NY.</p>
       <p>2013 Jurors Award, The Delaplaine Visual Arts Education Center, Frederick, MD</p>
@@ -114,7 +114,7 @@ function CV() {
       <p>2006GIP Travel Grant, Brooklyn College CUNY, NY. GIP Research Grant, Brooklyn College CUNY, NY.</p>
       <p>2005Cerf Award for Outstanding Accomplishments in Art. Brooklyn College CUNY, NY.</p>
 
-      <h3>LECTURES:</h3>
+      <h3>Lectures:</h3>
       <p>Guest Lecturer Digital Media: Current Directions, University of California, Irvine – Irvine, CA. May 2014</p>
       <p>Subtle Approach Artist Talks, Brooklyn Arts Council – Brooklyn, NY. May 2014</p>
       <p>Arts Week Visiting Artist, Friends Academy – Locust Valley, NY. April 2010</p>
@@ -122,7 +122,7 @@ function CV() {
       <p>Visiting Artist, International Print Center New York (IPCNY) – New York, NY. June 2008</p>
       <p>Interactive Art, Department of Performance and Interactive Media (PIMA) – CUNY Brooklyn College, Brooklyn, NY. Dec 2007</p>
 
-      <h3>PRESS:</h3>
+      <h3>Selected Press:</h3>
       <p>Salomone, Andrew. "Ex-Mail Room Worker Cuts and Pastes Envelopes into Otherworldly Office Space“, Vice: The Creators Project, September 18, 2016</p>
       <p>Wachs, Audrey. “New York City bike lane art scores high points with videogame references” ,The Architects Newspaper, April 21, 2016.</p>
       <p>Venugopal, Nikhita. “Discarded Envelopes Become Art at Carroll Gardens Exhibit“, DNAinfo, October 3, 2014.</p>
@@ -130,7 +130,6 @@ function CV() {
       <p>Beeson, Donavan. “Security Pattern Collages”, Letter Writers Alliance Blog, February 24, 2014.</p>
       <p>Staff Writer. “Brooklyn artist brings fresh perspective to McKinley Arts Center“, Around The Arch, January 23, 2014.</p>
       <p>Hitchcock, Paul. “Mixed Media Exhibit at MSU”, WMKY Feature Reports, September 12, 2013.</p>
-      <p>Saywich, Natalie. “The SCHWA Show Opens Today”. <i>The Daily Reflector</i>, January 4 2013.</p>
       <p>Royte, Elizabeth. “The Lateral Movement of Goods“. Elizabeth Royte Notes on Waste, Water, Whatever, 2012.</p>
       <p>Liboiron, Max. “Public Service Announcements for TrashForagers“. Discard Studies, March 21 2011.</p>
       <p>Durkin, Erin. “Hotel to show work of 77+ Boro Artists”. Daily News, Brooklyn News section, Sept 20 2011, p.30.</p>
@@ -139,29 +138,19 @@ function CV() {
       <p>Khan, Shazia. “New Exhibition Showcases Works Of Non-Native New Yorkers”.” NY1 website. Aug 8 2010.</p>
       <p>Morse, Trent. “Trent’s Top Picks: December”. Williamsburg Greenpoint News+Arts. Dec 5 2009. p. 5-6</p>
       <p>Fallon, Roberta. “Weather or Not: A new exhibit at AHN/VHS focuses on meteorological data”. Philadelphia Weekly. Arts and Culture,Aug18, 2009.</p>
-      <p>Fancher, Lauren. “Not Your Typical Oil Paintings: ATHICA Exhibit Examines Oil Addiction”, Flagpole Magazine. Feature Section, March 3 2009.</p>
-      <p>Smith, Courtney. “Fossil fuel addiction subject of new exhibit”. Red and Black. Out  About Section, Jan 29, 2009.</p>
-      <p>Cannon, Nicole. “Performance Without Permanence”. Roxborough Star. Livin’ Life Section, Jan 22, 2009.</p>
       <p>Brady, Shaun. “You Can’t Take it With You”. Philadelphia Citypaper. Arts, Jan 20, 2009.</p>
       <p>McGlamory, “Prints  Politics: Global Warming Portfolio”. Contemporary Impressions Fall/Winter 2008, vol. 16 #2, Fall 2008.</p>
-      <p>Taylor, Kate. “A New Arts Scene on Governors Island”, New York Sun. Arts Section, May 29, 2008.</p>
       <p>Perkins, Nicole. “Recycled Art Offers Creative Connection to Natural World”, The Torch. Arts Section, May 1, 2008.</p>
       <p>Manolo, Joyce.. “Helio and Phillips”, Brooklyn Art Project Blog: brooklynartproject.typepad.com, Dec 2007.</p>
       <p>Moynihan,Colin. “The Bicycle in New York, From an Artistic Viewpoint” The New York Times, Metro Section, May 9, 2007. p.B</p>
       <p>Simon, Stephanie. “Why I Ride Sheds Light On Joys, Challenges Of City Cycling ” NY1 News. May 5, 2007.</p>
       <p>Ryzik, Melena. “Spare Times – Around Town”. The New York Times, May 4, 2007. p. E23</p>
-      <p>Dahlen, Sage. “Break Out the Huffy” The Wake. April 4, 2007.</p>
-      <p>Sherry Mazzocchi. “Protest Space Exhibit”. Blog Chelsea. March 29, 2007.</p>
       <p>Bischoff, Dan. “Viewer Participation makes Exhibit Go”. Star Ledger. December 8, 2006. p.39</p>
       <p>Rozek, Sarah. “Students Enjoy Interacting with Art at Gallery”. The Setonian. November 16, 2006. p.11</p>
       <p>Duquette, Michael. “Art Comes Alive in Walsh Gallery”. The Setonian. November 9, 2006. p.10</p>
-      <p>Dean, Will. “Art at LAVA”. Philadelphia City Paper. November 2 – 8, 2006.</p>
-      <p>Wallen, Doug. “Art at LAVA” Philadelphia Weekly. October 31 – November 6, 2006.</p>
       <p>Ramirez, Anthony. “Art Show is Reopening in Brooklyn”, The New York Times. May 24, 2006.</p>
       <p>Simon, Stephanie. ” Brooklyn Artists Embark On “Slow Revolution” NY1 News. March 27, 2006.</p>
       <p>Manley, Jennifer. “Ruminations On Replication–‘Repeat After Me’ Opens At Flux Factory”. The Queens Chronicle. Jan 12, 2006.</p>
-      <p>Rogers, Damian. “This Week: Weeds and Their Relatives” Eye Weekly. April 22, 2004.</p>
-
 
 
 </div>

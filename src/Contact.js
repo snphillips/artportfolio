@@ -5,11 +5,13 @@ import './index.css';
 
 function Contact() {
   return (
-    <div className="contact">
+    <div id="contact">
+
       <h2>Contact</h2>
-      snphillips (at) gmail (dot) com<br/>
-      instagram: @snphillips<br/>
-      facebook: @SarahNicolePhillips
+      <p>snphillips (at) gmail (dot) com</p>
+      <p>instagram: @snphillips</p>
+      <p>facebook: @SarahNicolePhillips</p>
+
     </div>
   );
 }

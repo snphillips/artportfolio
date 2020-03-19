@@ -7,7 +7,7 @@ import './index.css';
 
 function About() {
   return (
-    <section className="about">
+    <section id="about">
       <h2>About</h2>
       <p>Sarah Nicole Phillips is a Toronto-born, Brooklyn-based interdisciplinary artist. She received her B.A, in Visual Studies from the University of Toronto and her MFA from Brooklyn College with a concentration in printmaking. She participated in a year-long artist residency at the Lower East Side Printshop. She’s been awarded residencies at The Blue Mountain Center in upstate New York and the Kimmel Harding Nelson Center in Nebraska.</p>
 
