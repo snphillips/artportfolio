@@ -76,32 +76,26 @@ function CV() {
       <p>2007 Interactive Art, Dept of Performance and Interactive Media – CUNY Brooklyn College, NY.</p>
 
       <h3>Selected Press:</h3>
-      <p>Salomone, Andrew. "Ex-Mail Room Worker Cuts and Pastes Envelopes into Otherworldly Office Space“, Vice: The Creators Project, Sept 18, 2016</p>
+      <p>Salomone, Andrew. "Ex-Mail Room Worker Cuts and Pastes Envelopes into Otherworldly Office Space“, Vice: The Creators Project, Sept 18, 2016.</p>
       <p>Wachs, Audrey. “NYC City bike lane art scores high points with videogame references” ,The Architects Newspaper, April 21, 2016.</p>
       <p>Venugopal, Nikhita. “Discarded Envelopes Become Art at Carroll Gardens Exhibit“, DNAinfo, October 3, 2014.</p>
       <p>Ryan, Nicole, "Best of Brooklyn: Subtle Approach”. News12. August 12, 2014.</p>
       <p>Beeson, Donavan. “Security Pattern Collages”, Letter Writers Alliance Blog, Feb 24, 2014.</p>
       <p>Staff Writer. “Brooklyn artist brings fresh perspective to McKinley Arts Center“, Around The Arch, January 23, 2014.</p>
-      <p>Hitchcock, Paul. “Mixed Media Exhibit at MSU”, WMKY Feature Reports, Sept 12, 2013.</p>
       <p>Royte, Elizabeth. “The Lateral Movement of Goods“. Elizabeth Royte Notes on Waste, Water, Whatever, 2012.</p>
       <p>Liboiron, Max. “Public Service Announcements for TrashForagers“. Discard Studies, March 21 2011.</p>
       <p>Durkin, Erin. “Hotel to show work of 77+ Boro Artists”. Daily News, Brooklyn News section, Sept 20 2011, p.30.</p>
-      <p>Cardwell, Diane. “The Hotel as Art Gallery“. NYC Times, NYC section, Aug 30 2010, p.A13  A17.</p>
+      <p>Cardwell, Diane. “The Hotel as Art Gallery“. New York Times, NYC section, Aug 30 2010, p.A13  A17.</p>
       <p>Egeln, Harold. “Brooklyn Immigrant Artists Shine in ‘Non-Native’ Show”. Brooklyn Daily Eagle. Aug 17 2010.</p>
       <p>Khan, Shazia. “New Exhibition Showcases Works Of Non-Native NYCers”.” NY1 website. Aug 8 2010.</p>
       <p>Morse, Trent. “Trent’s Top Picks: December”. Williamsburg Greenpoint News+Arts. Dec 5 2009. p. 5-6</p>
-      <p>Fallon, Roberta. “Weather or Not: A new exhibit at AHN/VHS focuses on meteorological data”. Philadelphia Weekly. Arts and Culture, Aug18, 2009.</p>
       <p>Brady, Shaun. “You Can’t Take it With You”. Philadelphia Citypaper. Arts, Jan 20, 2009.</p>
       <p>McGlamory, “Prints  Politics: Global Warming Portfolio”. Contemporary Impressions Fall/Winter 2008, vol. 16 #2, Fall 2008.</p>
       <p>Perkins, Nicole. “Recycled Art Offers Creative Connection to Natural World”, The Torch. Arts Section, May 1, 2008.</p>
-      <p>Manolo, Joyce.. “Helio and Phillips”, Brooklyn Art Project Blog: brooklynartproject.typepad.com, Dec 2007.</p>
-      <p>Moynihan,Colin. “The Bicycle in NYC, From an Artistic Viewpoint” The NYC Times, Metro Section, May 9, 2007. p.B</p>
+      <p>Moynihan,Colin. “The Bicycle in NYC, From an Artistic Viewpoint” The New York Times, Metro Section, May 9, 2007. p.B</p>
       <p>Simon, Stephanie. “Why I Ride Sheds Light On Joys, Challenges Of City Cycling ” NY1 News. May 5, 2007.</p>
-      <p>Ryzik, Melena. “Spare Times – Around Town”. The NYC Times, May 4, 2007. p. E23</p>
-      <p>Bischoff, Dan. “Viewer Participation makes Exhibit Go”. Star Ledger. December 8, 2006. p.39</p>
-      <p>Rozek, Sarah. “Students Enjoy Interacting with Art at Gallery”. The Setonian. November 16, 2006. p.11</p>
-      <p>Duquette, Michael. “Art Comes Alive in Walsh Gallery”. The Setonian. November 9, 2006. p.10</p>
-      <p>Ramirez, Anthony. “Art Show is Reopening in Brooklyn”, The NYC Times. May 24, 2006.</p>
+      <p>Ryzik, Melena. “Spare Times – Around Town”. The New York Times, May 4, 2007. p. E23</p>
+      <p>Ramirez, Anthony. “Art Show is Reopening in Brooklyn”, The New York Times. May 24, 2006.</p>
       <p>Simon, Stephanie. ” Brooklyn Artists Embark On “Slow Revolution” NY1 News. March 27, 2006.</p>
       <p>Manley, Jennifer. “Ruminations On Replication–‘Repeat After Me’ Opens At Flux Factory”. The Queens Chronicle. Jan 12, 2006.</p>
 

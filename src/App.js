@@ -5,6 +5,7 @@ import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
+import Statement from './Statement';
 import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
 import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
 
@@ -31,6 +32,7 @@ export default class App extends React.Component {
       <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
+        <Statement parentState={this.state}/>
       </aside>
       <section>
         <GalleryEnvelopeCollages parentState={this.state}/>

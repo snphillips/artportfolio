@@ -52,7 +52,7 @@ componentDidMount() {
 
 
   return (
-    <div className="gallery">
+    <div id="curbside-tags" className="gallery">
 
              {envelopeCollages.map( item => {
               return(
