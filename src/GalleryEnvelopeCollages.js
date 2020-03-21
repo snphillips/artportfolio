@@ -36,16 +36,10 @@ formatPrice() {
 }
 
 
-
-
 componentDidMount() {
   console.log("envelopeCollages: ", envelopeCollages)
   this.formatPrice()
 }
-
-
-
-
 
 
 

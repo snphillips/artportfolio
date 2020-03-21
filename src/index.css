@@ -41,6 +41,12 @@ aside {
   margin-bottom: 1rem;
 }
 
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 h1 {
   text-align: left;
   font-family: 'Fjalla One', sans-serif;
@@ -55,9 +61,6 @@ h1 {
   margin-bottom: -6px;
 }
 
-
-
-
 ul {
   display: inline-block;
   text-align: left;
@@ -70,8 +73,6 @@ ul {
 li {
 
 }
-
-
 
 a {
   color: #333;
@@ -116,18 +117,17 @@ About & cv
 #contact,
 #about {
   text-align: left;
-  font-size: .8rem;
-  max-width: 600px;
+  font-size: 1rem;
+  max-width: 700px;
 }
 
-#cv p {
+#cv p,
+#contact p {
   margin-block-start: .1rem;
   margin-block-end: .1rem;
 }
 
 h2 {
-  border-left: 3px solid #91a6c7; /* pink */
-  padding-left: 6px;
   display: inline-block;
   height: 1.1rem;
 }
@@ -177,8 +177,26 @@ Media Queries - phones
     margin-bottom: unset;
   }
 
+  #sidebar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  ul {
+    border-top: 0px solid #ddd;
+    padding-top: 0;
+    text-align: right;
+  }
+
   .tagline {
     display: none;
+  }
+
+  #cv,
+  #contact,
+  #about {
+    font-size: .8rem;
+    max-width: 500px;
   }
 
   .art-card {

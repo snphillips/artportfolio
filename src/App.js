@@ -27,7 +27,7 @@ export default class App extends React.Component {
   render(){
     return (
     <div className="App container">
-      <aside>
+      <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
       </aside>
