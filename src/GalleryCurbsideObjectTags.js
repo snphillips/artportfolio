@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import CurbsideObjectTags from "./curbsideObjectTags.js";
+import curbsideObjectTags from "./curbsideObjectTags.js";
 
 
 
@@ -22,7 +22,8 @@ export default class GalleryCurbsideObjectTags extends React.Component {
     return (
       <div className="gallery">
 
-        {envelopeCollages.map( item => {
+        {curbsideObjectTags.map( item => {
+            {console.log("Hi!")}
           return(
             <div className="art-card">
               <img className="art-img" src={item.link} />

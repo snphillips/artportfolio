@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
 import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
+import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
 
 
 
@@ -33,6 +34,7 @@ export default class App extends React.Component {
       </aside>
       <section>
         <GalleryEnvelopeCollages parentState={this.state}/>
+        <GalleryCurbsideObjectTags parentState={this.state}/>
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
         <CV parentState={this.state}/>
