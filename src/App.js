@@ -16,12 +16,33 @@ export default class App extends React.Component {
     super(props);
 
     // This binding (if there is any)
-
+    this.showStatement = this.showStatement.bind(this)
 
     this.state = {
-      showingArt: ''
+      showingArt: '',
+      currentStatement: "show statement based on hover"
     };
   }
+
+
+
+
+
+
+showStatement(){
+  console.log("hello from showStatement().")
+  // let hoverStatement = "asjkdhf'asdfhkds"
+  // this.setState({currentStatement: hoverStatement})
+  // return( hoverStatement )
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -32,7 +53,7 @@ export default class App extends React.Component {
       <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
-        <Statement parentState={this.state}/>
+        <Statement parent_state={this.state}/>
       </aside>
       <section>
         <GalleryEnvelopeCollages parentState={this.state}/>
