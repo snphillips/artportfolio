@@ -36,44 +36,50 @@ formatPrice() {
 }
 
 
+
+
+
 componentDidMount() {
   console.log("envelopeCollages: ", envelopeCollages)
   this.formatPrice()
+
 }
-
-
-
 
 
   render() {
 
-
-
-
-
   return (
-    <div id="curbside-tags" className="gallery">
+    <section id="envelope-collages">
+      <h2>Security Envelope Collages</h2>
+        <div className="gallery"
+           onMouseEnter={this.props.showStatement}
+           onMouseLeave={this.props.hideStatement}
+           >
 
-             {envelopeCollages.map( item => {
-              return(
-                <div className="art-card">
-                  <img className="art-img" src={item.link} />
-                  <div className="art-titlecard-info"><i>{item.title}</i></div>
-                  <div className="art-titlecard-info">{item.year}</div>
-                  <div className="art-titlecard-info">{item.dims}</div>
-                  <div className="art-titlecard-info">{item.location}</div>
-                </div>
-                )
-               })
-              }
+               {envelopeCollages.map( item => {
+                let statement = item.statement
+                return(
+                  <div className="art-card">
+                    <img className="art-img" src={item.link} />
+                    <div className="art-titlecard-info"><i>{item.title}</i></div>
+                    <div className="art-titlecard-info">{item.year}</div>
+                    <div className="art-titlecard-info">{item.dims}</div>
+                    <div className="art-titlecard-info">{item.location}</div>
+                  </div>
+                  )
+                 })
+                }
 
-    </div>
+        </div>
+    </section>
   );
   }
 
 
 
 }
+
+                  // <div className="art-titlecard-info">{item.statement}</div>
 
 
 

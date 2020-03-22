@@ -5,9 +5,10 @@ import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
-import Statement from './Statement';
+// import Statement from './Statement';
 import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
 import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
+import GalleryOtherArt from './GalleryOtherArt';
 
 
 
@@ -29,14 +30,22 @@ export default class App extends React.Component {
 
 
 
-showStatement(){
+showStatement(item){
   console.log("hello from showStatement().")
-  // let hoverStatement = "asjkdhf'asdfhkds"
-  // this.setState({currentStatement: hoverStatement})
-  // return( hoverStatement )
+  console.log("item.statement:", item.statement)
+  // this.setState({currentStatement: this.statement})
 
 
 }
+
+
+hideStatement(){
+  console.log("hello from hideStatement().")
+  // console.log("mango", this.statement)
+
+
+}
+
 
 
 
@@ -53,11 +62,15 @@ showStatement(){
       <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
-        <Statement parent_state={this.state}/>
       </aside>
       <section>
-        <GalleryEnvelopeCollages parentState={this.state}/>
-        <GalleryCurbsideObjectTags parentState={this.state}/>
+        <GalleryEnvelopeCollages parentState={this.state}
+                                 // showStatement={this.showStatement}
+                                 // hideStatement={this.hideStatement}
+                                 // statement={this.props.statement}
+                                 />
+        <GalleryCurbsideObjectTags parentState={this.state} />
+        <GalleryOtherArt parentState={this.state} />
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
         <CV parentState={this.state}/>
@@ -69,3 +82,4 @@ showStatement(){
 
 
 
+        // <Statement parent_state={this.state}/>

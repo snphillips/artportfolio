@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.css';
-import curbsideObjectTags from "./curbsideObjectTags.js";
+import otherArt from "./otherArt.js";
 
 
 
-export default class GalleryCurbsideObjectTags extends React.Component {
+export default class GalleryOtherArt extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,23 +20,25 @@ export default class GalleryCurbsideObjectTags extends React.Component {
 
   render() {
     return (
-      <section id="curbside-tags">
-       <h2>Curbside Object Status Tags</h2>
+      <section id="other-art">
+        <h2>Other Art</h2>
         <div className="gallery">
 
-          {curbsideObjectTags.map( item => {
-              {console.log("Hi! from mapping over curbsideObjectTags")}
+          {otherArt.map( item => {
+              {console.log("Hi! from mapping over otherArt")}
             return(
               <div className="art-card">
                 <img className="art-img" src={item.link} />
                 <div className="art-titlecard-info"><i>{item.title}</i></div>
+                <div className="art-titlecard-info"><i>{item.year}</i></div>
+                <div className="art-titlecard-info"><i>{item.dims}</i></div>
               </div>
               )
              })
             }
 
        </div>
-     </section>
+      </section>
   );
   }
 
