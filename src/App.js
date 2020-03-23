@@ -69,8 +69,8 @@ hideStatement(){
                                  // hideStatement={this.hideStatement}
                                  // statement={this.props.statement}
                                  />
-        <GalleryCurbsideObjectTags parentState={this.state} />
         <GalleryOtherArt parentState={this.state} />
+        <GalleryCurbsideObjectTags parentState={this.state} />
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
         <CV parentState={this.state}/>

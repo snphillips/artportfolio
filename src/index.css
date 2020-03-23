@@ -115,6 +115,7 @@ img {
 section {
   text-align: left;
 }
+
 /*=========================
 About & cv
 ==========================*/
@@ -175,6 +176,10 @@ Media Queries - phones
   h1 {
     font-size: 1.5rem;
   }
+
+  h2 {
+    font-size: .8rem;
+}
 
   aside {
     width: 100%;

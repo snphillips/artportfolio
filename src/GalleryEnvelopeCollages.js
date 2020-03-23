@@ -20,7 +20,6 @@ formatPrice() {
   envelopeCollages.map( item => {
 
     console.log("price before: ", item.price)
-
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -29,8 +28,6 @@ formatPrice() {
 
     let formattedPrice = formatter.format(item.price)
     console.log("price after: ", formattedPrice )
-
-
   })
 
 }
@@ -52,23 +49,32 @@ componentDidMount() {
     <section id="envelope-collages">
       <h2>Security Envelope Collages</h2>
         <div className="gallery"
-           onMouseEnter={this.props.showStatement}
-           onMouseLeave={this.props.hideStatement}
-           >
+             onMouseEnter={this.props.showStatement}
+             onMouseLeave={this.props.hideStatement}
+             >
 
                {envelopeCollages.map( item => {
-                let statement = item.statement
-                return(
-                  <div className="art-card">
-                    <img className="art-img" src={item.link} />
-                    <div className="art-titlecard-info"><i>{item.title}</i></div>
-                    <div className="art-titlecard-info">{item.year}</div>
-                    <div className="art-titlecard-info">{item.dims}</div>
-                    <div className="art-titlecard-info">{item.location}</div>
-                  </div>
-                  )
-                 })
+
+                if (item.includeingallery == true ) {
+
+                    return(
+                      <div className="art-card">
+                        <img className="art-img" src={item.link} />
+                        <div className="art-titlecard-info"><i>{item.title}</i></div>
+                        <div className="art-titlecard-info">{item.year}</div>
+                        <div className="art-titlecard-info">{item.dims}</div>
+                      </div>
+                      )
                 }
+                     })
+               }
+
+
+
+
+
+
+
 
         </div>
     </section>
@@ -79,7 +85,10 @@ componentDidMount() {
 
 }
 
+                    // <div className="art-titlecard-info">{item.price}</div>
+                    // <div className="art-titlecard-info">{item.location}</div>
                   // <div className="art-titlecard-info">{item.statement}</div>
+                    // let statement = item.statement
 
 
 
