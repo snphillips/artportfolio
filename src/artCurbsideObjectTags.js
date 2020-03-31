@@ -1,4 +1,4 @@
-const curbsideObjectTags = [
+const artCurbsideObjectTags = [
 {
   "link": "https://i.imgur.com/WrVBeuE.jpg",
   "title": "highchair",
@@ -8,6 +8,12 @@ const curbsideObjectTags = [
 {
   "link": "https://i.imgur.com/3lBcVXv.jpg",
   "title": "toaster and drawers",
+  "statement": "The Curbside Object Status Tag facilitates the smooth operation of the informal sidewalk gift economy. Those who place objects on the curb for people to pick up, may now indicate the condition of the object to people by ticking the appropriate box on the tag. People who are considering picking up an object off the street no longer have to wonder about the condition of said object.Contact me if you’d like some tags or if you’d like to submit user images.",
+  "includeingallery": true,
+},
+{
+  "link": "https://i.imgur.com/t37rQKa.jpg",
+  "title": "toaster",
   "statement": "The Curbside Object Status Tag facilitates the smooth operation of the informal sidewalk gift economy. Those who place objects on the curb for people to pick up, may now indicate the condition of the object to people by ticking the appropriate box on the tag. People who are considering picking up an object off the street no longer have to wonder about the condition of said object.Contact me if you’d like some tags or if you’d like to submit user images.",
   "includeingallery": true,
 },
@@ -75,13 +81,7 @@ const curbsideObjectTags = [
   "link": "https://i.imgur.com/Ydel1xK.jpg",
   "title": "bag of stuff",
   "statement": "The Curbside Object Status Tag facilitates the smooth operation of the informal sidewalk gift economy. Those who place objects on the curb for people to pick up, may now indicate the condition of the object to people by ticking the appropriate box on the tag. People who are considering picking up an object off the street no longer have to wonder about the condition of said object.Contact me if you’d like some tags or if you’d like to submit user images.",
-  "includeingallery": true,
-},
-{
-  "link": "https://i.imgur.com/t37rQKa.jpg",
-  "title": "toaster",
-  "statement": "The Curbside Object Status Tag facilitates the smooth operation of the informal sidewalk gift economy. Those who place objects on the curb for people to pick up, may now indicate the condition of the object to people by ticking the appropriate box on the tag. People who are considering picking up an object off the street no longer have to wonder about the condition of said object.Contact me if you’d like some tags or if you’d like to submit user images.",
-  "includeingallery": true,
+  "includeingallery": false,
 },
 {
   "link": "https://i.imgur.com/NB1vmFx.jpg",
@@ -97,4 +97,4 @@ const curbsideObjectTags = [
 }
 ]
 
-export default curbsideObjectTags
+export default artCurbsideObjectTags

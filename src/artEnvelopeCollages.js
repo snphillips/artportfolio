@@ -1,4 +1,4 @@
-const envelopeCollages = [
+const artEnvelopeCollages = [
 {
   "title": "Luxury Condo Lobby",
   "year": 2017,
@@ -15,7 +15,7 @@ const envelopeCollages = [
   "title": "Drop Ceiling",
   "year": 2017,
   "media": "collage made with discarded envelopes",
-  "link": "https://i.imgur.com/ETtZFRV.jpg",
+  "link": "https://i.imgur.com/mooEObi.jpg",
   "dims": "22\"x30\"",
   "available-for-sale": true,
   "price": 2000,
@@ -87,7 +87,7 @@ const envelopeCollages = [
   "title": "A New Every Day",
   "year": 2014,
   "media": "collage made with discarded envelopes",
-  "link": "https://i.imgur.com/v59GzPg.jpg",
+  "link": "https://i.imgur.com/Odfh9mD.jpg",
   "dims": "22\"x30\"",
   "available-for-sale": false,
   "price": 0,
@@ -108,18 +108,6 @@ const envelopeCollages = [
   "includeingallery": true,
 },
 {
-  "title": "Scraps & Daisies",
-  "year": 2017,
-  "media": "collage made with discarded envelopes",
-  "link": "https://i.imgur.com/yStfCmg.jpg",
-  "dims": "15\"x11\"",
-  "available-for-sale": false,
-  "price": 0,
-  "location": "Permanent Collection of the NYU Langone Medical Center Art Program and Collection",
-  "statement": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape.",
-  "includeingallery": true,
-},
-{
   "title": "Fake Lobby Arrangements",
   "year": 2016,
   "media": "collage made with discarded envelopes",
@@ -132,6 +120,18 @@ const envelopeCollages = [
   "includeingallery": true,
 },
 {
+  "title": "Scraps & Daisies",
+  "year": 2017,
+  "media": "collage made with discarded envelopes",
+  "link": "https://i.imgur.com/yStfCmg.jpg",
+  "dims": "15\"x11\"",
+  "available-for-sale": false,
+  "price": 0,
+  "location": "Permanent Collection of the NYU Langone Medical Center Art Program and Collection",
+  "statement": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape.",
+  "includeingallery": false,
+},
+{
   "title": "Scraps & Daisies #02",
   "year": 2017,
   "media": "collage made with discarded envelopes",
@@ -141,7 +141,7 @@ const envelopeCollages = [
   "price": 0,
   "location": "Permanent Collection of the NYU Langone Medical Center Art Program and Collection",
   "statement": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape.",
-  "includeingallery": true,
+  "includeingallery": false,
 },
 {
   "title": "Silk Lobby Ranunculus 01",
@@ -205,4 +205,4 @@ const envelopeCollages = [
 },
 ]
 
-export default envelopeCollages
+export default artEnvelopeCollages

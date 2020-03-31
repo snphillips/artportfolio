@@ -61,6 +61,11 @@ h1 {
   margin-bottom: -6px;
 }
 
+nav {
+
+}
+
+
 ul {
   display: inline-block;
   text-align: left;
@@ -114,6 +119,11 @@ img {
 
 section {
   text-align: left;
+}
+
+.content {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 /*=========================

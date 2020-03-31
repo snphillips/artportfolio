@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import envelopeCollages from "./envelopeCollages.js";
+import artEnvelopeCollages from "./artEnvelopeCollages.js";
 
 
 
@@ -17,7 +17,7 @@ export default class GalleryEnvelopeCollages extends React.Component {
 // make the price a readable format
 formatPrice() {
 
-  envelopeCollages.map( item => {
+  artEnvelopeCollages.map( item => {
 
     console.log("price before: ", item.price)
     const formatter = new Intl.NumberFormat('en-US', {
@@ -37,7 +37,7 @@ formatPrice() {
 
 
 componentDidMount() {
-  console.log("envelopeCollages: ", envelopeCollages)
+  console.log("artEnvelopeCollages: ", artEnvelopeCollages)
   this.formatPrice()
 
 }
@@ -45,32 +45,29 @@ componentDidMount() {
 
   render() {
 
-  return (
-    <section id="envelope-collages">
-      <h2>Security Envelope Collages</h2>
-        <div className="gallery"
-             onMouseEnter={this.props.showStatement}
-             onMouseLeave={this.props.hideStatement}
-             >
+    return (
+      <section id="envelope-collages">
+        <h2>Security Envelope Collages</h2>
+          <div className="gallery"
+               onMouseEnter={this.props.showStatement}
+               onMouseLeave={this.props.hideStatement}
+               >
 
-               {envelopeCollages.map( item => {
-
-                if (item.includeingallery == true ) {
-
-                    return(
-                      <div className="art-card">
-                        <img className="art-img" src={item.link} />
-                        <div className="art-titlecard-info"><i>{item.title}</i></div>
-                        <div className="art-titlecard-info">{item.year}</div>
-                        <div className="art-titlecard-info">{item.dims}</div>
-                      </div>
-                      )
-                }
-                     })
-               }
+                 {this.props.filteredEnvelopeCollages.map( item => {
 
 
 
+                      return(
+                        <div className="art-card">
+                          <img className="art-img" src={item.link} alt={item.title}/>
+                          <div className="art-titlecard-info"><i>{item.title}</i></div>
+                          <div className="art-titlecard-info">{item.year}</div>
+                          <div className="art-titlecard-info">{item.dims}</div>
+                        </div>
+                        )
+
+                       })
+                 }
 
 
 
