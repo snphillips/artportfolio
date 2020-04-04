@@ -1,7 +1,5 @@
 import React from 'react';
 import './index.css';
-import artOtherArt from "./artOtherArt.js";
-
 
 
 export default class GalleryOtherArt extends React.Component {
@@ -19,7 +17,7 @@ export default class GalleryOtherArt extends React.Component {
   render() {
 
 
-  console.log("this.state.filteredOtherArt:", this.props.filteredOtherArt)
+  // console.log("this.state.filteredOtherArt:", this.props.filteredOtherArt)
 
 
     return (
@@ -28,10 +26,10 @@ export default class GalleryOtherArt extends React.Component {
         <div className="gallery">
 
           {this.props.filteredOtherArt.map( item => {
-              {console.log("Hi! from mapping over this.props.filteredOtherArt")}
+              // {console.log("Hi! from mapping over this.props.filteredOtherArt")}
 
             return(
-              <div className="art-card">
+              <div className="art-card" key={item.index}>
                 <img className="art-img" src={item.link} alt={item.title}/>
                 <div className="art-titlecard-info"><i>{item.title}</i></div>
                 <div className="art-titlecard-info"><i>{item.year}</i></div>

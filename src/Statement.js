@@ -21,9 +21,9 @@ export default class Statement extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.props.parent_state.currentStatement}</p>
-      </div>
+      <div class="statement">
+        <p>{this.props.parentState.currentStatement}</p>
+              </div>
     );
   }
 }

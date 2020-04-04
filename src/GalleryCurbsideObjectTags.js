@@ -1,7 +1,5 @@
 import React from 'react';
 import './index.css';
-import artCurbsideObjectTags from "./artCurbsideObjectTags.js";
-
 
 
 export default class GalleryCurbsideObjectTags extends React.Component {
@@ -16,8 +14,6 @@ export default class GalleryCurbsideObjectTags extends React.Component {
 
 
 
-
-
   render() {
     return (
       <section id="curbside-tags">
@@ -25,9 +21,9 @@ export default class GalleryCurbsideObjectTags extends React.Component {
         <div className="gallery">
 
           {this.props.filteredCurbsideObjectTags.map( item => {
-              {console.log("Hi! from mapping over this.props.filteredCurbsideObjectTags")}
+              // {console.log("Hi! from mapping over this.props.filteredCurbsideObjectTags")}
             return(
-              <div className="art-card">
+              <div className="art-card" key={item.index}>
                 <img className="art-img" src={item.link} alt={item.title} />
               </div>
               )
