@@ -25,14 +25,12 @@ export default class App extends React.Component {
     this.hideStatement = this.hideStatement.bind(this);
     this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
-    this.viewModalImage = this.viewModalImage.bind(this);
+    this.showModalImage = this.showModalImage.bind(this);
     this.closeModalImage = this.closeModalImage.bind(this);
 
     this.state = {
       showingArt: '',
       currentStatement: "show statement based on hover",
-      // get rid of imageURL once you are satisfied
-      // imageURL:"https://sadanduseless.b-cdn.net/wp-content/uploads/2018/05/bumblebee-butt2.jpg",
       modalImageURL: "https://sadanduseless.b-cdn.net/wp-content/uploads/2018/05/bumblebee-butt2.jpg",
       displayModal: {"display": "none"},
       filteredOtherArt: [],
@@ -48,21 +46,13 @@ export default class App extends React.Component {
 //  modal: the expanded image
 //  not working
 //  ==================================
-  viewModalImage(event) {
-    // console.log("hello from viewModalImage")
+  showModalImage(modalId) {
     this.setState({displayModal: {'display': "block"}})
-    this.setState({modalImageURL: this.modalImageURL})
-    // console.log("pinepapple", this.props.parentState.item.link)
-    // console.log("pinepapple", this.props.item.link)
-    // console.log("pinepapple", this.props.parentState.src)
-    // console.log("pinepapple", this.src)
-    // console.log("pinepapple", this.props.src)
-    // console.log("pinepapple", item.link)
-    // console.log("pinepapple", this.state.modalImageURL)
+    this.setState({modalImageURL: modalId})
+    console.log("statementId", modalId)
   }
 
-  closeModalImage() {
-    // console.log("hello from closeModalImage")
+  closeModalImage(modalId) {
     this.setState({displayModal: {'display': "none"}})
   }
 
@@ -70,15 +60,11 @@ export default class App extends React.Component {
 
 //  ==================================
 // show/hide statement
-// not working yet
+// partially working
 //  ==================================
 showStatement(statementId){
-  // console.log("hello from showStatement().")
   this.setState({currentStatement: statementId})
-  // console.log("this.state.currentStatement:", this.state.hoverStatement)
   console.log("statementId", statementId)
-
-
 }
 
 
@@ -157,23 +143,20 @@ hideStatement(){
       <section className="content">
         <GalleryEnvelopeCollages parentState={this.state}
                                  filteredEnvelopeCollages={this.state.filteredEnvelopeCollages}
-                                 statement={this.props.statement}
-                                 modalImageURL={this.modalImageURL}
-                                 viewModalImage={this.viewModalImage}
-                                 closeModalImage={this.closeModalImage}
                                  showStatement={this.showStatement}
+                                 showModalImage={this.showModalImage}
+                                 closeModalImage={this.closeModalImage}
                                  />
 
         <GalleryOtherArt parentState={this.state}
                          filteredOtherArt={this.state.filteredOtherArt}
                          />
+
         <GalleryCurbsideObjectTags parentState={this.state}
                                    filteredCurbsideObjectTags={this.state.filteredCurbsideObjectTags}
                                    />
-        <ImageModal parentState={this.state}
-                    viewModalImage={this.props.viewModalImage}
-                    closeModalImage={this.closeModalImage}
-                    />
+
+        <ImageModal parentState={this.state}/>
 
 
         <About parentState={this.state}/>

@@ -11,12 +11,6 @@ export default class GalleryEnvelopeCollages extends React.Component {
   }
 
 
-  // sendModalValue(){
-  //   this.setState({modalImageURL: this.modalImageURL})
-  //   console.log("the modalImageURL is: ", this.modalImageURL)
-  // }
-
-
 
   render() {
 
@@ -45,9 +39,12 @@ export default class GalleryEnvelopeCollages extends React.Component {
                           <img className="art-img"
                                src={item.link}
                                alt={item.title}
-                               modalImageURL={item.link}
-                               onMouseEnter={this.props.viewModalImage}
-                               onMouseLeave={this.props.closeModalImage}
+                               onMouseEnter={ () => {
+                                 this.props.showModalImage(item.link)}
+                               }
+                               onMouseLeave={ () => {
+                                 this.props.closeModalImage()}
+                               }
                               />
 
                           <div className="art-titlecard-info"><i>{item.title}</i></div>
@@ -60,10 +57,6 @@ export default class GalleryEnvelopeCollages extends React.Component {
                        })
                  }
 
-
-
-
-
         </div>
 
 
@@ -75,9 +68,6 @@ export default class GalleryEnvelopeCollages extends React.Component {
 
 }
 
-                    // <div className="art-titlecard-info">{item.price}</div>
-                    // <div className="art-titlecard-info">{item.location}</div>
-                  // <div className="art-titlecard-info">{item.statement}</div>
 
 
 
