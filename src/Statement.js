@@ -17,8 +17,6 @@ export default class Statement extends Component {
   }
 
 
-
-
   render() {
     return (
       <div class="statement">

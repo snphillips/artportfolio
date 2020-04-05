@@ -7,7 +7,7 @@ import Contact from './Contact';
 import About from './About';
 import Statement from './Statement';
 import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
-import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
+// import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
 import GalleryOtherArt from './GalleryOtherArt';
 import artOtherArt from './artOtherArt';
 import artEnvelopeCollages from './artEnvelopeCollages';
@@ -30,9 +30,12 @@ export default class App extends React.Component {
 
     this.state = {
       showingArt: '',
-      currentStatement: "show statement based on hover",
-      modalImageURL: "https://sadanduseless.b-cdn.net/wp-content/uploads/2018/05/bumblebee-butt2.jpg",
-      displayModal: {"display": "none"},
+      currentStatement: '',
+      modalImageURL: '',
+      modalTitle: '',
+      modalYear: '',
+      modalDims: '',
+      displayModal: {'display': 'none'},
       filteredOtherArt: [],
       filteredEnvelopeCollages: [],
       filteredCurbsideObjectTags: []
@@ -44,14 +47,19 @@ export default class App extends React.Component {
 
 //  ==================================
 //  modal: the expanded image
-//  not working
 //  ==================================
-  showModalImage(modalId) {
+// Two setStates: 1) change the css display class from "none" to "block"
+//                2) to indicate which image it's clicked on
+  showModalImage(modalId, modalTitle, modalYear, modalDims) {
     this.setState({displayModal: {'display': "block"}})
     this.setState({modalImageURL: modalId})
+    this.setState({modalTitle: modalTitle})
+    this.setState({modalYear: modalYear})
+    this.setState({modalDims: modalDims})
     console.log("statementId", modalId)
   }
 
+// This merely changes the css display class from "block" to "none"
   closeModalImage(modalId) {
     this.setState({displayModal: {'display': "none"}})
   }
@@ -145,19 +153,18 @@ hideStatement(){
                                  filteredEnvelopeCollages={this.state.filteredEnvelopeCollages}
                                  showStatement={this.showStatement}
                                  showModalImage={this.showModalImage}
-                                 closeModalImage={this.closeModalImage}
                                  />
 
         <GalleryOtherArt parentState={this.state}
                          filteredOtherArt={this.state.filteredOtherArt}
+                         showStatement={this.showStatement}
+                         showModalImage={this.showModalImage}
                          />
 
-        <GalleryCurbsideObjectTags parentState={this.state}
-                                   filteredCurbsideObjectTags={this.state.filteredCurbsideObjectTags}
-                                   />
 
-        <ImageModal parentState={this.state}/>
-
+        <ImageModal parentState={this.state}
+                    closeModalImage={this.closeModalImage}
+                    />
 
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
@@ -169,6 +176,4 @@ hideStatement(){
   );
   }
 }
-
-
 

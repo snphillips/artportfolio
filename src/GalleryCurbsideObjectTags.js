@@ -21,11 +21,16 @@ export default class GalleryCurbsideObjectTags extends React.Component {
         <div className="gallery">
 
           {this.props.filteredCurbsideObjectTags.map( item => {
-              // {console.log("Hi! from mapping over this.props.filteredCurbsideObjectTags")}
+
             return(
-              <div className="art-card" key={item.index}>
-                <img className="art-img" src={item.link} alt={item.title} />
+
+              <div className="art-card"
+                   key={item.index} >
+                <img className="art-img"
+                     src={item.link}
+                     alt={item.title} />
               </div>
+
               )
              })
             }

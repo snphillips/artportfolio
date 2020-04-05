@@ -39,12 +39,11 @@ export default class GalleryEnvelopeCollages extends React.Component {
                           <img className="art-img"
                                src={item.link}
                                alt={item.title}
-                               onMouseEnter={ () => {
-                                 this.props.showModalImage(item.link)}
+                               onClick={ () => {
+                                 this.props.showModalImage(item.link, item.title, item.year, item.dims)}
                                }
-                               onMouseLeave={ () => {
-                                 this.props.closeModalImage()}
-                               }
+                               onMouseLeave={this.props.closeModalImage}
+
                               />
 
                           <div className="art-titlecard-info"><i>{item.title}</i></div>

@@ -26,10 +26,17 @@ export default class GalleryOtherArt extends React.Component {
         <div className="gallery">
 
           {this.props.filteredOtherArt.map( item => {
-              // {console.log("Hi! from mapping over this.props.filteredOtherArt")}
+
 
             return(
-              <div className="art-card" key={item.index}>
+              <div className="art-card"
+                   key={item.index}
+                   onClick={ () => {
+                    this.props.showModalImage(item.link)}
+                  }
+
+                  onMouseLeave={this.props.closeModalImage}>
+
                 <img className="art-img" src={item.link} alt={item.title}/>
                 <div className="art-titlecard-info"><i>{item.title}</i></div>
                 <div className="art-titlecard-info"><i>{item.year}</i></div>
