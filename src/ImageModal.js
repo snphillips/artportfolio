@@ -13,18 +13,22 @@ export default class ImageModal extends Component {
            onClick={this.props.closeModalImage}
            >
 
-        <div className="modal-image-container">
+        <div className="modal-content-container">
 
-          <img className="image-large"
+          <section className="modal-image-container">
+            <img className="image-large"
                src={this.props.parentState.modalImageURL}
                onClick={this.props.closeModalImage}
                alt=""
                />
+          </section>
 
-          <section className="modal-art-info">
-            <p>{this.props.parentState.modalTitle}</p>
+          <section className="modal-info-container">
+            <p><i>{this.props.parentState.modalTitle}</i></p>
             <p>{this.props.parentState.modalYear}</p>
             <p>{this.props.parentState.modalDims}</p>
+            <p>{this.props.parentState.modalPrice}</p>
+            <p className="modal-statement">{this.props.parentState.modalStatement}</p>
           </section>
 
         </div>

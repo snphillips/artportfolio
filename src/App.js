@@ -5,14 +5,14 @@ import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
-import Statement from './Statement';
 import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
-// import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
 import GalleryOtherArt from './GalleryOtherArt';
 import artOtherArt from './artOtherArt';
 import artEnvelopeCollages from './artEnvelopeCollages';
 import artCurbsideObjectTags from './artCurbsideObjectTags';
 import ImageModal from './ImageModal';
+// import Statement from './Statement';
+// import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
 
 
 
@@ -35,6 +35,7 @@ export default class App extends React.Component {
       modalTitle: '',
       modalYear: '',
       modalDims: '',
+      modalPrice: '',
       displayModal: {'display': 'none'},
       filteredOtherArt: [],
       filteredEnvelopeCollages: [],
@@ -50,12 +51,14 @@ export default class App extends React.Component {
 //  ==================================
 // Two setStates: 1) change the css display class from "none" to "block"
 //                2) to indicate which image it's clicked on
-  showModalImage(modalId, modalTitle, modalYear, modalDims) {
+  showModalImage(modalId, modalTitle, modalYear, modalDims, modalPrice, modalStatement) {
     this.setState({displayModal: {'display': "block"}})
     this.setState({modalImageURL: modalId})
     this.setState({modalTitle: modalTitle})
     this.setState({modalYear: modalYear})
     this.setState({modalDims: modalDims})
+    this.setState({modalPrice: modalPrice})
+    this.setState({modalStatement: modalStatement})
     console.log("statementId", modalId)
   }
 
@@ -145,7 +148,6 @@ hideStatement(){
       <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
-        <Statement parentState={this.state}/>
       </aside>
 
       <section className="content">
@@ -177,3 +179,5 @@ hideStatement(){
   }
 }
 
+
+        // <Statement parentState={this.state}/>

@@ -7,6 +7,8 @@ import './index.css';
 // on what image the user is hovering over. Each image has a
 // corresponding "statement" listed in the relevant .json
 
+// not using
+
 export default class Statement extends Component {
   constructor(props){
     super(props);
