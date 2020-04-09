@@ -12,7 +12,7 @@ function Header() {
         Nicole<br/>
         Phillips<br/>
       </h1>
-      <p className="tagline">Toronto-born, Brooklyn-based visual artist. Works on paper.</p>
+      <p className="tagline">Toronto-born, Brooklyn-based visual artist. Works on paper & other stuff.</p>
     </div>
   );
 }

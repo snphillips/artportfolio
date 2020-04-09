@@ -5,15 +5,9 @@ import CV from './CV';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
-import GalleryEnvelopeCollages from './GalleryEnvelopeCollages';
-import GalleryOtherArt from './GalleryOtherArt';
-import artOtherArt from './artOtherArt';
-import artEnvelopeCollages from './artEnvelopeCollages';
-import artCurbsideObjectTags from './artCurbsideObjectTags';
+import Gallery from './Gallery';
 import ImageModal from './ImageModal';
-// import Statement from './Statement';
-// import GalleryCurbsideObjectTags from './GalleryCurbsideObjectTags';
-
+import art from './art';
 
 
 export default class App extends React.Component {
@@ -21,27 +15,26 @@ export default class App extends React.Component {
     super(props);
 
     // This binding
-    this.showStatement = this.showStatement.bind(this);
-    this.hideStatement = this.hideStatement.bind(this);
+    // this.showStatement = this.showStatement.bind(this);
+    // this.hideStatement = this.hideStatement.bind(this);
     this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
     this.showModalImage = this.showModalImage.bind(this);
     this.closeModalImage = this.closeModalImage.bind(this);
 
     this.state = {
+      filteredArt: ["butterfly", "snake"],
       showingArt: '',
       currentStatement: '',
+      displayModal: {'display': 'none'},
       modalImageURL: '',
+      allArtForModalGallery: [],
+      modalImageIndex: 0,
       modalTitle: '',
       modalYear: '',
       modalDims: '',
+      modalMedia: '',
       modalPrice: '',
-      displayModal: {'display': 'none'},
-      filteredOtherArt: [],
-      filteredEnvelopeCollages: [],
-      filteredCurbsideObjectTags: []
-
-
     };
   }
 
@@ -49,22 +42,36 @@ export default class App extends React.Component {
 //  ==================================
 //  modal: the expanded image
 //  ==================================
-// Two setStates: 1) change the css display class from "none" to "block"
-//                2) to indicate which image it's clicked on
-  showModalImage(modalId, modalTitle, modalYear, modalDims, modalPrice, modalStatement) {
+//  setStates: 1) change the css display class from "none" to "block"
+//             2) to indicate which image it's clicked on
+//             3) a bunch of information accompanying each image
+  showModalImage(modalURL, modalTitle, modalYear, modalDims, modalMedia, modalPrice, modalStatement) {
     this.setState({displayModal: {'display': "block"}})
-    this.setState({modalImageURL: modalId})
+    this.setState({modalImageURL: modalURL})
     this.setState({modalTitle: modalTitle})
     this.setState({modalYear: modalYear})
     this.setState({modalDims: modalDims})
+    this.setState({modalMedia: modalMedia})
     this.setState({modalPrice: modalPrice})
     this.setState({modalStatement: modalStatement})
-    console.log("statementId", modalId)
+    console.log("modalURL", modalURL)
+    console.log(this.state.allArtForModalGallery)
   }
 
 // This merely changes the css display class from "block" to "none"
-  closeModalImage(modalId) {
+  closeModalImage(modalURL) {
     this.setState({displayModal: {'display': "none"}})
+  }
+
+// TODO: get this to work
+  modalNextImage() {
+    this.setState({modalImageIndex: this.state.modalImageIndex + 1 })
+    console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
+  }
+
+  modalPreviousImage() {
+    this.setState({modalImageIndex: this.state.modalImageIndex - 1 })
+    console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
   }
 
 
@@ -72,17 +79,18 @@ export default class App extends React.Component {
 //  ==================================
 // show/hide statement
 // partially working
+// not using
 //  ==================================
-showStatement(statementId){
-  this.setState({currentStatement: statementId})
-  console.log("statementId", statementId)
-}
+// showStatement(statementId){
+//   this.setState({currentStatement: statementId})
+//   console.log("statementId", statementId)
+// }
 
 
-hideStatement(){
-  // console.log("hello from hideStatement().")
-  // console.log("mango", this.statement)
-}
+// hideStatement(){
+//   // console.log("hello from hideStatement().")
+//   // console.log("mango", this.statement)
+// }
 
 
 //  ==================================
@@ -110,30 +118,20 @@ hideStatement(){
 
 //  ==================================
 //  only display images from .json
-//  if includeingallery === true
+//  1) if includeingallery === true, return it...meaning keep it
+//  2) apply the above function as a filter to the states
 //  ==================================
   includeInGalleryTrue(item){
     return item.includeingallery === true;
-  }
+  };
 
   filterIncludeInGallery(){
-    this.setState({filteredOtherArt: artOtherArt.filter(this.includeInGalleryTrue)})
-    this.setState({filteredEnvelopeCollages: artEnvelopeCollages.filter(this.includeInGalleryTrue)})
-    this.setState({filteredCurbsideObjectTags: artCurbsideObjectTags.filter(this.includeInGalleryTrue)})
-  }
-
-
-
-
-
-
+    this.setState({filteredArt: art.filter(this.includeInGalleryTrue)})
+  };
 
   componentDidMount(){
     this.filterIncludeInGallery()
-  }
-
-
-
+  };
 
 
 
@@ -151,27 +149,22 @@ hideStatement(){
       </aside>
 
       <section className="content">
-        <GalleryEnvelopeCollages parentState={this.state}
-                                 filteredEnvelopeCollages={this.state.filteredEnvelopeCollages}
-                                 showStatement={this.showStatement}
-                                 showModalImage={this.showModalImage}
-                                 />
 
-        <GalleryOtherArt parentState={this.state}
-                         filteredOtherArt={this.state.filteredOtherArt}
-                         showStatement={this.showStatement}
-                         showModalImage={this.showModalImage}
-                         />
-
+        <Gallery parentState={this.state}
+                 filteredArt={this.state.filteredArt}
+                 showStatement={this.showStatement}
+                 showModalImage={this.showModalImage}
+                 />
 
         <ImageModal parentState={this.state}
                     closeModalImage={this.closeModalImage}
+                    modalNextImage={this.modalNextImage}
+                    modalPreviousImage={this.modalPreviousImage}
                     />
 
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>
         <CV parentState={this.state}/>
-
 
       </section>
     </div>
@@ -181,3 +174,4 @@ hideStatement(){
 
 
         // <Statement parentState={this.state}/>
+
