@@ -36,7 +36,6 @@ aside {
   text-align: left;
   min-width: 150px;
   max-width: 300px;
-  /*background-color: pink;*/
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
@@ -44,8 +43,24 @@ aside {
 #sidebar {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
 }
+
+/* b/c the sidebar is fixed, need to recreate the div */
+#ghost-sidebar{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: unset;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+}
+
 
 h1 {
   text-align: left;
@@ -319,6 +334,7 @@ Media Queries - phones
   #sidebar {
     display: flex;
     flex-direction: row;
+    position: unset;
   }
 
   ul {

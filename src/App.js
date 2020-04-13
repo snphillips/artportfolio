@@ -148,6 +148,11 @@ export default class App extends React.Component {
         <Navigation parentState={this.state}/>
       </aside>
 
+      <aside id="ghost-sidebar">
+      </aside>
+
+
+
       <section className="content">
 
         <Gallery parentState={this.state}
