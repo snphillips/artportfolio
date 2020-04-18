@@ -1,8 +1,4 @@
 
-
-/*https://css-tricks.com/snippets/css/complete-guide-grid/*/
-
-
 /*=========================
 Main
 ==========================*/
@@ -59,6 +55,7 @@ aside {
   z-index: 1;
   top: 1rem;
   left: 1rem;
+  z-index: -1;
 }
 
 
@@ -180,6 +177,12 @@ h2 {
   height: 1.1rem;
 }
 
+h3 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: .95rem;
+  margin-bottom: .25rem;
+}
+
 /*==============================
  Modal
 ================================*/
@@ -187,7 +190,7 @@ h2 {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 10vh; /* Location of the box */
+  padding-top: 5vh; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%;
@@ -225,7 +228,7 @@ section.modal-image-container {
 img.image-large {
   max-width: 100%;
   display: block;
-  /*border: 1px solid red;*/
+  margin-bottom: .5rem;
 }
 
 
@@ -247,24 +250,35 @@ section.modal-info-container {
   margin-top: .5rem !important;
 }
 
-.modal-close {
+.modal-close-button {
   float: right;
   top: 0;
   cursor: pointer;
-}
-
-.modal-backward-button {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  left: 0;
+  color: #aaa;
 }
 
 .modal-forward-button {
   cursor: pointer;
+  color: #aaa;
   position: absolute;
   top: 40%;
   right: 0;
+  z-index: 1;
+}
+
+.modal-back-button {
+  cursor: pointer;
+  color: #aaa;
+  position: absolute;
+  top: 40%;
+  left: 5px;
+  z-index: 1;
+}
+
+.modal-forward-button:hover,
+.modal-back-button:hover,
+.modal-close-button:hover {
+  color: #777;
 }
 
 
@@ -327,6 +341,7 @@ Media Queries - phones
 
   aside {
     width: 100%;
+    max-width: 100%;
     margin-right: .5rem;
     margin-bottom: unset;
   }
@@ -335,6 +350,8 @@ Media Queries - phones
     display: flex;
     flex-direction: row;
     position: unset;
+    justify-content: space-between;
+    width: 100%;
   }
 
   ul {
@@ -357,7 +374,7 @@ Media Queries - phones
   .art-card {
     width: 100%;
     padding: .25rem 0;
-    margin-right: .5rem;
+    margin-right: unset;
     margin-bottom: .5rem;
   }
 

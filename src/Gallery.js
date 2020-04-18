@@ -1,14 +1,13 @@
 import React from 'react';
 import './index.css';
-// import Statement from './Statement';
 
 
 export default class Gallery extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
 
    // "this" binding
-  }
+  // }
 
 
 
@@ -17,25 +16,22 @@ export default class Gallery extends React.Component {
     return (
       <section id="gallery">
 
-        <h2></h2>
-
           <div className="gallery">
 
                  {this.props.filteredArt.map( item => {
 
+                     // not working
+                     // I'm trying to establish the index of this particular image
+                     // then sent that number to app.js
+                     // let pinapple = setmodalIndex={this.props.setModalIndex, () => {
+                     //    this.setState({modalImageIndex: this.galleryIndex})
+                     // }}
+
 
                       return(
 
-                        <div className="art-card"
-                             // NOT USING RIGHT NOW
-                             // onMouseEnter={ () => {
-                             //   this.props.showStatement(item.statement)}
-                             // }
-                             // onMouseLeave={this.props.hideStatement}
-                             // statement={item.statement}
-                             // key={item.index}
-                             >
 
+                        <div className="art-card">
 
                           <img className="art-img"
                                src={item.link}
@@ -46,7 +42,6 @@ export default class Gallery extends React.Component {
                                onMouseLeave={this.props.closeModalImage}
 
                               />
-
 
                         </div>
                         )
@@ -60,6 +55,7 @@ export default class Gallery extends React.Component {
     </section>
   );
   }
+
 
 
 

@@ -21,20 +21,23 @@ export default class App extends React.Component {
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
     this.showModalImage = this.showModalImage.bind(this);
     this.closeModalImage = this.closeModalImage.bind(this);
+    this.modalNextImage = this.modalNextImage.bind(this);
+    this.modalPreviousImage = this.modalPreviousImage.bind(this);
+    // this.updatemodalImageIndex = this.updatemodalImageIndex.bind(this);
+    // this.setmodalIndex = this.setmodalIndex.bind(this);
 
     this.state = {
-      filteredArt: ["butterfly", "snake"],
+      filteredArt: [],
       showingArt: '',
       currentStatement: '',
       displayModal: {'display': 'none'},
       modalImageURL: '',
-      allArtForModalGallery: [],
-      modalImageIndex: 0,
       modalTitle: '',
       modalYear: '',
       modalDims: '',
       modalMedia: '',
       modalPrice: '',
+      modalImageIndex: 0
     };
   }
 
@@ -54,43 +57,72 @@ export default class App extends React.Component {
     this.setState({modalMedia: modalMedia})
     this.setState({modalPrice: modalPrice})
     this.setState({modalStatement: modalStatement})
-    console.log("modalURL", modalURL)
-    console.log(this.state.allArtForModalGallery)
+
+    console.log("filteredArt:", this.state.filteredArt)
+    console.log("filteredArt.length:", this.state.filteredArt.length)
+    console.log("modalImageIndex:", this.state.modalImageIndex)
+    // The findIndex() method returns the index of the first element in an array
+    // that pass a test provided as a function.
+    console.log("this.state.filteredArt.IndexOf(item):", this.state.filteredArt.findIndex( () => this.state.modalPrice == "$2,000"))
   }
 
-// This merely changes the css display class from "block" to "none"
-  closeModalImage(modalURL) {
+// This simply changes the css display class from "block" to "none"
+  closeModalImage() {
     this.setState({displayModal: {'display': "none"}})
   }
 
 // TODO: get this to work
-  modalNextImage() {
-    this.setState({modalImageIndex: this.state.modalImageIndex + 1 })
-    console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
+  modalNextImage(modalURL) {
+    // let nextNumber =  6
+    let nextNumber =  this.state.modalImageIndex + 1
+    this.setState({modalImageIndex: nextNumber}, () => {
+      console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
+    })
+
   }
 
   modalPreviousImage() {
-    this.setState({modalImageIndex: this.state.modalImageIndex - 1 })
-    console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
+    let previousNumber =  this.state.modalImageIndex - 1
+    this.setState({modalImageIndex: previousNumber}, () => {
+      console.log("modalNextImage pressed & modalImageIndex is: ", this.state.modalImageIndex)
+    })
+  }
+
+//  ==================================
+//  only display images from .json
+//  1) if includeingallery === true, return it...meaning keep it
+//  2) apply the above function as a filter to the states
+//  ==================================
+  includeInGalleryTrue(item){
+    return item.includeingallery === true;
+  };
+
+  filterIncludeInGallery(){
+    this.setState({filteredArt: art.filter(this.includeInGalleryTrue)})
+  };
+
+  componentDidMount(){
+    this.filterIncludeInGallery()
+  };
+
+  updatemodalImageIndex(item) {
+    let currentIndex = this.state.filteredArt.IndexOf(this.item)
+    this.setState({modalImageIndex: this.currentIndex})
+  }
+
+  is() {
+    return
   }
 
 
 
-//  ==================================
-// show/hide statement
-// partially working
-// not using
-//  ==================================
-// showStatement(statementId){
-//   this.setState({currentStatement: statementId})
-//   console.log("statementId", statementId)
-// }
+  // setmodalIndex(item){
+  //  let galleryIndex = this.props.filteredArt.IndexOf(item)
+  //  this.setState({modalImageIndex: this.galleryIndex}, () => {
+  //    console.log("modalImageIndex:", this.state.modalImageIndex)
+  //  })
+  // }
 
-
-// hideStatement(){
-//   // console.log("hello from hideStatement().")
-//   // console.log("mango", this.statement)
-// }
 
 
 //  ==================================
@@ -117,26 +149,7 @@ export default class App extends React.Component {
 
 
 //  ==================================
-//  only display images from .json
-//  1) if includeingallery === true, return it...meaning keep it
-//  2) apply the above function as a filter to the states
-//  ==================================
-  includeInGalleryTrue(item){
-    return item.includeingallery === true;
-  };
-
-  filterIncludeInGallery(){
-    this.setState({filteredArt: art.filter(this.includeInGalleryTrue)})
-  };
-
-  componentDidMount(){
-    this.filterIncludeInGallery()
-  };
-
-
-
-//  ==================================
-//  And finally, the render
+//  The render
 //  ==================================
   render(){
     return (
@@ -151,8 +164,6 @@ export default class App extends React.Component {
       <aside id="ghost-sidebar">
       </aside>
 
-
-
       <section className="content">
 
         <Gallery parentState={this.state}
@@ -162,6 +173,7 @@ export default class App extends React.Component {
                  />
 
         <ImageModal parentState={this.state}
+                    setmodalIndex={this.state}
                     closeModalImage={this.closeModalImage}
                     modalNextImage={this.modalNextImage}
                     modalPreviousImage={this.modalPreviousImage}
