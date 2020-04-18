@@ -210,19 +210,47 @@ h3 {
 }
 
 .modal-content-container {
+  display: flex;
   position: relative;
-  padding: 3rem;
+  padding: 1rem;
   background: #fff;
   margin: 0 auto;
   max-width: 800px;
   /*border: 1px solid blue;*/
 }
 
+/*==============================
+ Modal - left container/back button
+================================*/
+section.modal-left-container {
+  display: block;
+  /*border: 1px solid purple;*/
+}
+
+.modal-back-button {
+  position: relative;
+  top: 40%;
+  color: #aaa;
+  transition: .2s;
+  margin-right: .75rem;
+  /*z-index: 1;*/
+}
+
+.modal-forward-button:hover,
+.modal-back-button:hover,
+.modal-close-button:hover {
+  color: #777;
+}
+
+/*==============================
+ Modal - image container
+================================*/
 section.modal-image-container {
   display: block;
-  margin: 0 auto;
   width: 100%;
   /*max-width: 800px;*/
+  /*border: 1px solid red;*/
+  margin-top: 3rem;
 }
 
 img.image-large {
@@ -236,7 +264,7 @@ section.modal-info-container {
   width: 100%;
   display: block;
   margin: 0 auto;
-  /*border: 1px solid gold;*/
+  border: 1px solid gold;
 }
 
 .modal-info-container p {
@@ -250,35 +278,29 @@ section.modal-info-container {
   margin-top: .5rem !important;
 }
 
+
+/*==============================
+ Modal - right container/close & forward button
+================================*/
+section.modal-right-container {
+  display: block;
+  /*border: 1px solid purple;*/
+}
+
 .modal-close-button {
-  float: right;
-  top: 0;
   cursor: pointer;
   color: #aaa;
+  transition: .2s;
+  margin-left: .75rem;
 }
 
 .modal-forward-button {
   cursor: pointer;
+  position: relative;
+  top: 33%;
   color: #aaa;
-  position: absolute;
-  top: 40%;
-  right: 0;
-  z-index: 1;
-}
-
-.modal-back-button {
-  cursor: pointer;
-  color: #aaa;
-  position: absolute;
-  top: 40%;
-  left: 5px;
-  z-index: 1;
-}
-
-.modal-forward-button:hover,
-.modal-back-button:hover,
-.modal-close-button:hover {
-  color: #777;
+  transition: .2s;
+  margin-left: .75rem;
 }
 
 
@@ -293,7 +315,7 @@ Media Queries - small computer
   }
 
   .modal-background {
-    padding-top: 1vh; /* Location of the box */
+    padding-top: 3vh; /* Location of the box */
   }
 
   .modal-content-container {

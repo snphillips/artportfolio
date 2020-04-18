@@ -12,12 +12,62 @@ export default class ImageModal extends Component {
 
       <div className="modal-background"
            style={this.props.parentState.displayModal}
-           onClick={this.props.closeModalImage}
-           >
+           onClick={this.props.closeModalImage}>
+
 
         <div className="modal-content-container">
 
+          <section className="modal-left-container">
+
+            <div className="modal-back-button"
+                   onClick={this.props.modalPreviousImage}
+                   onMouseOver={this.props.modalPreviousImage}>
+
+                <span>
+                  <svg viewBox="0 0 24 24"
+                       width="40"
+                       height="40"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       fill="none"
+                       stroke-linecap="round"
+                       stroke-linejoin="round">
+                         <circle cx="12" cy="12" r="10"></circle>
+                           <polyline points="12 8 8 12 12 16"></polyline>
+                             <line x1="16" y1="12" x2="8" y2="12"></line>
+                  </svg>
+                </span>
+              </div>
+          </section>
+
+
+
           <section className="modal-image-container">
+
+            <div>
+              <img className="image-large"
+                 src={this.props.parentState.modalImageURL}
+                 onClick={this.props.closeModalImage}
+                 alt=""
+                 />
+            </div>
+
+          <div className="modal-info-container">
+            <p><i>{this.props.parentState.modalTitle}</i></p>
+            <p>{this.props.parentState.modalYear}</p>
+            <p>{this.props.parentState.modalDims}</p>
+            <p>{this.props.parentState.modalPrice}</p>
+            <p className="modal-statement">
+              {this.props.parentState.modalStatement}
+            </p>
+          </div>
+
+          </section>
+
+
+
+
+          <section className="modal-right-container">
 
             <div className="modal-close-button"
                  onClick={this.props.closeModalImage}>
@@ -29,41 +79,13 @@ export default class ImageModal extends Component {
                      stroke-width="2"
                      fill="none"
                      stroke-linecap="round"
-                     stroke-linejoin="round"
-                     class="css-i6dzq1">
+                     stroke-linejoin="round">
                        <circle cx="12" cy="12" r="10"></circle>
                          <line x1="15" y1="9" x2="9" y2="15"></line>
                            <line x1="9" y1="9" x2="15" y2="15"></line>
                            </svg>
               </span>
             </div>
-
-            <div className="modal-back-button"
-                 onClick={this.props.modalPreviousImage}
-                 onMouseOver={this.props.modalPreviousImage}>
-
-              <span>
-                <svg viewBox="0 0 24 24"
-                     width="40"
-                     height="40"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     fill="none"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                       <circle cx="12" cy="12" r="10"></circle>
-                         <polyline points="12 8 8 12 12 16"></polyline>
-                           <line x1="16" y1="12" x2="8" y2="12"></line>
-                </svg>
-              </span>
-            </div>
-
-            <img className="image-large"
-                 src={this.props.parentState.modalImageURL}
-                 onClick={this.props.closeModalImage}
-                 alt=""
-                 />
-
 
             <div className="modal-forward-button"
                  onClick={this.props.modalNextImage}
@@ -84,19 +106,10 @@ export default class ImageModal extends Component {
               </span>
             </div>
 
-
-
           </section>
 
-          <section className="modal-info-container">
-            <p><i>{this.props.parentState.modalTitle}</i></p>
-            <p>{this.props.parentState.modalYear}</p>
-            <p>{this.props.parentState.modalDims}</p>
-            <p>{this.props.parentState.modalPrice}</p>
-            <p className="modal-statement">
-              {this.props.parentState.modalStatement}
-            </p>
-          </section>
+
+
 
         </div>
 
