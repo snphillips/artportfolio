@@ -58,7 +58,6 @@ aside {
   z-index: -1;
 }
 
-
 h1 {
   text-align: left;
   font-family: 'Fjalla One', sans-serif;
@@ -78,11 +77,6 @@ h1:hover {
   margin-bottom: -6px;
 }
 
-nav {
-
-}
-
-
 ul {
   font-family: 'Fjalla One', sans-serif;
   display: inline-block;
@@ -92,10 +86,6 @@ ul {
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;
   padding: 1.25rem 0;
-}
-
-li {
-
 }
 
 a {
@@ -108,9 +98,6 @@ a:hover {
   color: #e60073; /* pink */
 }
 
-.statement {
-
-}
 
 /*=========================
 Galleries
@@ -248,9 +235,8 @@ section.modal-left-container {
 section.modal-image-container {
   display: block;
   width: 100%;
-  /*max-width: 800px;*/
-  /*border: 1px solid red;*/
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 img.image-large {
@@ -347,7 +333,7 @@ Media Queries - tablets
 Media Queries - phones
 1 column gallery
 /*==========================*/
-@media (max-width: 400px) {
+@media (max-width: 415px) {
 
  .container {
     flex-direction: column;
@@ -398,6 +384,11 @@ Media Queries - phones
     padding: .25rem 0;
     margin-right: unset;
     margin-bottom: .5rem;
+  }
+
+  .modal-content-container {
+    max-width: 90%;
+    padding: .25rem;
   }
 
 

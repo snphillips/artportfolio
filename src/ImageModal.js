@@ -25,17 +25,17 @@ export default class ImageModal extends Component {
 
                 <span>
                   <svg viewBox="0 0 24 24"
-                       width="40"
-                       height="40"
+                       width="36"
+                       height="36"
                        stroke="currentColor"
-                       stroke-width="2"
+                       stroke-width="1"
                        fill="none"
                        stroke-linecap="round"
-                       stroke-linejoin="round">
-                         <circle cx="12" cy="12" r="10"></circle>
-                           <polyline points="12 8 8 12 12 16"></polyline>
-                             <line x1="16" y1="12" x2="8" y2="12"></line>
-                  </svg>
+                       stroke-linejoin="round"
+                       class="css-i6dzq1">
+                         <line x1="19" y1="12" x2="5" y2="12"></line>
+                           <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </span>
               </div>
           </section>
@@ -73,17 +73,17 @@ export default class ImageModal extends Component {
                  onClick={this.props.closeModalImage}>
               <span>
                 <svg viewBox="0 0 24 24"
-                     width="40"
-                     height="40"
+                     width="36"
+                     height="36"
                      stroke="currentColor"
-                     stroke-width="2"
+                     stroke-width="1"
                      fill="none"
                      stroke-linecap="round"
-                     stroke-linejoin="round">
-                       <circle cx="12" cy="12" r="10"></circle>
-                         <line x1="15" y1="9" x2="9" y2="15"></line>
-                           <line x1="9" y1="9" x2="15" y2="15"></line>
-                           </svg>
+                     stroke-linejoin="round"
+                     class="css-i6dzq1">
+                       <line x1="18" y1="6" x2="6" y2="18"></line>
+                       <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
               </span>
             </div>
 
@@ -92,16 +92,16 @@ export default class ImageModal extends Component {
                  onMouseOver={this.props.modalNextImage}>
               <span>
                 <svg viewBox="0 0 24 24"
-                     width="40"
-                     height="40"
+                     width="36"
+                     height="36"
                      stroke="currentColor"
-                     stroke-width="2"
+                     stroke-width="1"
                      fill="none"
                      stroke-linecap="round"
-                     stroke-linejoin="round">
-                       <circle cx="12" cy="12" r="10"></circle>
-                         <polyline points="12 16 16 12 12 8"></polyline>
-                           <line x1="8" y1="12" x2="16" y2="12"></line>
+                     stroke-linejoin="round"
+                     class="css-i6dzq1">
+                       <line x1="5" y1="12" x2="19" y2="12"></line>
+                       <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </span>
             </div>
