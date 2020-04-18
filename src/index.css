@@ -173,7 +173,7 @@ h3 {
 /*==============================
  Modal
 ================================*/
-.modal-background {
+.carousel-background {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -196,7 +196,7 @@ h3 {
     to {transform:scale(1)}
 }
 
-.modal-content-container {
+.carousel-content-container {
   display: flex;
   position: relative;
   padding: 1rem;
@@ -209,12 +209,12 @@ h3 {
 /*==============================
  Modal - left container/back button
 ================================*/
-section.modal-left-container {
+section.carousel-left-container {
   display: block;
   /*border: 1px solid purple;*/
 }
 
-.modal-back-button {
+.carousel-back-button {
   position: relative;
   top: 40%;
   color: #aaa;
@@ -223,16 +223,16 @@ section.modal-left-container {
   /*z-index: 1;*/
 }
 
-.modal-forward-button:hover,
-.modal-back-button:hover,
-.modal-close-button:hover {
+.carousel-forward-button:hover,
+.carousel-back-button:hover,
+.carousel-close-button:hover {
   color: #777;
 }
 
 /*==============================
  Modal - image container
 ================================*/
-section.modal-image-container {
+section.carousel-image-container {
   display: block;
   width: 100%;
   margin-top: 3rem;
@@ -246,21 +246,21 @@ img.image-large {
 }
 
 
-section.modal-info-container {
+section.carousel-info-container {
   width: 100%;
   display: block;
   margin: 0 auto;
   border: 1px solid gold;
 }
 
-.modal-info-container p {
+.carousel-info-container p {
   margin-block-start: .1rem;
   margin-block-end: .1rem;
   font-size: .8rem;
   /*border: 1px solid green;*/
 }
 
-.modal-statement {
+.carousel-statement {
   margin-top: .5rem !important;
 }
 
@@ -268,19 +268,19 @@ section.modal-info-container {
 /*==============================
  Modal - right container/close & forward button
 ================================*/
-section.modal-right-container {
+section.carousel-right-container {
   display: block;
   /*border: 1px solid purple;*/
 }
 
-.modal-close-button {
+.carousel-close-button {
   cursor: pointer;
   color: #aaa;
   transition: .2s;
   margin-left: .75rem;
 }
 
-.modal-forward-button {
+.carousel-forward-button {
   cursor: pointer;
   position: relative;
   top: 33%;
@@ -300,11 +300,11 @@ Media Queries - small computer
     width: 30%;
   }
 
-  .modal-background {
+  .carousel-background {
     padding-top: 3vh; /* Location of the box */
   }
 
-  .modal-content-container {
+  .carousel-content-container {
     max-width: 700px;
   }
 
@@ -386,7 +386,7 @@ Media Queries - phones
     margin-bottom: .5rem;
   }
 
-  .modal-content-container {
+  .carousel-content-container {
     max-width: 90%;
     padding: .25rem;
   }

@@ -4,9 +4,10 @@ import './index.css';
 
 export default class Gallery extends React.Component {
   // constructor(props) {
-    // super(props);
+  //   super(props);
 
-   // "this" binding
+  //  // "this" binding
+
   // }
 
 
@@ -20,26 +21,28 @@ export default class Gallery extends React.Component {
 
                  {this.props.filteredArt.map( item => {
 
-                     // not working
-                     // I'm trying to establish the index of this particular image
-                     // then sent that number to app.js
-                     // let pinapple = setmodalIndex={this.props.setModalIndex, () => {
-                     //    this.setState({modalImageIndex: this.galleryIndex})
-                     // }}
+
+                    let imageIndex = this.props.filteredArt.indexOf(item)
+                    // console.log("imageIndex as we build the gallery:", imageIndex)
 
 
                       return(
 
+                        <div className="art-card"
 
-                        <div className="art-card">
+                               onClick={ () => {
+                                 this.props.establishImageIndex(imageIndex)}
+                               }
+
+                               >
 
                           <img className="art-img"
                                src={item.link}
                                alt={item.title}
                                onClick={ () => {
-                                 this.props.showModalImage(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
+                                 this.props.showCarouselImage(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
                                }
-                               onMouseLeave={this.props.closeModalImage}
+                               onMouseLeave={this.props.closeCarouselImage}
 
                               />
 
@@ -60,10 +63,4 @@ export default class Gallery extends React.Component {
 
 
 }
-
-                          // not using right now
-                          // <div className="art-titlecard-info"><i>{item.title}</i></div>
-                          // <div className="art-titlecard-info">{item.year}</div>
-                          // <div className="art-titlecard-info">{item.dims}</div>
-
 
