@@ -48,7 +48,7 @@ export default class App extends React.Component {
 //  setStates: 1) change the css display class from "none" to "block"
 //             2) to indicate which image it's clicked on
 //             3) a bunch of information accompanying each image
-  showCarouselImage(carouselURL, carouselTitle, carouselYear, carouselDims, carouselMedia, carouselPrice, carouselStatement) {
+  showCarouselImage(carouselURL, carouselTitle, carouselYear, carouselMedia, carouselDims, carouselPrice, carouselStatement) {
     this.setState({displayCarousel: {'display': "block"}})
     this.setState({carouselImageURL: carouselURL})
     this.setState({carouselTitle: carouselTitle})
