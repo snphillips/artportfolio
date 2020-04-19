@@ -19,8 +19,9 @@ export default class Gallery extends React.Component {
 
           <div className="gallery">
 
-                 {this.props.filteredArt.map( item => {
 
+
+                 {this.props.filteredArt.map( item => {
 
                     let imageIndex = this.props.filteredArt.indexOf(item)
                     // console.log("imageIndex as we build the gallery:", imageIndex)
@@ -33,7 +34,6 @@ export default class Gallery extends React.Component {
                                onClick={ () => {
                                  this.props.establishImageIndex(imageIndex)}
                                }
-
                                >
 
                           <img className="art-img"
@@ -43,7 +43,6 @@ export default class Gallery extends React.Component {
                                  this.props.showCarouselImage(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
                                }
                                onMouseLeave={this.props.closeCarouselImage}
-
                               />
 
                         </div>

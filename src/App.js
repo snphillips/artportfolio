@@ -22,6 +22,7 @@ export default class App extends React.Component {
     this.carouselNextImage = this.carouselNextImage.bind(this);
     this.carouselPreviousImage = this.carouselPreviousImage.bind(this);
     this.establishImageIndex = this.establishImageIndex.bind(this);
+    this.updateCarouselArt = this.updateCarouselArt.bind(this);
 
 
 
@@ -56,8 +57,8 @@ export default class App extends React.Component {
     this.setState({carouselMedia: carouselMedia})
     this.setState({carouselPrice: carouselPrice})
     this.setState({carouselStatement: carouselStatement})
-    console.log("filteredArt:", this.state.filteredArt)
-    console.log("filteredArt.length:", this.state.filteredArt.length)
+    // console.log("filteredArt:", this.state.filteredArt)
+    // console.log("filteredArt.length:", this.state.filteredArt.length)
   }
 
 
@@ -68,21 +69,45 @@ export default class App extends React.Component {
   }
 
 
+
+// TODO: when the carousel next/previous image buttons are pressed,
+// the art piece states must update
+
+updateCarouselArt(){
+    this.setState({displayCarousel: {'display': "block"}})
+    this.setState({carouselImageURL: this.state.filteredArt[this.state.carouselImageIndex].link})
+    this.setState({carouselTitle: this.state.filteredArt[this.state.carouselImageIndex].title})
+    this.setState({carouselYear: this.state.filteredArt[this.state.carouselImageIndex].year})
+    this.setState({carouselDims: this.state.filteredArt[this.state.carouselImageIndex].dims})
+    this.setState({carouselMedia: this.state.filteredArt[this.state.carouselImageIndex].media})
+    // this.setState({carouselPrice: carouselPrice})
+    // this.setState({carouselStatement: carouselStatement})
+}
+
+
+
+
 // TODO: get this to work
-  carouselNextImage(carouselTitle) {
+  carouselNextImage() {
     let nextImageIndex =  this.state.carouselImageIndex + 1
     this.setState({carouselImageIndex: nextImageIndex}, () => {
-      console.log("carouselNextImage pressed & carouselImageIndex is: ", this.state.carouselImageIndex)
+      console.log("carouselNextImage pressed. carouselImageIndex is: ", this.state.carouselImageIndex)
+      console.log("title", this.state.filteredArt[this.state.carouselImageIndex].title)
+      console.log("year", this.state.filteredArt[this.state.carouselImageIndex].year)
+      console.log("pineapple:", this.state.filteredArt[this.state.carouselImageIndex])
+      // this.showCarouselImage()
+      this.updateCarouselArt()
     })
   }
 
 
 // TODO: get this to work
-  carouselPreviousImage(event) {
+  carouselPreviousImage() {
     let previousImageIndex =  this.state.carouselImageIndex - 1
     this.setState({carouselImageIndex: previousImageIndex}, () => {
-      console.log("carouselPreviousImage pressed & carouselImageIndex is: ", this.state.carouselImageIndex)
+      console.log("carouselPreviousImage pressed. carouselImageIndex is: ", this.state.carouselImageIndex)
     })
+    this.showCarouselImage()
   }
 
 

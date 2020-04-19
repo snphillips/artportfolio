@@ -223,7 +223,7 @@ section.carousel-left-container {
   /*z-index: 1;*/
 }
 
-.carousel-forward-button:hover,
+.carousel-next-button:hover,
 .carousel-back-button:hover,
 .carousel-close-button:hover {
   color: #777;
@@ -266,7 +266,7 @@ section.carousel-info-container {
 
 
 /*==============================
- Modal - right container/close & forward button
+ Modal - right container/close & next button
 ================================*/
 section.carousel-right-container {
   display: block;
@@ -280,7 +280,7 @@ section.carousel-right-container {
   margin-left: .75rem;
 }
 
-.carousel-forward-button {
+.carousel-next-button {
   cursor: pointer;
   position: relative;
   top: 33%;
