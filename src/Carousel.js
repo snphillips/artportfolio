@@ -8,11 +8,15 @@ import React, { Component } from 'react';
 
 export default class Carousel extends Component {
   render() {
+
+
+
+
     return (
 
       <div className="carousel-background"
            style={this.props.parentState.displayCarousel}
-           // onClick={this.props.closeCarouselImage}
+           onClick={this.props.closeCarouselImage}
            >
 
         <div className="carousel-content-container">
