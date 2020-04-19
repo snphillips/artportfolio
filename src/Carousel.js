@@ -17,12 +17,11 @@ export default class Carousel extends Component {
 
         <div className="carousel-content-container">
 
-          <section className="carousel-left-container">
-
-            <div className="carousel-back-button"
-                   onClick={this.props.showCarouselImage}
-                   onMouseOver={this.props.carouselPreviousImage}
+          <section className="carousel-left-container"
+                   onClick={this.props.carouselPreviousImage}
                    >
+
+            <div className="carousel-back-button">
 
                 <span>
                   <svg viewBox="0 0 24 24"
@@ -51,20 +50,22 @@ export default class Carousel extends Component {
                    />
             </div>
 
-          <div className="carousel-info-container">
-            <p><i>{this.props.parentState.carouselTitle}</i></p>
-            <p>{this.props.parentState.carouselYear}</p>
-            <p>{this.props.parentState.carouselDims}</p>
-            <p>{this.props.parentState.carouselPrice}</p>
-            <p className="carousel-statement">{this.props.parentState.carouselStatement}</p>
-          </div>
+            <div className="carousel-info-container">
+              <p><i>{this.props.parentState.carouselTitle}</i></p>
+              <p>{this.props.parentState.carouselYear}</p>
+              <p>{this.props.parentState.carouselMedia}</p>
+              <p>{this.props.parentState.carouselDims}</p>
+              <p>{this.props.parentState.carouselPrice}</p>
+              <p className="carousel-statement">{this.props.parentState.carouselStatement}</p>
+            </div>
 
           </section>
 
 
 
 
-          <section className="carousel-right-container">
+          <section className="carousel-right-container"
+          >
 
             <div className="carousel-close-button"
                  onClick={this.props.closeCarouselImage}
@@ -86,7 +87,6 @@ export default class Carousel extends Component {
 
             <div className="carousel-next-button"
                  onClick={this.props.carouselNextImage}
-                 // onMouseOver={this.props.carouselNextImage}
                  >
               <span>
                 <svg viewBox="0 0 24 24"
