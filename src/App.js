@@ -23,6 +23,7 @@ export default class App extends React.Component {
     this.carouselPreviousImage = this.carouselPreviousImage.bind(this);
     this.establishImageIndex = this.establishImageIndex.bind(this);
     this.updateCarouselArt = this.updateCarouselArt.bind(this);
+    this.keyAction = this.keyAction.bind(this);
 
 
 
@@ -104,10 +105,35 @@ updateCarouselArt(){
   }
 
 
+//  ==================================
+//  Arrow keys
+//  ==================================
+  keyAction(event) {
+    // console.log("event:", event)
+    let whichKey = event.keyCode;
+    switch (whichKey) {
+      case 39:
+        console.log("forward arrow key pushed")
+        this.carouselNextImage()
+      break;
+      case 37:
+        console.log("back arrow key pushed")
+        this.carouselPreviousImage()
+      break;
+    }
+  }
+
+
+
+
 // This simply changes the css display class from "block" to "none"
   closeCarouselImage() {
     this.setState({displayCarousel: {'display': "none"}})
   }
+
+
+
+
 
 //  ==================================
 //  only display images from .json
@@ -124,6 +150,10 @@ updateCarouselArt(){
 
   componentDidMount(){
     this.filterIncludeInGallery()
+
+    document.onkeyup = (event) => {
+    this.keyAction(event);
+  }
   };
 
 
