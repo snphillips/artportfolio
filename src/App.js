@@ -18,13 +18,14 @@ export default class App extends React.Component {
     this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
     this.openCarousel = this.openCarousel.bind(this);
-    this.closeCarouselImage = this.closeCarouselImage.bind(this);
+    this.closeCarousel = this.closeCarousel.bind(this);
     this.carouselNextImage = this.carouselNextImage.bind(this);
     this.carouselPreviousImage = this.carouselPreviousImage.bind(this);
     this.establishImageIndex = this.establishImageIndex.bind(this);
     this.updateCarouselArt = this.updateCarouselArt.bind(this);
     this.keyAction = this.keyAction.bind(this);
-    this.carouselButtonEdgeCase = this.carouselButtonEdgeCase.bind(this);
+    this.carouselDontDisplayBackButton = this.carouselDontDisplayBackButton.bind(this);
+    this.carouselDontDisplayForwardButton = this.carouselDontDisplayForwardButton.bind(this);
 
 
 
@@ -33,8 +34,8 @@ export default class App extends React.Component {
       showingArt: '',
       currentStatement: '',
       displayCarousel: {'display': 'none'},
-      displayCarouselBackButton: {'display': 'none'},
-      displayCarouselForwardButton: {'display': 'none'},
+      // displayCarouselBackButton: {'display': 'none'},
+      // displayCarouselForwardButton: {'display': 'none'},
       carouselImageIndex: 'default',
       carouselImageURL: '',
       carouselTitle: '',
@@ -54,7 +55,7 @@ export default class App extends React.Component {
 //             3) a bunch of information accompanying each image
   openCarousel(carouselURL, carouselTitle, carouselYear, carouselMedia, carouselDims, carouselPrice, carouselStatement) {
     this.establishImageIndex( () => {
-      console.log(`Current image index is:`, this.state.carouselImageIndex)
+      console.log(`Current image index is (log within the callback):`, this.state.carouselImageIndex)
     })
     this.setState({displayCarousel: {'display': "block"}})
     this.setState({carouselImageURL: carouselURL})
@@ -64,26 +65,27 @@ export default class App extends React.Component {
     this.setState({carouselDims: carouselDims})
     this.setState({carouselPrice: carouselPrice})
     this.setState({carouselStatement: carouselStatement})
-    this.carouselButtonEdgeCase()
-    // console.log("filteredArt:", this.state.filteredArt)
-    // console.log("filteredArt.length:", this.state.filteredArt.length)
+    this.carouselDontDisplayBackButton()
+    this.carouselDontDisplayForwardButton()
+    console.log("Current image index is: (2nd console log)", this.state.carouselImageIndex)
   }
 
-
+  // This isn't triggering when user first opens the carousel
   establishImageIndex(imageIndex){
     this.setState({carouselImageIndex: imageIndex})
   }
 
-  // if image index is 0, dont display:none back button.
-  // if image index is this.state.filteredArt.length - 1, display:none forward button
-  // problem: when this triggers, the index hasn't been updated yet.
-  carouselButtonEdgeCase(){
+  carouselDontDisplayBackButton(){
     if (this.state.carouselImageIndex == 0) {
-      this.setState({displayCarouselBackButton: {'display': "none"}})
-      console.log(`image index is:`, this.state.carouselImageIndex,  `so don't show back arrow`)
-    } else if (this.state.carouselImageIndex == this.state.filteredArt.length + 1) {
-        this.setState({displayCarouselForwardButton: {'display': "none"}})
-        console.log(`array length:`, this.state.filteredArt.length, `this.state.carouselImageIndex:`, this.state.carouselImageIndex , `don't show forward arrow`)
+      console.log(`image index is:`, this.state.carouselImageIndex,  `Don't display back arrow`)
+      document.getElementById('carousel-back-button').style.display = 'none'
+    }
+  }
+
+  carouselDontDisplayForwardButton(){
+    if (this.state.carouselImageIndex === this.state.filteredArt.length - 1) {
+      console.log(`image index is:`, this.state.carouselImageIndex , `Don't display forward arrow`)
+      document.getElementById('carousel-next-button').style.display = 'none'
     }
   }
 
@@ -97,7 +99,8 @@ export default class App extends React.Component {
     this.setState({carouselDims: this.state.filteredArt[this.state.carouselImageIndex].dims})
     this.setState({carouselPrice: this.state.filteredArt[this.state.carouselImageIndex].price})
     this.setState({carouselStatement: this.state.filteredArt[this.state.carouselImageIndex].statement})
-    this.carouselButtonEdgeCase()
+    this.carouselDontDisplayBackButton()
+    this.carouselDontDisplayForwardButton()
   }
 
 
@@ -117,6 +120,11 @@ export default class App extends React.Component {
       console.log("Image index is: ", this.state.carouselImageIndex)
       this.updateCarouselArt()
     })
+  }
+
+  // This simply changes the css display class from "block" to "none"
+  closeCarousel() {
+    this.setState({displayCarousel: {'display': "none"}})
   }
 
 
@@ -141,13 +149,6 @@ export default class App extends React.Component {
 
 
 
-// This simply changes the css display class from "block" to "none"
-  closeCarouselImage() {
-    this.setState({displayCarousel: {'display': "none"}})
-  }
-
-
-
 
 
 //  ==================================
@@ -164,7 +165,9 @@ export default class App extends React.Component {
   };
 
   componentDidMount(){
+    // what images from the art json are shown?
     this.filterIncludeInGallery()
+    // the hotkeys
     document.onkeyup = (event) => {
       this.keyAction(event);
     }
@@ -196,14 +199,16 @@ export default class App extends React.Component {
                  filteredArt={this.state.filteredArt}
                  openCarousel={this.openCarousel}
                  establishImageIndex={this.establishImageIndex}
+                 // carouselDontDisplayBackButton={this.carouselDontDisplayBackButton}
+                 // carouselDontDisplayForwardButton={this.carouselDontDisplayForwardButton}
                  />
 
         <Carousel parentState={this.state}
-                  // openCarousel={this.openCarousel}
-                  closeCarouselImage={this.closeCarouselImage}
+                  closeCarousel={this.closeCarousel}
                   carouselNextImage={this.carouselNextImage}
                   carouselPreviousImage={this.carouselPreviousImage}
-                  carouselButtonEdgeCase={this.carouselButtonEdgeCase}
+                  carouselDontDisplayBackButton={this.carouselDontDisplayBackButton}
+                  carouselDontDisplayForwardButton={this.carouselDontDisplayForwardButton}
                   />
 
         <About parentState={this.state}/>

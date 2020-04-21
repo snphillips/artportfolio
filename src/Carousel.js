@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 
 
 // When the user clicks on an image, a carousel opens up.
-// The carousel closes when the user clicks anywhere(closeCarouselImage),
-// though there's also a "close" X button.
+// The carousel closes when the user clicks "close" X button.
+// There are forward and back buttons that allow the user
+// to view all images in carousel view
 
 export default class Carousel extends Component {
   render() {
@@ -16,17 +17,18 @@ export default class Carousel extends Component {
 
       <div className="carousel-background"
            style={this.props.parentState.displayCarousel}
-           onClick={this.props.closeCarouselImage}
+           onClick={this.props.closeCarousel}
            >
 
         <div className="carousel-content-container">
 
-          <section className="carousel-left-container"
-                   onClick={this.props.carouselPreviousImage}
-                   >
+          <section className="carousel-left-container">
 
-            <div className="carousel-back-button">
+            <div id="carousel-back-button"
+                 style={this.props.parentState.carouselDontDisplayBackButton}
+                 onClick={this.props.parentState.carouselPreviousImage}
 
+                 >
                 <span>
                   <svg viewBox="0 0 24 24"
                        width="36"
@@ -72,7 +74,7 @@ export default class Carousel extends Component {
           >
 
             <div className="carousel-close-button"
-                 onClick={this.props.closeCarouselImage}
+                 onClick={this.props.closeCarousel}
                  >
               <span>
                 <svg viewBox="0 0 24 24"
@@ -89,7 +91,8 @@ export default class Carousel extends Component {
               </span>
             </div>
 
-            <div className="carousel-next-button"
+            <div id="carousel-next-button"
+                 style={this.props.parentState.carouselDontDisplayForwardButton}
                  onClick={this.props.carouselNextImage}
                  >
               <span>

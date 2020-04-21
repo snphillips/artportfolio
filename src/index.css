@@ -206,6 +206,12 @@ h3 {
   /*border: 1px solid blue;*/
 }
 
+#carousel-next-button:hover,
+#carousel-back-button:hover,
+.carousel-close-button:hover {
+  color: #777;
+}
+
 /*==============================
  Modal - left container/back button
 ================================*/
@@ -214,7 +220,7 @@ section.carousel-left-container {
   /*border: 1px solid purple;*/
 }
 
-.carousel-back-button {
+#carousel-back-button {
   position: relative;
   top: 40%;
   color: #aaa;
@@ -223,11 +229,6 @@ section.carousel-left-container {
   /*z-index: 1;*/
 }
 
-.carousel-next-button:hover,
-.carousel-back-button:hover,
-.carousel-close-button:hover {
-  color: #777;
-}
 
 /*==============================
  Modal - image container
@@ -280,7 +281,7 @@ section.carousel-right-container {
   margin-left: .75rem;
 }
 
-.carousel-next-button {
+#carousel-next-button {
   cursor: pointer;
   position: relative;
   top: 33%;

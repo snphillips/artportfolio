@@ -33,8 +33,7 @@ export default class Gallery extends React.Component {
 
                                onClick={ () => {
                                  this.props.establishImageIndex(imageIndex)}
-                               }
-                               >
+                               }>
 
                           <img className="art-img"
                                src={item.link}
@@ -42,7 +41,8 @@ export default class Gallery extends React.Component {
                                onClick={ () => {
                                  this.props.openCarousel(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
                                }
-                               onMouseLeave={this.props.closeCarouselImage}
+                               // style={this.props.parentState.carouselButtonEdgeCase}
+                               // onMouseLeave={this.props.closeCarouselImage}
                               />
 
                         </div>
