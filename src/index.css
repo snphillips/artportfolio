@@ -217,6 +217,7 @@ h3 {
 ================================*/
 section.carousel-left-container {
   display: block;
+  width: 3rem;
   /*border: 1px solid purple;*/
 }
 
@@ -272,6 +273,7 @@ section.carousel-info-container {
 ================================*/
 section.carousel-right-container {
   display: block;
+  width: 3rem;
   /*border: 1px solid purple;*/
 }
 
