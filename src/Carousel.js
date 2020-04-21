@@ -25,8 +25,9 @@ export default class Carousel extends Component {
           <section className="carousel-left-container">
 
             <div id="carousel-back-button"
-                 style={this.props.parentState.carouselDontDisplayBackButton}
-                 onClick={this.props.parentState.carouselPreviousImage}
+                 style={this.props.parentState.carouselDisplayForwardBackButtons}
+                 onClick={this.props.carouselPreviousImage}
+                 onmouseover={this.props.establishImageIndex}
 
                  >
                 <span>
@@ -92,7 +93,7 @@ export default class Carousel extends Component {
             </div>
 
             <div id="carousel-next-button"
-                 style={this.props.parentState.carouselDontDisplayForwardButton}
+                 style={this.props.parentState.carouselDisplayForwardBackButtons}
                  onClick={this.props.carouselNextImage}
                  >
               <span>

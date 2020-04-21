@@ -24,8 +24,7 @@ export default class App extends React.Component {
     this.establishImageIndex = this.establishImageIndex.bind(this);
     this.updateCarouselArt = this.updateCarouselArt.bind(this);
     this.keyAction = this.keyAction.bind(this);
-    this.carouselDontDisplayBackButton = this.carouselDontDisplayBackButton.bind(this);
-    this.carouselDontDisplayForwardButton = this.carouselDontDisplayForwardButton.bind(this);
+    this.carouselDisplayForwardBackButtons = this.carouselDisplayForwardBackButtons.bind(this);
 
 
 
@@ -34,9 +33,7 @@ export default class App extends React.Component {
       showingArt: '',
       currentStatement: '',
       displayCarousel: {'display': 'none'},
-      // displayCarouselBackButton: {'display': 'none'},
-      // displayCarouselForwardButton: {'display': 'none'},
-      carouselImageIndex: 'default',
+      carouselImageIndex: "flowers",
       carouselImageURL: '',
       carouselTitle: '',
       carouselYear: '',
@@ -55,7 +52,7 @@ export default class App extends React.Component {
 //             3) a bunch of information accompanying each image
   openCarousel(carouselURL, carouselTitle, carouselYear, carouselMedia, carouselDims, carouselPrice, carouselStatement) {
     this.establishImageIndex( () => {
-      console.log(`Current image index is (log within the callback):`, this.state.carouselImageIndex)
+      this.carouselDisplayForwardBackButtons()
     })
     this.setState({displayCarousel: {'display': "block"}})
     this.setState({carouselImageURL: carouselURL})
@@ -65,28 +62,34 @@ export default class App extends React.Component {
     this.setState({carouselDims: carouselDims})
     this.setState({carouselPrice: carouselPrice})
     this.setState({carouselStatement: carouselStatement})
-    this.carouselDontDisplayBackButton()
-    this.carouselDontDisplayForwardButton()
     console.log("Current image index is: (2nd console log)", this.state.carouselImageIndex)
   }
 
   // This isn't triggering when user first opens the carousel
   establishImageIndex(imageIndex){
-    this.setState({carouselImageIndex: imageIndex})
+    this.setState({carouselImageIndex: imageIndex}, () => {
+      console.log("establishImageIndex():", this.state.carouselImageIndex)
+      this.carouselDisplayForwardBackButtons()
+    })
+
   }
 
-  carouselDontDisplayBackButton(){
-    if (this.state.carouselImageIndex == 0) {
-      console.log(`image index is:`, this.state.carouselImageIndex,  `Don't display back arrow`)
-      document.getElementById('carousel-back-button').style.display = 'none'
-    }
-  }
 
-  carouselDontDisplayForwardButton(){
-    if (this.state.carouselImageIndex === this.state.filteredArt.length - 1) {
+  carouselDisplayForwardBackButtons(){
+    if (this.state.carouselImageIndex == this.state.filteredArt.length - 1) {
       console.log(`image index is:`, this.state.carouselImageIndex , `Don't display forward arrow`)
       document.getElementById('carousel-next-button').style.display = 'none'
+      document.getElementById('carousel-back-button').style.display = 'block'
     }
+      else if (this.state.carouselImageIndex == 0) {
+        console.log(`image index is:`, this.state.carouselImageIndex,  `Don't display back arrow`)
+        document.getElementById('carousel-back-button').style.display = 'none'
+        document.getElementById('carousel-next-button').style.display = 'block'
+      } else {
+          console.log(`image index is:`, this.state.carouselImageIndex,  `Both arrows should appear`)
+          document.getElementById('carousel-back-button').style.display = 'block'
+          document.getElementById('carousel-next-button').style.display = 'block'
+      }
   }
 
 
@@ -99,8 +102,7 @@ export default class App extends React.Component {
     this.setState({carouselDims: this.state.filteredArt[this.state.carouselImageIndex].dims})
     this.setState({carouselPrice: this.state.filteredArt[this.state.carouselImageIndex].price})
     this.setState({carouselStatement: this.state.filteredArt[this.state.carouselImageIndex].statement})
-    this.carouselDontDisplayBackButton()
-    this.carouselDontDisplayForwardButton()
+    this.carouselDisplayForwardBackButtons()
   }
 
 
@@ -199,16 +201,15 @@ export default class App extends React.Component {
                  filteredArt={this.state.filteredArt}
                  openCarousel={this.openCarousel}
                  establishImageIndex={this.establishImageIndex}
-                 // carouselDontDisplayBackButton={this.carouselDontDisplayBackButton}
-                 // carouselDontDisplayForwardButton={this.carouselDontDisplayForwardButton}
+
                  />
 
         <Carousel parentState={this.state}
                   closeCarousel={this.closeCarousel}
+                  establishImageIndex={this.establishImageIndex}
                   carouselNextImage={this.carouselNextImage}
                   carouselPreviousImage={this.carouselPreviousImage}
-                  carouselDontDisplayBackButton={this.carouselDontDisplayBackButton}
-                  carouselDontDisplayForwardButton={this.carouselDontDisplayForwardButton}
+                  carouselDisplayForwardBackButtons={this.carouselDisplayForwardBackButtons}
                   />
 
         <About parentState={this.state}/>

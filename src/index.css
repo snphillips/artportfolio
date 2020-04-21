@@ -221,6 +221,7 @@ section.carousel-left-container {
 }
 
 #carousel-back-button {
+  cursor: pointer;
   position: relative;
   top: 40%;
   color: #aaa;
