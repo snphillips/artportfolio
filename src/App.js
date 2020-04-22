@@ -25,7 +25,7 @@ export default class App extends React.Component {
     this.updateModalArt = this.updateModalArt.bind(this);
     this.keyAction = this.keyAction.bind(this);
     this.modalDisplayForwardBackButtons = this.modalDisplayForwardBackButtons.bind(this);
-
+    this.horizontalVerticalOrSquare = this.horizontalVerticalOrSquare.bind(this);
 
 
     this.state = {
@@ -60,6 +60,7 @@ export default class App extends React.Component {
     this.setState({modalDims: modalDims})
     this.setState({modalPrice: modalPrice})
     this.setState({modalStatement: modalStatement})
+    this.horizontalVerticalOrSquare()
   }
 
 
@@ -83,16 +84,39 @@ export default class App extends React.Component {
     this.setState({modalPrice: this.state.filteredArt[this.state.modalImageIndex].price})
     this.setState({modalStatement: this.state.filteredArt[this.state.modalImageIndex].statement})
     this.modalDisplayForwardBackButtons()
+    this.horizontalVerticalOrSquare()
   }
 
 
+  // work in progress
+  // need to reset size before each image
+  horizontalVerticalOrSquare() {
+
+    let image = document.getElementById('modal-image')
+
+    if (image.naturalWidth > image.naturalHeight) {
+      //it's a landscape
+      console.log("landscape image:", image.naturalWidth, "x", image.naturalHeight)
+    } else if (image.width < image.height) {
+        //it's a portrait
+      console.log("portrait image", image.naturalWidth, "x", image.naturalHeight)
+      document.querySelector('.modal-content-container').style.maxWidth = "500px";
+    } else {
+        //image width and height are equal, therefore it is square.
+      console.log("square image", image.naturalWidth, "x", image.naturalHeight)
+    }
+
+  }
+
+
+
   modalDisplayForwardBackButtons(){
-    if (this.state.modalImageIndex == this.state.filteredArt.length - 1) {
+    if (this.state.modalImageIndex === this.state.filteredArt.length - 1) {
       console.log(`image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
       document.getElementById('modal-next-button').style.display = 'none'
       document.getElementById('modal-back-button').style.display = 'block'
     }
-      else if (this.state.modalImageIndex == 0) {
+      else if (this.state.modalImageIndex === 0) {
         console.log(`image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
         document.getElementById('modal-back-button').style.display = 'none'
         document.getElementById('modal-next-button').style.display = 'block'
@@ -104,23 +128,21 @@ export default class App extends React.Component {
   }
 
 
+// this function applies both to the arrow buttons on the site &
+// the arrow buttons on the keyboard
+// if the user hits the forward arrow on their keyboard on the last image,
+// the modal closes.
   modalNextImage() {
     let nextImageIndex =  this.state.modalImageIndex + 1
-    this.setState({modalImageIndex: nextImageIndex}, () => {
-      // console.log("Image index is: ", this.state.modalImageIndex)
-      this.updateModalArt()
-    })
+    if (nextImageIndex > this.state.filteredArt.length - 1) {
+      this.closeModal()
+    } else {
+      this.setState({modalImageIndex: nextImageIndex}, () => {
+        console.log("Image index is: ", this.state.modalImageIndex)
+        this.updateModalArt()
+      })
+    }
   }
-
-  // modalPreviousImage() {
-  //   let previousImageIndex =  this.state.modalImageIndex - 1
-  //   this.setState({modalImageIndex: previousImageIndex}, () => {
-  //     // console.log("Image index is: ", this.state.modalImageIndex)
-  //     this.updateModalArt()
-  //   })
-  // }
-
-
 
 
 // this function applies both to the arrow buttons on the site &
@@ -139,9 +161,6 @@ export default class App extends React.Component {
   }
 
 
-
-
-
   // This simply changes the css display class from "block" to "none"
   closeModal() {
     this.setState({displayModal: {'display': "none"}})
@@ -151,7 +170,6 @@ export default class App extends React.Component {
 //  ==================================
 //  Arrow keys
 //  ==================================
-// TODO: deal with edge cases
   keyAction(event) {
     // console.log("event:", event)
     let whichKey = event.keyCode;
@@ -166,10 +184,6 @@ export default class App extends React.Component {
       break;
     }
   }
-
-
-
-
 
 
 //  ==================================

@@ -51,7 +51,7 @@ export default class Modal extends Component {
           <section className="modal-image-container">
 
             <div>
-              <img className="image-large"
+              <img id="modal-image"
                    src={this.props.parentState.modalImageURL}
                    alt=""
                    />
