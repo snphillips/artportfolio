@@ -39,10 +39,10 @@ export default class Gallery extends React.Component {
                                src={item.link}
                                alt={item.title}
                                onClick={ () => {
-                                 this.props.openCarousel(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
+                                 this.props.openModal(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement)}
                                }
                                // style={this.props.parentState.carouselButtonEdgeCase}
-                               // onMouseLeave={this.props.closeCarouselImage}
+                               // onMouseLeave={this.props.closeModalImage}
                               />
 
                         </div>

@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 import Contact from './Contact';
 import About from './About';
 import Gallery from './Gallery';
-import Carousel from './Carousel';
+import Modal from './Modal';
 import art from './art';
 
 
@@ -17,14 +17,14 @@ export default class App extends React.Component {
     // This binding
     this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
-    this.openCarousel = this.openCarousel.bind(this);
-    this.closeCarousel = this.closeCarousel.bind(this);
-    this.carouselNextImage = this.carouselNextImage.bind(this);
-    this.carouselPreviousImage = this.carouselPreviousImage.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.modalNextImage = this.modalNextImage.bind(this);
+    this.modalPreviousImage = this.modalPreviousImage.bind(this);
     this.establishImageIndex = this.establishImageIndex.bind(this);
-    this.updateCarouselArt = this.updateCarouselArt.bind(this);
+    this.updateModalArt = this.updateModalArt.bind(this);
     this.keyAction = this.keyAction.bind(this);
-    this.carouselDisplayForwardBackButtons = this.carouselDisplayForwardBackButtons.bind(this);
+    this.modalDisplayForwardBackButtons = this.modalDisplayForwardBackButtons.bind(this);
 
 
 
@@ -32,118 +32,137 @@ export default class App extends React.Component {
       filteredArt: [],
       showingArt: '',
       currentStatement: '',
-      displayCarousel: {'display': 'none'},
-      carouselImageIndex: "flowers",
-      carouselImageURL: '',
-      carouselTitle: '',
-      carouselYear: '',
-      carouselDims: '',
-      carouselMedia: '',
-      carouselPrice: ''
+      displayModal: {'display': 'none'},
+      modalImageIndex: "default",
+      modalImageURL: '',
+      modalTitle: '',
+      modalYear: '',
+      modalDims: '',
+      modalMedia: '',
+      modalPrice: ''
     };
   }
 
 
 //  ==================================
-//  carousel: the expanded image
+//  modal: the expanded image
 //  ==================================
-//  setStates: 1) change the css display class from "none" to "block"
-//             2) to indicate which image it's clicked on
+//  setStates: 1) to indicate which image the user has clicked
+//             2) change the css display class from "none" to "block"
 //             3) a bunch of information accompanying each image
-  openCarousel(carouselURL, carouselTitle, carouselYear, carouselMedia, carouselDims, carouselPrice, carouselStatement) {
-    this.establishImageIndex( () => {
-      this.carouselDisplayForwardBackButtons()
-    })
-    this.setState({displayCarousel: {'display': "block"}})
-    this.setState({carouselImageURL: carouselURL})
-    this.setState({carouselTitle: carouselTitle})
-    this.setState({carouselYear: carouselYear})
-    this.setState({carouselMedia: carouselMedia})
-    this.setState({carouselDims: carouselDims})
-    this.setState({carouselPrice: carouselPrice})
-    this.setState({carouselStatement: carouselStatement})
-    console.log("Current image index is: (2nd console log)", this.state.carouselImageIndex)
+  openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement) {
+    this.establishImageIndex()
+    this.setState({displayModal: {'display': "block"}})
+    this.setState({modalImageURL: modalURL})
+    this.setState({modalTitle: modalTitle})
+    this.setState({modalYear: modalYear})
+    this.setState({modalMedia: modalMedia})
+    this.setState({modalDims: modalDims})
+    this.setState({modalPrice: modalPrice})
+    this.setState({modalStatement: modalStatement})
   }
 
-  // This isn't triggering when user first opens the carousel
+
+  // 1) set state with the index of the image the user has clicked
+  // 2) then, figure out if the back and forward buttons should be displayed
   establishImageIndex(imageIndex){
-    this.setState({carouselImageIndex: imageIndex}, () => {
-      console.log("establishImageIndex():", this.state.carouselImageIndex)
-      this.carouselDisplayForwardBackButtons()
+    this.setState({modalImageIndex: imageIndex}, () => {
+      // console.log("establishImageIndex():", this.state.modalImageIndex)
+      this.modalDisplayForwardBackButtons()
     })
-
   }
 
 
-  carouselDisplayForwardBackButtons(){
-    if (this.state.carouselImageIndex == this.state.filteredArt.length - 1) {
-      console.log(`image index is:`, this.state.carouselImageIndex , `Don't display forward arrow`)
-      document.getElementById('carousel-next-button').style.display = 'none'
-      document.getElementById('carousel-back-button').style.display = 'block'
+  updateModalArt(){
+    this.setState({displayModal: {'display': "block"}})
+    this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
+    this.setState({modalTitle: this.state.filteredArt[this.state.modalImageIndex].title})
+    this.setState({modalYear: this.state.filteredArt[this.state.modalImageIndex].year})
+    this.setState({modalMedia: this.state.filteredArt[this.state.modalImageIndex].media})
+    this.setState({modalDims: this.state.filteredArt[this.state.modalImageIndex].dims})
+    this.setState({modalPrice: this.state.filteredArt[this.state.modalImageIndex].price})
+    this.setState({modalStatement: this.state.filteredArt[this.state.modalImageIndex].statement})
+    this.modalDisplayForwardBackButtons()
+  }
+
+
+  modalDisplayForwardBackButtons(){
+    if (this.state.modalImageIndex == this.state.filteredArt.length - 1) {
+      console.log(`image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
+      document.getElementById('modal-next-button').style.display = 'none'
+      document.getElementById('modal-back-button').style.display = 'block'
     }
-      else if (this.state.carouselImageIndex == 0) {
-        console.log(`image index is:`, this.state.carouselImageIndex,  `Don't display back arrow`)
-        document.getElementById('carousel-back-button').style.display = 'none'
-        document.getElementById('carousel-next-button').style.display = 'block'
+      else if (this.state.modalImageIndex == 0) {
+        console.log(`image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
+        document.getElementById('modal-back-button').style.display = 'none'
+        document.getElementById('modal-next-button').style.display = 'block'
       } else {
-          console.log(`image index is:`, this.state.carouselImageIndex,  `Both arrows should appear`)
-          document.getElementById('carousel-back-button').style.display = 'block'
-          document.getElementById('carousel-next-button').style.display = 'block'
+          console.log(`image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
+          document.getElementById('modal-back-button').style.display = 'block'
+          document.getElementById('modal-next-button').style.display = 'block'
       }
   }
 
 
-  updateCarouselArt(){
-    this.setState({displayCarousel: {'display': "block"}})
-    this.setState({carouselImageURL: this.state.filteredArt[this.state.carouselImageIndex].link})
-    this.setState({carouselTitle: this.state.filteredArt[this.state.carouselImageIndex].title})
-    this.setState({carouselYear: this.state.filteredArt[this.state.carouselImageIndex].year})
-    this.setState({carouselMedia: this.state.filteredArt[this.state.carouselImageIndex].media})
-    this.setState({carouselDims: this.state.filteredArt[this.state.carouselImageIndex].dims})
-    this.setState({carouselPrice: this.state.filteredArt[this.state.carouselImageIndex].price})
-    this.setState({carouselStatement: this.state.filteredArt[this.state.carouselImageIndex].statement})
-    this.carouselDisplayForwardBackButtons()
-  }
-
-
-
-  carouselNextImage() {
-    let nextImageIndex =  this.state.carouselImageIndex + 1
-    this.setState({carouselImageIndex: nextImageIndex}, () => {
-      console.log("Image index is: ", this.state.carouselImageIndex)
-      this.updateCarouselArt()
+  modalNextImage() {
+    let nextImageIndex =  this.state.modalImageIndex + 1
+    this.setState({modalImageIndex: nextImageIndex}, () => {
+      // console.log("Image index is: ", this.state.modalImageIndex)
+      this.updateModalArt()
     })
   }
 
+  // modalPreviousImage() {
+  //   let previousImageIndex =  this.state.modalImageIndex - 1
+  //   this.setState({modalImageIndex: previousImageIndex}, () => {
+  //     // console.log("Image index is: ", this.state.modalImageIndex)
+  //     this.updateModalArt()
+  //   })
+  // }
 
-  carouselPreviousImage() {
-    let previousImageIndex =  this.state.carouselImageIndex - 1
-    this.setState({carouselImageIndex: previousImageIndex}, () => {
-      console.log("Image index is: ", this.state.carouselImageIndex)
-      this.updateCarouselArt()
-    })
+
+
+
+// this function applies both to the arrow buttons on the site &
+// the arrow buttons on the keyboard
+// if the user hits the back arrown on their keyboard on the first image,
+// the modal closes.
+  modalPreviousImage() {
+    let previousImageIndex = this.state.modalImageIndex - 1
+    if (previousImageIndex  < 0) {
+      this.closeModal()
+      } else {
+        this.setState({modalImageIndex: previousImageIndex}, () => {
+        this.updateModalArt()
+        })
+      }
   }
+
+
+
+
 
   // This simply changes the css display class from "block" to "none"
-  closeCarousel() {
-    this.setState({displayCarousel: {'display': "none"}})
+  closeModal() {
+    this.setState({displayModal: {'display': "none"}})
   }
 
 
 //  ==================================
 //  Arrow keys
 //  ==================================
+// TODO: deal with edge cases
   keyAction(event) {
     // console.log("event:", event)
     let whichKey = event.keyCode;
     switch (whichKey) {
       case 39:
         console.log("forward arrow key pushed")
-        this.carouselNextImage()
+        this.modalNextImage()
       break;
       case 37:
         console.log("back arrow key pushed")
-        this.carouselPreviousImage()
+        this.modalPreviousImage()
       break;
     }
   }
@@ -167,7 +186,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount(){
-    // what images from the art json are shown?
+    // This determines which images from the art json are shown
     this.filterIncludeInGallery()
     // the hotkeys
     document.onkeyup = (event) => {
@@ -199,17 +218,17 @@ export default class App extends React.Component {
 
         <Gallery parentState={this.state}
                  filteredArt={this.state.filteredArt}
-                 openCarousel={this.openCarousel}
+                 openModal={this.openModal}
                  establishImageIndex={this.establishImageIndex}
 
                  />
 
-        <Carousel parentState={this.state}
-                  closeCarousel={this.closeCarousel}
+        <Modal parentState={this.state}
+                  closeModal={this.closeModal}
                   establishImageIndex={this.establishImageIndex}
-                  carouselNextImage={this.carouselNextImage}
-                  carouselPreviousImage={this.carouselPreviousImage}
-                  carouselDisplayForwardBackButtons={this.carouselDisplayForwardBackButtons}
+                  modalNextImage={this.modalNextImage}
+                  modalPreviousImage={this.modalPreviousImage}
+                  modalDisplayForwardBackButtons={this.modalDisplayForwardBackButtons}
                   />
 
         <About parentState={this.state}/>

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 
 
-// When the user clicks on an image, a carousel opens up.
-// The carousel closes when the user clicks "close" X button.
+// When the user clicks on an image, a modal opens up.
+// The modal closes when the user clicks "close" X button.
 // There are forward and back buttons that allow the user
-// to view all images in carousel view
+// to view all images in modal view
 
-export default class Carousel extends Component {
+export default class Modal extends Component {
   render() {
 
 
@@ -15,18 +15,18 @@ export default class Carousel extends Component {
 
     return (
 
-      <div className="carousel-background"
-           style={this.props.parentState.displayCarousel}
-           onClick={this.props.closeCarousel}
+      <div className="modal-background"
+           style={this.props.parentState.displayModal}
+           onClick={this.props.closeModal}
            >
 
-        <div className="carousel-content-container">
+        <div className="modal-content-container">
 
-          <section className="carousel-left-container">
+          <section className="modal-left-container">
 
-            <div id="carousel-back-button"
-                 style={this.props.parentState.carouselDisplayForwardBackButtons}
-                 onClick={this.props.carouselPreviousImage}
+            <div id="modal-back-button"
+                 style={this.props.parentState.modalDisplayForwardBackButtons}
+                 onClick={this.props.modalPreviousImage}
                  onmouseover={this.props.establishImageIndex}
 
                  >
@@ -48,22 +48,22 @@ export default class Carousel extends Component {
 
 
 
-          <section className="carousel-image-container">
+          <section className="modal-image-container">
 
             <div>
               <img className="image-large"
-                   src={this.props.parentState.carouselImageURL}
+                   src={this.props.parentState.modalImageURL}
                    alt=""
                    />
             </div>
 
-            <div className="carousel-info-container">
-              <p><i>{this.props.parentState.carouselTitle}</i></p>
-              <p>{this.props.parentState.carouselYear}</p>
-              <p>{this.props.parentState.carouselMedia}</p>
-              <p>{this.props.parentState.carouselDims}</p>
-              <p>{this.props.parentState.carouselPrice}</p>
-              <p className="carousel-statement">{this.props.parentState.carouselStatement}</p>
+            <div className="modal-info-container">
+              <p><i>{this.props.parentState.modalTitle}</i></p>
+              <p>{this.props.parentState.modalYear}</p>
+              <p>{this.props.parentState.modalMedia}</p>
+              <p>{this.props.parentState.modalDims}</p>
+              <p>{this.props.parentState.modalPrice}</p>
+              <p className="modal-statement">{this.props.parentState.modalStatement}</p>
             </div>
 
           </section>
@@ -71,11 +71,11 @@ export default class Carousel extends Component {
 
 
 
-          <section className="carousel-right-container"
+          <section className="modal-right-container"
           >
 
-            <div className="carousel-close-button"
-                 onClick={this.props.closeCarousel}
+            <div className="modal-close-button"
+                 onClick={this.props.closeModal}
                  >
               <span>
                 <svg viewBox="0 0 24 24"
@@ -92,9 +92,9 @@ export default class Carousel extends Component {
               </span>
             </div>
 
-            <div id="carousel-next-button"
-                 style={this.props.parentState.carouselDisplayForwardBackButtons}
-                 onClick={this.props.carouselNextImage}
+            <div id="modal-next-button"
+                 style={this.props.parentState.modalDisplayForwardBackButtons}
+                 onClick={this.props.modalNextImage}
                  >
               <span>
                 <svg viewBox="0 0 24 24"

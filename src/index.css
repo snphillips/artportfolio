@@ -173,7 +173,7 @@ h3 {
 /*==============================
  Modal
 ================================*/
-.carousel-background {
+.modal-background {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -196,7 +196,7 @@ h3 {
     to {transform:scale(1)}
 }
 
-.carousel-content-container {
+.modal-content-container {
   display: flex;
   position: relative;
   padding: 1rem;
@@ -206,22 +206,22 @@ h3 {
   /*border: 1px solid blue;*/
 }
 
-#carousel-next-button:hover,
-#carousel-back-button:hover,
-.carousel-close-button:hover {
+#modal-next-button:hover,
+#modal-back-button:hover,
+.modal-close-button:hover {
   color: #777;
 }
 
 /*==============================
  Modal - left container/back button
 ================================*/
-section.carousel-left-container {
+section.modal-left-container {
   display: block;
   width: 3rem;
   /*border: 1px solid purple;*/
 }
 
-#carousel-back-button {
+#modal-back-button {
   cursor: pointer;
   position: relative;
   top: 40%;
@@ -235,7 +235,7 @@ section.carousel-left-container {
 /*==============================
  Modal - image container
 ================================*/
-section.carousel-image-container {
+section.modal-image-container {
   display: block;
   width: 100%;
   margin-top: 3rem;
@@ -249,21 +249,21 @@ img.image-large {
 }
 
 
-section.carousel-info-container {
+section.modal-info-container {
   width: 100%;
   display: block;
   margin: 0 auto;
   border: 1px solid gold;
 }
 
-.carousel-info-container p {
+.modal-info-container p {
   margin-block-start: .1rem;
   margin-block-end: .1rem;
   font-size: .8rem;
   /*border: 1px solid green;*/
 }
 
-.carousel-statement {
+.modal-statement {
   margin-top: .5rem !important;
 }
 
@@ -271,20 +271,20 @@ section.carousel-info-container {
 /*==============================
  Modal - right container/close & next button
 ================================*/
-section.carousel-right-container {
+section.modal-right-container {
   display: block;
   width: 3rem;
   /*border: 1px solid purple;*/
 }
 
-.carousel-close-button {
+.modal-close-button {
   cursor: pointer;
   color: #aaa;
   transition: .2s;
   margin-left: .75rem;
 }
 
-#carousel-next-button {
+#modal-next-button {
   cursor: pointer;
   position: relative;
   top: 33%;
@@ -304,11 +304,11 @@ Media Queries - small computer
     width: 30%;
   }
 
-  .carousel-background {
+  .modal-background {
     padding-top: 3vh; /* Location of the box */
   }
 
-  .carousel-content-container {
+  .modal-content-container {
     max-width: 700px;
   }
 
@@ -390,7 +390,7 @@ Media Queries - phones
     margin-bottom: .5rem;
   }
 
-  .carousel-content-container {
+  .modal-content-container {
     max-width: 90%;
     padding: .25rem;
   }
