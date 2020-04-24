@@ -53,6 +53,7 @@ export default class Modal extends Component {
             <div>
               <img id="modal-image"
                    src={this.props.parentState.modalImageURL}
+                   // style={this.props.parentState.horizontalVerticalOrSquare}
                    alt=""
                    />
             </div>
