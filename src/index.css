@@ -133,9 +133,9 @@ img {
   border: 1px solid #efefef;
 }
 
-section {
+/*section {
   text-align: left;
-}
+}*/
 
 .content {
   overflow-y: scroll;
@@ -184,8 +184,6 @@ h3 {
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(119, 119, 119, .5);
-  transition: .2s;
-
 /* Add Animation - Zoom in the Modal */
   animation-name: zoombig;
   animation-duration: 0.3s;
@@ -235,11 +233,18 @@ section.modal-left-container {
 /*==============================
  Modal - image container
 ================================*/
-section.modal-image-container {
+section.modal-image-and-info-container {
   display: block;
   width: 100%;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  transition: .3s;
+}
+
+.modal-image-container {
+
+
+
 }
 
 #modal-image {
@@ -247,14 +252,25 @@ section.modal-image-container {
   display: block;
   margin-bottom: .5rem;
   margin: 0 auto;
+
+  animation-name: nextimage;
+  animation-duration: 1s;
+}
+
+@keyframes nextimage {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 
-section.modal-info-container {
+.modal-info-container {
   width: 100%;
   display: block;
   margin: 0 auto;
+  text-align: left;
   /*border: 1px solid gold;*/
+  animation-name: nextimage;
+  animation-duration: 1s;
 }
 
 .modal-info-container p {

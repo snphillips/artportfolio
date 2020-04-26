@@ -48,12 +48,11 @@ export default class Modal extends Component {
 
 
 
-          <section className="modal-image-container">
+          <section className="modal-image-and-info-container">
 
-            <div>
+            <div className="modal-image-container">
               <img id="modal-image"
                    src={this.props.parentState.modalImageURL}
-                   // style={this.props.parentState.horizontalVerticalOrSquare}
                    alt=""
                    />
             </div>
@@ -70,10 +69,7 @@ export default class Modal extends Component {
           </section>
 
 
-
-
-          <section className="modal-right-container"
-          >
+          <section className="modal-right-container">
 
             <div className="modal-close-button"
                  onClick={this.props.closeModal}

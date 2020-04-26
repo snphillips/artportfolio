@@ -102,13 +102,16 @@ export default class App extends React.Component {
     if (imageOrientation == "landscape") {
         console.log(this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "700px";
+        document.querySelector('.modal-info-container').style.maxWidth = "700px";
     } else if (imageOrientation == "portrait") {
 
         console.log(this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "450px";
+        document.querySelector('.modal-info-container').style.maxWidth = "450px";
     } else {
         console.log(this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "500px";
+        document.querySelector('.modal-info-container').style.maxWidth = "500px";
     }
 
   }
