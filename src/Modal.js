@@ -11,8 +11,6 @@ export default class Modal extends Component {
   render() {
 
 
-
-
     return (
 
       <div className="modal-background"
@@ -45,7 +43,6 @@ export default class Modal extends Component {
                 </span>
               </div>
           </section>
-
 
 
           <section className="modal-image-and-info-container">

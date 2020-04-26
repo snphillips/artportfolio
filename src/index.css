@@ -223,6 +223,7 @@ section.modal-left-container {
   cursor: pointer;
   position: relative;
   top: 40%;
+  top: 299px;
   color: #aaa;
   transition: .2s;
   margin-right: .75rem;
@@ -235,10 +236,12 @@ section.modal-left-container {
 ================================*/
 section.modal-image-and-info-container {
   display: block;
-  width: 100%;
+  max-width: 100%;
   margin-top: 3rem;
   margin-bottom: 3rem;
   transition: .3s;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal-image-container {
@@ -252,7 +255,6 @@ section.modal-image-and-info-container {
   display: block;
   margin-bottom: .5rem;
   margin: 0 auto;
-
   animation-name: nextimage;
   animation-duration: 1s;
 }
@@ -305,9 +307,12 @@ section.modal-right-container {
   cursor: pointer;
   position: relative;
   top: 33%;
+  top: 260px;
   color: #aaa;
   transition: .2s;
   margin-left: .75rem;
+  animation-name: nextimage;
+  animation-duration: 1s;
 }
 
 
