@@ -32,8 +32,8 @@ export default class Gallery extends React.Component {
                         <div className="art-card"
 
                                onClick={ () => {
-                                 this.props.establishImageIndex(imageIndex, () => {
-                                 })
+                                 // this.props.establishImageIndex(imageIndex, () => {
+                                 // })
                                }
                                }>
 
@@ -41,7 +41,10 @@ export default class Gallery extends React.Component {
                                src={item.link}
                                alt={item.title}
                                onClick={ () => {
-                                 this.props.openModal(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement, item.imageShape)}
+                                 this.props.establishImageIndex(imageIndex)
+                                 this.props.openModal()
+                                 this.props.updateModalArt(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement, item.imageShape)
+                               }
                                }
                                // style={this.props.parentState.carouselButtonEdgeCase}
                                // onMouseLeave={this.props.closeModalImage}

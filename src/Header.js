@@ -7,11 +7,15 @@ import './index.css';
 function Header() {
   return (
     <div>
+
       <h1 className="header">
-        Sarah<br/>
-        Nicole<br/>
-        Phillips<br/>
+        <a href="#gallery">
+          Sarah<br/>
+          Nicole<br/>
+          Phillips<br/>
+        </a>
       </h1>
+
       <p className="tagline">Toronto-born, Brooklyn-based visual artist. Works on paper & other stuff.</p>
     </div>
   );

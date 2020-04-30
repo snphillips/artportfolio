@@ -18,6 +18,7 @@ export default class App extends React.Component {
     this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
     this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.displayBlockModal = this.displayBlockModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.modalNextImage = this.modalNextImage.bind(this);
     this.modalPreviousImage = this.modalPreviousImage.bind(this);
@@ -33,7 +34,7 @@ export default class App extends React.Component {
       showingArt: '',
       currentStatement: '',
       displayModal: {'display': 'none'},
-      modalImageIndex: "default",
+      modalImageIndex: 0,
       modalImageURL: '',
       modalTitle: '',
       modalYear: '',
@@ -51,19 +52,24 @@ export default class App extends React.Component {
 //  setStates: 1) to indicate which image the user has clicked
 //             2) change the css display class from "none" to "block"
 //             3) a bunch of information accompanying each image
-  openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
+  // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
+  openModal() {
+    console.log("opening modal via openModal()")
     this.establishImageIndex()
-    this.setState({displayModal: {'display': "block"}})
-    this.setState({modalImageURL: modalURL})
-    this.setState({modalTitle: modalTitle})
-    this.setState({modalYear: modalYear})
-    this.setState({modalMedia: modalMedia})
-    this.setState({modalDims: modalDims})
-    this.setState({modalPrice: modalPrice})
-    this.setState({modalStatement: modalStatement})
-    this.setState({modalImageOrientation: modalImageOrient}, () => {
-      this.landscapeOrPortrait()
-    })
+    this.displayBlockModal()
+    // this.updateModalArt()
+    this.modalDisplayForwardBackButtons()
+
+    // this.setState({modalImageURL: modalURL})
+    // this.setState({modalTitle: modalTitle})
+    // this.setState({modalYear: modalYear})
+    // this.setState({modalMedia: modalMedia})
+    // this.setState({modalDims: modalDims})
+    // this.setState({modalPrice: modalPrice})
+    // this.setState({modalStatement: modalStatement})
+    // this.setState({modalImageOrientation: modalImageOrient}, () => {
+      // this.landscapeOrPortrait()
+    // })
   }
 
 
@@ -71,14 +77,21 @@ export default class App extends React.Component {
   // 2) then, figure out if the back and forward buttons should be displayed
   establishImageIndex(imageIndex){
     this.setState({modalImageIndex: imageIndex}, () => {
-      console.log("establishImageIndex():", this.state.modalImageIndex)
-      this.modalDisplayForwardBackButtons()
+      console.log("1) establishImageIndex():", this.state.modalImageIndex)
     })
   }
 
 
-  updateModalArt(){
+  // one job: add css display: block; to the modal
+  displayBlockModal() {
     this.setState({displayModal: {'display': "block"}})
+    console.log(`2) add css display: block; to the modal`)
+  }
+
+
+  updateModalArt(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient){
+    console.log("this.state.modalImageIndex:", this.state.modalImageIndex)
+    // this.setState({displayModal: {'display': "block"}})
     this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
     this.setState({modalTitle: this.state.filteredArt[this.state.modalImageIndex].title})
     this.setState({modalYear: this.state.filteredArt[this.state.modalImageIndex].year})
@@ -89,8 +102,9 @@ export default class App extends React.Component {
     this.setState({modalImageOrientation: this.state.filteredArt[this.state.modalImageIndex].imageShape}, () => {
       this.landscapeOrPortrait()
     })
+    console.log(" 3) updateModalArt():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
     // why does this need to be here?
-    this.modalDisplayForwardBackButtons()
+    // this.modalDisplayForwardBackButtons()
   }
 
 
@@ -242,12 +256,13 @@ export default class App extends React.Component {
         <Gallery parentState={this.state}
                  filteredArt={this.state.filteredArt}
                  openModal={this.openModal}
+                 updateModalArt={this.updateModalArt}
                  establishImageIndex={this.establishImageIndex}
                  />
 
         <Modal parentState={this.state}
                closeModal={this.closeModal}
-               establishImageIndex={this.establishImageIndex}
+               // establishImageIndex={this.establishImageIndex}
                modalNextImage={this.modalNextImage}
                modalPreviousImage={this.modalPreviousImage}
                modalDisplayForwardBackButtons={this.modalDisplayForwardBackButtons}
