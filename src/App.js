@@ -148,7 +148,6 @@ export default class App extends React.Component {
       this.setState({modalImageIndex: nextImageIndex}, () => {
         console.log("Image index is: ", this.state.modalImageIndex)
         this.updateModalArt()
-        // this.landscapeOrPortrait()
       })
     }
   }
