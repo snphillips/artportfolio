@@ -53,23 +53,12 @@ export default class App extends React.Component {
 //             2) change the css display class from "none" to "block"
 //             3) a bunch of information accompanying each image
   // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
-  openModal() {
+  openModal(imageIndex) {
     console.log("opening modal via openModal()")
-    this.establishImageIndex()
-    this.displayBlockModal()
-    // this.updateModalArt()
-    this.modalDisplayForwardBackButtons()
-
-    // this.setState({modalImageURL: modalURL})
-    // this.setState({modalTitle: modalTitle})
-    // this.setState({modalYear: modalYear})
-    // this.setState({modalMedia: modalMedia})
-    // this.setState({modalDims: modalDims})
-    // this.setState({modalPrice: modalPrice})
-    // this.setState({modalStatement: modalStatement})
-    // this.setState({modalImageOrientation: modalImageOrient}, () => {
-      // this.landscapeOrPortrait()
-    // })
+    this.establishImageIndex(imageIndex,
+      this.displayBlockModal(),
+      this.modalDisplayForwardBackButtons()
+    )
   }
 
 
@@ -78,6 +67,7 @@ export default class App extends React.Component {
   establishImageIndex(imageIndex){
     this.setState({modalImageIndex: imageIndex}, () => {
       console.log("1) establishImageIndex():", this.state.modalImageIndex)
+      this.updateModalArt()
     })
   }
 
@@ -89,8 +79,8 @@ export default class App extends React.Component {
   }
 
 
-  updateModalArt(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient){
-    console.log("this.state.modalImageIndex:", this.state.modalImageIndex)
+  updateModalArt(){
+    console.log("this.state.modalImageIndex is :", this.state.modalImageIndex)
     // this.setState({displayModal: {'display': "block"}})
     this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
     this.setState({modalTitle: this.state.filteredArt[this.state.modalImageIndex].title})

@@ -40,10 +40,11 @@ export default class Gallery extends React.Component {
                           <img className="art-img"
                                src={item.link}
                                alt={item.title}
+                               imageIndex={imageIndex}
                                onClick={ () => {
-                                 this.props.establishImageIndex(imageIndex)
-                                 this.props.openModal()
-                                 this.props.updateModalArt(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement, item.imageShape)
+                                 this.props.openModal(imageIndex)
+                                 // this.props.establishImageIndex(imageIndex)
+                                 // this.props.updateModalArt(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement, item.imageShape)
                                }
                                }
                                // style={this.props.parentState.carouselButtonEdgeCase}
