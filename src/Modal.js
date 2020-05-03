@@ -24,9 +24,8 @@ export default class Modal extends Component {
 
             <div id="modal-back-button"
                  style={this.props.parentState.modalDisplayForwardBackButtons}
+                 onMouseOver={this.props.establishImageIndex}
                  onClick={this.props.modalPreviousImage}
-                 onmouseover={this.props.establishImageIndex}
-
                  >
                 <span>
                   <svg viewBox="0 0 24 24"
@@ -87,8 +86,15 @@ export default class Modal extends Component {
             </div>
 
             <div id="modal-next-button"
+                 // imageindex={this.state.imageIndex + 1}
                  style={this.props.parentState.modalDisplayForwardBackButtons}
-                 onClick={this.props.modalNextImage}
+                 onClick={ () => {
+
+                    let imageIndex = this.props.parentState.modalImageIndex + 1
+
+                    this.props.modalNextImage(imageIndex)
+                  }
+                  }
                  >
               <span>
                 <svg viewBox="0 0 24 24"

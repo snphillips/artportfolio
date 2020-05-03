@@ -23,7 +23,7 @@ export default class App extends React.Component {
     this.modalNextImage = this.modalNextImage.bind(this);
     this.modalPreviousImage = this.modalPreviousImage.bind(this);
     this.establishImageIndex = this.establishImageIndex.bind(this);
-    this.updateModalArt = this.updateModalArt.bind(this);
+    this.setModalArtDetails = this.setModalArtDetails.bind(this);
     this.keyAction = this.keyAction.bind(this);
     this.modalDisplayForwardBackButtons = this.modalDisplayForwardBackButtons.bind(this);
     this.landscapeOrPortrait = this.landscapeOrPortrait.bind(this);
@@ -54,11 +54,16 @@ export default class App extends React.Component {
 //             3) a bunch of information accompanying each image
   // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
   openModal(imageIndex) {
-    console.log("opening modal via openModal()")
-    this.establishImageIndex(imageIndex,
-      this.displayBlockModal(),
-      this.modalDisplayForwardBackButtons()
-    )
+    console.log("1) opening modal via openModal()")
+    console.log("1) imageIndex is:", imageIndex )
+    this.establishImageIndex(imageIndex)
+  }
+
+  updateModal(imageIndex) {
+    console.log("7) update modal via updateModal()")
+    console.log("7) imageIndex is:", imageIndex )
+    // console.log("this.state.modalImageIndex is:", this.state.modalImageIndex )
+    this.establishImageIndex(imageIndex)
   }
 
 
@@ -66,8 +71,11 @@ export default class App extends React.Component {
   // 2) then, figure out if the back and forward buttons should be displayed
   establishImageIndex(imageIndex){
     this.setState({modalImageIndex: imageIndex}, () => {
-      console.log("1) establishImageIndex():", this.state.modalImageIndex)
-      this.updateModalArt()
+      console.log("2) or 8) establishImageIndex():", this.state.modalImageIndex)
+      this.setModalArtDetails()
+      this.displayBlockModal()
+      this.modalDisplayForwardBackButtons()
+
     })
   }
 
@@ -75,26 +83,23 @@ export default class App extends React.Component {
   // one job: add css display: block; to the modal
   displayBlockModal() {
     this.setState({displayModal: {'display': "block"}})
-    console.log(`2) add css display: block; to the modal`)
+    console.log(`4) add css display: block; to the modal`)
   }
 
 
-  updateModalArt(){
-    console.log("this.state.modalImageIndex is :", this.state.modalImageIndex)
-    // this.setState({displayModal: {'display': "block"}})
-    this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
+  setModalArtDetails(imageIndex){
+    console.log("pineapple", imageIndex)
     this.setState({modalTitle: this.state.filteredArt[this.state.modalImageIndex].title})
+    this.setState({modalImageOrientation: this.state.filteredArt[this.state.modalImageIndex].imageShape}, () => {
+      this.landscapeOrPortrait()
+    this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
     this.setState({modalYear: this.state.filteredArt[this.state.modalImageIndex].year})
     this.setState({modalMedia: this.state.filteredArt[this.state.modalImageIndex].media})
     this.setState({modalDims: this.state.filteredArt[this.state.modalImageIndex].dims})
     this.setState({modalPrice: this.state.filteredArt[this.state.modalImageIndex].price})
     this.setState({modalStatement: this.state.filteredArt[this.state.modalImageIndex].statement})
-    this.setState({modalImageOrientation: this.state.filteredArt[this.state.modalImageIndex].imageShape}, () => {
-      this.landscapeOrPortrait()
     })
-    console.log(" 3) updateModalArt():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
-    // why does this need to be here?
-    // this.modalDisplayForwardBackButtons()
+    console.log("3) setModalArtDetails():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
   }
 
 
@@ -104,16 +109,16 @@ export default class App extends React.Component {
     let imageOrientation = this.state.modalImageOrientation
 
     if (imageOrientation == "landscape") {
-        console.log(this.state.modalTitle, "is:", imageOrientation)
+        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "700px";
         document.querySelector('.modal-info-container').style.maxWidth = "700px";
     } else if (imageOrientation == "portrait") {
 
-        console.log(this.state.modalTitle, "is:", imageOrientation)
+        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "450px";
         document.querySelector('.modal-info-container').style.maxWidth = "450px";
     } else {
-        console.log(this.state.modalTitle, "is:", imageOrientation)
+        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "500px";
         document.querySelector('.modal-info-container').style.maxWidth = "500px";
     }
@@ -124,16 +129,16 @@ export default class App extends React.Component {
 
   modalDisplayForwardBackButtons(){
     if (this.state.modalImageIndex === this.state.filteredArt.length - 1) {
-      // console.log(`image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
+      console.log(`5) image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
       document.getElementById('modal-next-button').style.display = 'none'
       document.getElementById('modal-back-button').style.display = 'block'
     }
       else if (this.state.modalImageIndex === 0) {
-        // console.log(`image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
+        console.log(`5) image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
         document.getElementById('modal-back-button').style.display = 'none'
         document.getElementById('modal-next-button').style.display = 'block'
       } else {
-          // console.log(`image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
+          console.log(`5) image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
           document.getElementById('modal-back-button').style.display = 'block'
           document.getElementById('modal-next-button').style.display = 'block'
       }
@@ -144,15 +149,19 @@ export default class App extends React.Component {
 // the arrow buttons on the keyboard
 // if the user hits the forward arrow on their keyboard on the last image,
 // the modal closes.
-  modalNextImage() {
+  modalNextImage(imageIndex) {
+    console.log("this.state.modalImageIndex is: ", this.state.modalImageIndex)
+
     let nextImageIndex =  this.state.modalImageIndex + 1
+
     if (nextImageIndex > this.state.filteredArt.length - 1) {
       this.closeModal()
     } else {
       this.setState({modalImageIndex: nextImageIndex}, () => {
-        console.log("Image index is: ", this.state.modalImageIndex)
-        this.updateModalArt()
-        // this.landscapeOrPortrait()
+        // this.setModalArtDetails()
+        // this.updateModal(imageIndex)
+        this.establishImageIndex(imageIndex)
+
       })
     }
   }
@@ -162,13 +171,14 @@ export default class App extends React.Component {
 // the arrow buttons on the keyboard
 // if the user hits the back arrown on their keyboard on the first image,
 // the modal closes.
-  modalPreviousImage() {
+  modalPreviousImage(imageIndex) {
     let previousImageIndex = this.state.modalImageIndex - 1
     if (previousImageIndex  < 0) {
       this.closeModal()
       } else {
         this.setState({modalImageIndex: previousImageIndex}, () => {
-        this.updateModalArt()
+        // this.setModalArtDetails()
+        this.updateModal(imageIndex)
         })
       }
   }
@@ -246,16 +256,19 @@ export default class App extends React.Component {
         <Gallery parentState={this.state}
                  filteredArt={this.state.filteredArt}
                  openModal={this.openModal}
-                 updateModalArt={this.updateModalArt}
+                 setModalArtDetails={this.setModalArtDetails}
                  establishImageIndex={this.establishImageIndex}
                  />
 
         <Modal parentState={this.state}
-               closeModal={this.closeModal}
-               // establishImageIndex={this.establishImageIndex}
+               updateModal={this.updateModal}
+               imageIndex={this.state.imageIndex}
+               establishImageIndex={this.establishImageIndex}
+               modalDisplayForwardBackButtons={this.modalDisplayForwardBackButtons}
                modalNextImage={this.modalNextImage}
                modalPreviousImage={this.modalPreviousImage}
-               modalDisplayForwardBackButtons={this.modalDisplayForwardBackButtons}
+               closeModal={this.closeModal}
+               modalImageIndex={this.state.modalImageIndex}
               />
 
         <About parentState={this.state}/>

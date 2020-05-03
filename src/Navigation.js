@@ -17,8 +17,3 @@ function Navigation() {
 
 export default Navigation;
 
-
-        // <li><a className="nav-item" href="#curbside-tags">curbside tags</a></li>
-
-        // <li><a className="nav-item" href="#envelope-collages">envelope collages</a></li>
-        // <li><a className="nav-item" href="#other-art">other art</a></li>
