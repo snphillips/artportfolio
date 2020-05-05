@@ -93,16 +93,16 @@ export default class App extends React.Component {
   landscapeOrPortrait() {
     let imageOrientation = this.state.modalImageOrientation
     if (imageOrientation == "landscape") {
-        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "700px";
         document.querySelector('.modal-info-container').style.maxWidth = "700px";
     } else if (imageOrientation == "portrait") {
 
-        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "450px";
         document.querySelector('.modal-info-container').style.maxWidth = "450px";
     } else {
-        console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "500px";
         document.querySelector('.modal-info-container').style.maxWidth = "500px";
     }
@@ -112,16 +112,16 @@ export default class App extends React.Component {
 
   modalDisplayForwardBackButtons(){
     if (this.state.modalImageIndex === this.state.filteredArt.length - 1) {
-      console.log(`5) image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
+      // console.log(`5) image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
       document.getElementById('modal-next-button').style.display = 'none'
       document.getElementById('modal-back-button').style.display = 'block'
     }
       else if (this.state.modalImageIndex === 0) {
-        console.log(`5) image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
+        // console.log(`5) image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
         document.getElementById('modal-back-button').style.display = 'none'
         document.getElementById('modal-next-button').style.display = 'block'
       } else {
-          console.log(`5) image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
+          // console.log(`5) image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
           document.getElementById('modal-back-button').style.display = 'block'
           document.getElementById('modal-next-button').style.display = 'block'
       }

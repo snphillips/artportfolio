@@ -9,7 +9,7 @@ const art = [
   "price": "$2,000",
   "location": "flat files",
   "category": "envelope collages",
-  "statement": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside. The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape.",
+  "statement": "Security envelopes are used to camouflage sensitive and private documents. Their decorative patterns make it impossible to read what is inside.The secrets contained within these envelopes form the dull, bureaucratic infrastructure for contemporary life. The artist creates landscapes with this material diverted from the waste-stream. These collages represent a fantasy in which the material of the reliable, boring disappointments of life, are transformed into a means of escape.",
   "imageShape": "landscape",
   "includeingallery": true,
 },

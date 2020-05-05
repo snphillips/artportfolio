@@ -94,7 +94,6 @@ export default class Modal extends Component {
 
                     let imageIndex = this.props.parentState.modalImageIndex + 1
                     this.props.modalNextImage(imageIndex)
-
                   }
                   }
                  >
