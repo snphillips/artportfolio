@@ -7,7 +7,7 @@ View the website here: https://sarahnicolephillipsart.surge.sh/
 <img src="https://i.imgur.com/MKfYweR.png" width="600" alt="screengrab of app">
 
 ## Getting Started
-Clone this repo. In your terminal type:
+To clone this repo, in your terminal type:
 
 `git clone https://github.com/snphillips/artportfolio.git`
 
