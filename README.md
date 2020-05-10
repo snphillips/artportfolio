@@ -1,4 +1,4 @@
-## Sarah's Art Portfolio
+## Art Portfolio
 I became sick and tired of the hassles related to hosting a wordpress site on bluehost.
 
 View the website here: https://sarahnicolephillipsart.surge.sh/
