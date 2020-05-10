@@ -8,7 +8,13 @@ View the website here: https://sarahnicolephillipsart.surge.sh/
 
 ## Getting Started
 Clone this repo
-`git clone `
+
+`git clone https://github.com/snphillips/artportfolio.git`
+
+To run locally, cd into the project folder and nmp start:
+
+`cd artporfolio`
+`npm start`
 
 ## Created with
 - React.js
