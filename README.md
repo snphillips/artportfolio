@@ -13,7 +13,7 @@ To clone this repo, in your terminal type:
 
 `git clone https://github.com/snphillips/artportfolio.git`
 
-To run locally, using your terminal cd into the project folder then type nmp start:
+To run locally, using your terminal cd into the project folder then type npm start:
 
 `cd artporfolio`
 
