@@ -7,11 +7,11 @@ View the website here: https://sarahnicolephillipsart.surge.sh/
 <img src="https://i.imgur.com/pP8Ne6d.png" width="600" alt="screengrab of app">
 
 ## Getting Started
-Clone this repo
+Clone this repo. In your terminal type:
 
 `git clone https://github.com/snphillips/artportfolio.git`
 
-To run locally, cd into the project folder and nmp start:
+To run locally, using your terminal cd into the project folder and nmp start:
 
 `cd artporfolio`
 `npm start`
