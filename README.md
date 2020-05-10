@@ -11,10 +11,13 @@ Clone this repo. In your terminal type:
 
 `git clone https://github.com/snphillips/artportfolio.git`
 
-To run locally, using your terminal cd into the project folder and nmp start:
+To run locally, using your terminal cd into the project folder then type nmp start:
 
 `cd artporfolio`
+
 `npm start`
+
+Open a browser and navigate to http://localhost:3000/
 
 ## Created with
 - React.js
