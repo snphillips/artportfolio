@@ -1,5 +1,8 @@
 ## Art Portfolio
-I became sick and tired of the hassles related to hosting a wordpress site on bluehost.
+A portfolio website for Toronto-born, Brooklyn-based artist Sarah Nicole Phillips (me). The site includes a biography, cv, image gallery and image modal. The art information is stored in .json.
+
+# Getting Started
+(insrt)
 
 View the website here: https://sarahnicolephillipsart.surge.sh/
 
@@ -9,4 +12,5 @@ View the website here: https://sarahnicolephillipsart.surge.sh/
 
 
 ## Created with
-React.js
+- React.js
+- Deployed with Surge
