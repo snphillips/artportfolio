@@ -86,10 +86,15 @@ export default class App extends React.Component {
     this.setState({modalPrice: this.state.filteredArt[this.state.modalImageIndex].price})
     this.setState({modalStatement: this.state.filteredArt[this.state.modalImageIndex].statement})
     })
-    console.log("3) setModalArtDetails():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
+    // console.log("3) setModalArtDetails():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
   }
 
-  // work in progress
+
+  // The art image dimensions are a mixture of landscape and portrait or square.
+  // They can't all be displayed with the same width or they'd blow out the user's screen.
+  // Every image has a key value pair in the .json where I indicate what type of image is it:
+  // lanscape, portrait or square. This function sets the image max-width based on what
+  // kind of image it is.
   landscapeOrPortrait() {
     let imageOrientation = this.state.modalImageOrientation
     if (imageOrientation == "landscape") {
@@ -109,7 +114,8 @@ export default class App extends React.Component {
 
   }
 
-
+  // Don't display the modal back arrows if the user is viewing the first image.
+  // Don't display the modal forward arrows if the user is viewing the last image.
   modalDisplayForwardBackButtons(){
     if (this.state.modalImageIndex === this.state.filteredArt.length - 1) {
       // console.log(`5) image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
@@ -145,9 +151,9 @@ export default class App extends React.Component {
       }
   }
 
-// this function applies both to the arrow buttons on the site &
-// the arrow buttons on the keyboard
-// if the user hits the forward arrow on their keyboard on the last image,
+// this function applies both to the modal arrow buttons &
+// the arrow buttons on the keyboard.
+// If the user hits the forward arrow on their keyboard on the last image,
 // the modal closes.
   modalNextImage(imageIndex) {
     console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
