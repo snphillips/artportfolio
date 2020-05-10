@@ -1,5 +1,24 @@
-## Sarah's Art Portfolio
-I'm sick and tired of the hassles related to hosting a wordpress site on bluehost.
+# Art Portfolio
+A portfolio website for Toronto-born, Brooklyn-based artist Sarah Nicole Phillips (me). The site includes a biography, cv, image gallery and interactive image modal. The art information is stored in .json. This site was not designed to be customizable however anyone can tweak it to their needs.
+
+View the website here: https://sarahnicolephillipsart.surge.sh/
+
+<img src="https://i.imgur.com/jUiKQQy.png" width="600" alt="screengrab of app">
+<img src="https://i.imgur.com/MKfYweR.png" width="600" alt="screengrab of app">
+
+## Getting Started
+To clone this repo, in your terminal type:
+
+`git clone https://github.com/snphillips/artportfolio.git`
+
+To run locally, using your terminal cd into the project folder then type nmp start:
+
+`cd artporfolio`
+
+`npm start`
+
+Open a browser and navigate to http://localhost:3000/
 
 ## Created with
-React.js
+- React.js
+- Deployed with Surge
