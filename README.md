@@ -5,8 +5,8 @@ View the website here: https://sarahnicolephillipsart.surge.sh/
 
 <img src="https://i.imgur.com/jUiKQQy.png" width="600" alt="screengrab of app">
 <img src="https://i.imgur.com/MKfYweR.png" width="600" alt="screengrab of app">
-<img src="https://i.imgur.com/SDsSkpU.png" width="400" alt="screengrab of app">
-<img src="https://i.imgur.com/fsyAACQ.png" width="400" alt="screengrab of app">
+<img src="https://i.imgur.com/SDsSkpU.png" width="350" alt="screengrab of app">
+<img src="https://i.imgur.com/fsyAACQ.png" width="350" alt="screengrab of app">
 
 ## Getting Started
 To clone this repo, in your terminal type:
