@@ -13,6 +13,10 @@ To clone this repo, in your terminal type:
 
 `git clone https://github.com/snphillips/artportfolio.git`
 
+Install npm packages that are listed in package.json:
+
+`npm install`
+
 To run locally, using your terminal cd into the project folder then type npm start:
 
 `cd artporfolio`
