@@ -7,6 +7,7 @@ import Contact from './Contact';
 import About from './About';
 import Gallery from './Gallery';
 import Modal from './Modal';
+import Footer from './Footer';
 import art from './art';
 
 
@@ -239,6 +240,7 @@ export default class App extends React.Component {
       <aside id="sidebar">
         <Header parentState={this.state}/>
         <Navigation parentState={this.state}/>
+        <Footer />
       </aside>
 
       <aside id="ghost-sidebar">
