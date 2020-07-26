@@ -135,9 +135,7 @@ h2 {
   cursor: pointer;
   text-align: left;
   flex-grow: 1;
-  width: 20%;
-  max-width: 400px;
-  padding: .75rem;
+  padding: .5rem;
 }
 
 .art-titlecard-info {
@@ -156,6 +154,24 @@ img {
 .content {
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+/* npm package masonry */
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -1.5rem; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 1.5rem; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column .curated-set-card {
+  margin-bottom: 1.5rem;
 }
 
 /*=========================
@@ -329,7 +345,7 @@ Media Queries - small computer
 @media (max-width: 1000px) {
 
   .art-card {
-    width: 30%;
+   /* width: 30%;*/
   }
 
   .modal-background {
@@ -358,7 +374,7 @@ Media Queries - tablets
 @media (max-width: 700px) {
 
   .art-card {
-    width: 50%;
+
   }
 
   .modal-content-container {
@@ -433,7 +449,7 @@ Media Queries - phones
   }
 
   .art-card {
-    width: 100%;
+
     padding: .25rem 0;
     margin-right: unset;
     margin-bottom: .5rem;

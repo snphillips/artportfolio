@@ -1,23 +1,42 @@
 import React from 'react';
 import './index.css';
+import Masonry from 'react-masonry-css'
 
 
 export default class Gallery extends React.Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //  // "this" binding
+   // "this" binding
 
-  // }
+  }
 
 
 
   render() {
 
+
+    // For use with Masonry package
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      500: 1
+    };
+
+
+
     return (
       <section id="gallery">
 
           <div className="gallery">
+
+
+
+            <Masonry breakpointCols={breakpointColumnsObj}
+                     className="my-masonry-grid curated-sets-list"
+                     columnClassName="my-masonry-grid_column"
+                     >
 
 
 
@@ -56,6 +75,8 @@ export default class Gallery extends React.Component {
 
                        })
                  }
+
+            </Masonry>
 
         </div>
 
