@@ -399,6 +399,10 @@ Media Queries - phones
 /*==========================*/
 @media (max-width: 415px) {
 
+  #sidebar {
+    height: auto;
+  }
+
  .container {
     flex-direction: column;
   }
