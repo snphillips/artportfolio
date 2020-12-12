@@ -1,5 +1,5 @@
 # Art Portfolio
-A responsive portfolio website for Toronto-born, Brooklyn-based artist Sarah Nicole Phillips (me). The site includes a biography, cv, image gallery with a nifty masonry layout and interactive image modal. The art information is stored in .json. This site was not designed to be customizable however anyone can tweak it to their needs.
+A responsive portfolio website for Toronto-born, Brooklyn-based artist Sarah Nicole Phillips (me). The site includes a biography, cv, image gallery with a nifty masonry layout and interactive image modal. The art information is stored in `.json`. This site was not designed to be customizable however anyone can tweak it to suit their needs.
 
 View the website here: https://sarahnicolephillipsart.surge.sh/
 
