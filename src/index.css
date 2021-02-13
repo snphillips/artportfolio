@@ -348,6 +348,45 @@ section.modal-right-container {
 /************************************************/
 
 
+/*=========================
+Media Queries - dark mode
+==========================*/
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #bfbfbf;
+    color: #b3b3b3;
+    background-color: #1a1a1a;
+  }
+
+  a {
+    color: #999;
+  }
+
+  ul {
+    border-top: 2px solid #999;
+    border-bottom: 2px solid #999;
+  }
+
+  img {
+    opacity: .75;
+    transition: opacity .5s ease-in-out;
+    border: 1px solid #333;
+  }
+
+  .modal-content-container {
+    background: #333;
+   }
+
+  .modal-info-container p {
+    color: #b3b3b3;
+  }
+
+  img:hover {
+    opacity: 1;
+  }
+}
+
+
 
 
 
