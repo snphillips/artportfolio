@@ -55,7 +55,7 @@ export default class App extends React.Component {
 //             3) a bunch of information accompanying each image
   // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
   openModal(imageIndex) {
-    console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
+    // console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
     this.establishImageIndex(imageIndex)
   }
 
@@ -63,7 +63,7 @@ export default class App extends React.Component {
   // 2) then, figure out if the back and forward buttons should be displayed
   establishImageIndex(imageIndex){
     this.setState({modalImageIndex: imageIndex}, () => {
-      console.log("2) establishImageIndex():", this.state.modalImageIndex)
+      // console.log("2) establishImageIndex():", this.state.modalImageIndex)
       this.setModalArtDetails()
       this.displayBlockModal()
       this.modalDisplayForwardBackButtons()
@@ -73,7 +73,7 @@ export default class App extends React.Component {
   // one job: add css display: block; to the modal
   displayBlockModal() {
     this.setState({displayModal: {'display': "block"}})
-    console.log(`4) add css display: block; to the modal`)
+    // console.log(`4) add css display: block; to the modal`)
   }
 
   setModalArtDetails(imageIndex){
@@ -139,7 +139,7 @@ export default class App extends React.Component {
 // if the user hits the back arrown on their keyboard on the first image,
 // the modal closes.
   modalPreviousImage(imageIndex) {
-    console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
+    // console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
 
     let previousImageIndex = this.state.modalImageIndex - 1
 
@@ -157,7 +157,7 @@ export default class App extends React.Component {
 // If the user hits the forward arrow on their keyboard on the last image,
 // the modal closes.
   modalNextImage(imageIndex) {
-    console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
+    // console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
 
     let nextImageIndex =  this.state.modalImageIndex + 1
 
@@ -180,7 +180,7 @@ export default class App extends React.Component {
 //  Arrow keys
 //  ==================================
   keyAction(event) {
-    console.log("event:", event)
+    // console.log("event:", event)
     let whichKey = event.keyCode;
     switch (whichKey) {
       case 39:
@@ -248,16 +248,18 @@ export default class App extends React.Component {
 
       <section className="content">
 
-        <Gallery parentState={this.state}
-                 filteredArt={this.state.filteredArt}
-                 openModal={this.openModal}
-                 />
+        <Gallery
+          parentState={this.state}
+          filteredArt={this.state.filteredArt}
+          openModal={this.openModal}
+        />
 
-        <Modal parentState={this.state}
-               modalPreviousImage={this.modalPreviousImage}
-               modalNextImage={this.modalNextImage}
-               closeModal={this.closeModal}
-              />
+        <Modal
+          parentState={this.state}
+          modalPreviousImage={this.modalPreviousImage}
+          modalNextImage={this.modalNextImage}
+          closeModal={this.closeModal}
+        />
 
         <About parentState={this.state}/>
         <Contact parentState={this.state}/>

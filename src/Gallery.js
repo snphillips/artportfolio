@@ -7,14 +7,10 @@ export default class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
-   // "this" binding
-
   }
 
 
-
   render() {
-
 
     // For use with Masonry package
     const breakpointColumnsObj = {
@@ -25,36 +21,30 @@ export default class Gallery extends React.Component {
     };
 
 
-
     return (
       <section id="gallery">
 
           <div className="gallery">
 
-
-
-            <Masonry breakpointCols={breakpointColumnsObj}
-                     className="my-masonry-grid curated-sets-list"
-                     columnClassName="my-masonry-grid_column"
-                     >
-
-
-
-                 {this.props.filteredArt.map( item => {
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="my-masonry-grid curated-sets-list"
+              columnClassName="my-masonry-grid_column"
+            >
+                 {this.props.filteredArt.map( (item, key) => {
 
                     let imageIndex = this.props.filteredArt.indexOf(item)
                     // console.log("imageIndex as we build the gallery:", imageIndex)
 
-
                       return(
 
-                        <div className="art-card"
-
-                               onClick={ () => {
-                                 // this.props.establishImageIndex(imageIndex, () => {
-                                 // })
-                               }
-                               }>
+                        <div
+                          key={key}
+                          className="art-card"
+                          onClick={ () => {
+                           // this.props.establishImageIndex(imageIndex, () => {
+                           // })
+                          }}>
 
                           <img className="art-img"
                                src={item.link}
@@ -80,13 +70,9 @@ export default class Gallery extends React.Component {
 
         </div>
 
-
     </section>
   );
   }
-
-
-
 
 }
 
