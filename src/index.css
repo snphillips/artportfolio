@@ -483,4 +483,8 @@ Media Queries - phones
     max-height: 1.75rem;
   }
 
+  footer {
+    display: none;
+  }
+
  }
