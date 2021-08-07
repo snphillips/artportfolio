@@ -387,9 +387,6 @@ Media Queries - dark mode
 }
 
 
-
-
-
 /*=========================
 Media Queries - small computer
 ==========================*/
@@ -432,7 +429,6 @@ Media Queries - tablets
     max-width: 80%;
     padding: .25rem;
   }
-
 
   #modal-back-button {
     top: 120px;
