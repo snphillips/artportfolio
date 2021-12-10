@@ -8,7 +8,7 @@ import About from './About';
 import Gallery from './Gallery';
 import Modal from './Modal';
 import Footer from './Footer';
-import art from './art';
+import art from './ArtArrays/art';
 
 
 export default class App extends React.Component {

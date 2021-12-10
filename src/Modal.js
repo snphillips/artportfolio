@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 
-// =========================================================
-// When the user clicks on an image, a modal opens up.
-// The modal closes when the user clicks "close" X button.
-// There are forward and back buttons that allow the user
-// to view all images in modal view
-// =========================================================
+/* =========================================================
+When the user clicks on an image, a modal opens up.
+The modal closes when the user clicks "close" X button.
+There are forward and back buttons that allow the user
+to view all images in modal view
+========================================================= */
 
 export default class Modal extends Component {
   render() {

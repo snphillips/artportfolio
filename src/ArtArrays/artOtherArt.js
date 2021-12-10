@@ -1,3 +1,5 @@
+// NOT USING BUT KEEP IN CASE YOU WANT TO ADD ONE OF THESE TO MAIN LIST
+
 const otherArt = [
 {
   "title": "Cats in Repose",
