@@ -177,6 +177,11 @@ img {
 /*=========================
 About & cv
 ==========================*/
+.cv-press {
+  text-indent: -2em;
+  padding-left: 2em;
+}
+
 #cv,
 #contact,
 #about {
