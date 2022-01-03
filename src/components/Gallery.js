@@ -3,6 +3,11 @@ import Masonry from 'react-masonry-css'
 
 
 export default class Gallery extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
 
   render() {
 
@@ -36,22 +41,15 @@ export default class Gallery extends React.Component {
                           key={key}
                           className="art-card"
                           onClick={ () => {
-                           // this.props.establishImageIndex(imageIndex, () => {
-                           // })
                           }}>
 
                           <img className="art-img"
                                src={item.link}
                                alt={item.title}
-                               // imageindex={imageIndex}
                                onClick={ () => {
                                  this.props.openModal(imageIndex)
-                                 // this.props.establishImageIndex(imageIndex)
-                                 // this.props.setModalArtDetails(item.link, item.title, item.year, item.media, item.dims, item.price, item.statement, item.imageShape)
                                }
                                }
-                               // style={this.props.parentState.carouselButtonEdgeCase}
-                               // onMouseLeave={this.props.closeModalImage}
                               />
 
                         </div>
