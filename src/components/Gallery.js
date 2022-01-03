@@ -2,14 +2,8 @@ import React from 'react';
 import Masonry from 'react-masonry-css'
 
 
-export default class Gallery extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Gallery(props) {
 
-  }
-
-
-  render() {
 
     // For use with Masonry package
     const breakpointColumnsObj = {
@@ -30,9 +24,9 @@ export default class Gallery extends React.Component {
               className="my-masonry-grid curated-sets-list"
               columnClassName="my-masonry-grid_column"
             >
-                 {this.props.filteredArt.map( (item, key) => {
+                 {props.filteredArt.map( (item, key) => {
 
-                    let imageIndex = this.props.filteredArt.indexOf(item)
+                    let imageIndex = props.filteredArt.indexOf(item)
                     // console.log("imageIndex as we build the gallery:", imageIndex)
 
                       return(
@@ -47,7 +41,7 @@ export default class Gallery extends React.Component {
                                src={item.link}
                                alt={item.title}
                                onClick={ () => {
-                                 this.props.openModal(imageIndex)
+                                 props.openModal(imageIndex)
                                }
                                }
                               />
@@ -64,7 +58,6 @@ export default class Gallery extends React.Component {
 
     </section>
   );
-  }
 
 }
 
