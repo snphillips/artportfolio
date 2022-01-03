@@ -1,13 +1,13 @@
 import React from 'react';
 import './index.css';
-import Header from './Header';
-import CV from './CV';
-import Navigation from './Navigation';
-import Contact from './Contact';
-import About from './About';
-import Gallery from './Gallery';
-import Modal from './Modal';
-import Footer from './Footer';
+import Header from './components/Header';
+import CV from './components/CV';
+import Navigation from './components/Navigation';
+import Contact from './components/Contact';
+import About from './components/About';
+import Gallery from './components/Gallery';
+import Modal from './components/Modal';
+import Footer from './components/Footer';
 import art from './ArtArrays/art';
 
 
