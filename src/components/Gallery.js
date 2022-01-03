@@ -1,14 +1,8 @@
 import React from 'react';
-// import './index.css';
 import Masonry from 'react-masonry-css'
 
 
 export default class Gallery extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
 
   render() {
 

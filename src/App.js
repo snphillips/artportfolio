@@ -98,11 +98,11 @@ export default class App extends React.Component {
   // kind of image it is.
   landscapeOrPortrait() {
     let imageOrientation = this.state.modalImageOrientation
-    if (imageOrientation == "landscape") {
+    if (imageOrientation === "landscape") {
         // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "700px";
         document.querySelector('.modal-info-container').style.maxWidth = "700px";
-    } else if (imageOrientation == "portrait") {
+    } else if (imageOrientation === "portrait") {
 
         // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "450px";
