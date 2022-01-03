@@ -46,6 +46,22 @@ export default class App extends React.Component {
     };
   }
 
+  // const [filteredArt, setFilteredArt] = useState([]);
+  // const [showingArt, setShowingArt] = useState('');
+  // const [currentStatement, setCurrentStatemet] = useState('');
+  // const [displayModal, setDisplayModal] = useState({'display': 'none'});
+  // const [modalImageIndex, setModalImageIndex] = useState(0);
+  // const [modalImageURL, setModalImageURL] = useState('');
+  // const [modalImageIndex, setModalImageIndex] = useState('');
+  // const [modalTitle, setModalTitle] = useState('');
+  // const [modalyear, setModalyear] = useState('');
+  // const [modalDims, setModalDims] = useState('');
+  // const [modalMedia, setModalMedia] = useState('');
+  // const [modalPrice, setModalPrice] = useState('');
+  // const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
+  
+
+
 
 //  ==================================
 //  modal: the expanded image
