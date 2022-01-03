@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 /* =========================================================
@@ -8,16 +8,13 @@ There are forward and back buttons that allow the user
 to view all images in modal view
 ========================================================= */
 
-export default class Modal extends Component {
-  render() {
-
-
+export default function Modal(props) {
     return (
 
       <div
         className="modal-background"
-        style={this.props.parentState.displayModal}
-        onClick={this.props.closeModal}
+        style={props.parentState.displayModal}
+        onClick={props.closeModal}
       >
 
         <div className="modal-content-container">
@@ -26,10 +23,10 @@ export default class Modal extends Component {
 
             <div
               id="modal-back-button"
-              style={this.props.parentState.modalDisplayForwardBackButtons}
+              style={props.parentState.modalDisplayForwardBackButtons}
               onClick={ () => {
-                let imageIndex = this.props.parentState.modalImageIndex - 1
-                this.props.modalPreviousImage(imageIndex)
+                let imageIndex = props.parentState.modalImageIndex - 1
+                props.modalPreviousImage(imageIndex)
               }}
                  >
                 <span>
@@ -54,18 +51,18 @@ export default class Modal extends Component {
 
             <div className="modal-image-container">
               <img id="modal-image"
-                   src={this.props.parentState.modalImageURL}
+                   src={props.parentState.modalImageURL}
                    alt=""
                    />
             </div>
 
             <div className="modal-info-container">
-              <p><i>{this.props.parentState.modalTitle}</i></p>
-              <p>{this.props.parentState.modalYear}</p>
-              <p>{this.props.parentState.modalMedia}</p>
-              <p>{this.props.parentState.modalDims}</p>
-              <p>{this.props.parentState.modalPrice}</p>
-              <p className="modal-statement">{this.props.parentState.modalStatement}</p>
+              <p><i>{props.parentState.modalTitle}</i></p>
+              <p>{props.parentState.modalYear}</p>
+              <p>{props.parentState.modalMedia}</p>
+              <p>{props.parentState.modalDims}</p>
+              <p>{props.parentState.modalPrice}</p>
+              <p className="modal-statement">{props.parentState.modalStatement}</p>
             </div>
 
           </section>
@@ -74,7 +71,7 @@ export default class Modal extends Component {
           <section className="modal-right-container">
 
             <div className="modal-close-button"
-                 onClick={this.props.closeModal}
+                 onClick={props.closeModal}
                  >
               <span>
                 <svg viewBox="0 0 24 24"
@@ -92,11 +89,11 @@ export default class Modal extends Component {
             </div>
 
             <div id="modal-next-button"
-                 style={this.props.parentState.modalDisplayForwardBackButtons}
+                 style={props.parentState.modalDisplayForwardBackButtons}
                  onClick={ () => {
 
-                    let imageIndex = this.props.parentState.modalImageIndex + 1
-                    this.props.modalNextImage(imageIndex)
+                    let imageIndex = props.parentState.modalImageIndex + 1
+                    props.modalNextImage(imageIndex)
                   }
                   }
                  >
@@ -124,5 +121,5 @@ export default class Modal extends Component {
       </div>
 
     );
-  }
+
 }
