@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import Header from './components/Header';
 import CV from './components/CV';
@@ -12,48 +12,15 @@ import art from './ArtArrays/art';
 
 
 export default function App(props) {
-  // constructor(props) {
-  //   super(props);
-
-  //   // This binding
-  //   includeInGalleryTrue = includeInGalleryTrue.bind(this);
-  //   filterIncludeInGallery = filterIncludeInGallery.bind(this);
-  //   openModal = openModal.bind(this);
-  //   displayBlockModal = displayBlockModal.bind(this);
-  //   closeModal = closeModal.bind(this);
-  //   modalNextImage = modalNextImage.bind(this);
-  //   modalPreviousImage = modalPreviousImage.bind(this);
-  //   establishImageIndex = establishImageIndex.bind(this);
-  //   setModalArtDetails = setModalArtDetails.bind(this);
-  //   keyAction = keyAction.bind(this);
-  //   modalDisplayForwardBackButtons = modalDisplayForwardBackButtons.bind(this);
-  //   landscapeOrPortrait = landscapeOrPortrait.bind(this);
-
-
-  //   this.state = {
-  //     filteredArt: [],
-  //     showingArt: '',
-  //     currentStmodal: '',
-  //    ModalyModal: {'display': 'none'},
-  //     modalImageIndex: 0,
-  //     modalImageURL: '',
-  //     modalTitle: '',
-  //     modalYear: '',
-  //     modalDims: '',
-  //     modalMedia: '',
-  //     modalPrice: '',
-  //     modalImageOrientation: 'landscape'
-  //   };
-  // }
 
   const [filteredArt, setFilteredArt] = useState([]);
-  const [showingArt, setShowingArt] = useState('');
+  // const [showingArt, setShowingArt] = useState('');
   const [modalStatement, setModalStatement] = useState('');
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [modalImageURL, setModalImageURL] = useState('');
   const [modalTitle, setModalTitle] = useState('');
-  const [modalyear, setModalYear] = useState('');
+  const [modalYear, setModalYear] = useState('');
   const [modalDims, setModalDims] = useState('');
   const [modalMedia, setModalMedia] = useState('');
   const [modalPrice, setModalPrice] = useState('');
@@ -227,18 +194,21 @@ function keyAction(event) {
     return item.includeingallery === true;
   };
 
-  function filterIncludeInGallery(){
-    setFilteredArt(art.filter(includeInGalleryTrue))
+  
+  function filterIncludeInGallery(){ 
+    setFilteredArt( art.filter(includeInGalleryTrue) )
+    // console.log("filteredArt", filteredArt)
   };
 
-  function componentDidMount(){
-    // This determines which images from the art json are shown
-    filterIncludeInGallery()
-    // the hotkeys
-    document.onkeyup = (event) => {
-      keyAction(event);
-    }
-  };
+    // Similar to componentDidMount and componentDidUpdate:
+    useEffect(() => {
+      // This determines which images from the art json are shown
+      filterIncludeInGallery()
+      // the hotkeys
+      document.onkeyup = (event) => {
+        keyAction(event);
+      }
+    }, []);
 
 
 
@@ -271,6 +241,13 @@ function keyAction(event) {
           modalPreviousImage={modalPreviousImage}
           modalNextImage={modalNextImage}
           closeModal={closeModal}
+          modalMedia={modalMedia}
+          modalImageURL={modalImageURL}
+          modalPrice={modalPrice}
+          modalStatement={modalStatement}
+          modalTitle={modalTitle}
+          modalYear={modalYear}
+          modalDims={modalDims}
         />
 
         <About />

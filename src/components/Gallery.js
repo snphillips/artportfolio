@@ -16,16 +16,15 @@ export default function Gallery(props) {
 
     return (
       <section id="gallery">
-
+         
           <div className="gallery">
-
+          
             <Masonry
               breakpointCols={breakpointColumnsObj}
               className="my-masonry-grid curated-sets-list"
               columnClassName="my-masonry-grid_column"
             >
                  {props.filteredArt.map( (item, key) => {
-
                     let imageIndex = props.filteredArt.indexOf(item)
                     // console.log("imageIndex as we build the gallery:", imageIndex)
 
