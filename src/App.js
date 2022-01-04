@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import Header from './components/Header';
 import CV from './components/CV';
@@ -11,54 +11,53 @@ import Footer from './components/Footer';
 import art from './ArtArrays/art';
 
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+export default function App(props) {
+  // constructor(props) {
+  //   super(props);
 
-    // This binding
-    this.includeInGalleryTrue = this.includeInGalleryTrue.bind(this);
-    this.filterIncludeInGallery = this.filterIncludeInGallery.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.displayBlockModal = this.displayBlockModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.modalNextImage = this.modalNextImage.bind(this);
-    this.modalPreviousImage = this.modalPreviousImage.bind(this);
-    this.establishImageIndex = this.establishImageIndex.bind(this);
-    this.setModalArtDetails = this.setModalArtDetails.bind(this);
-    this.keyAction = this.keyAction.bind(this);
-    this.modalDisplayForwardBackButtons = this.modalDisplayForwardBackButtons.bind(this);
-    this.landscapeOrPortrait = this.landscapeOrPortrait.bind(this);
+  //   // This binding
+  //   includeInGalleryTrue = includeInGalleryTrue.bind(this);
+  //   filterIncludeInGallery = filterIncludeInGallery.bind(this);
+  //   openModal = openModal.bind(this);
+  //   displayBlockModal = displayBlockModal.bind(this);
+  //   closeModal = closeModal.bind(this);
+  //   modalNextImage = modalNextImage.bind(this);
+  //   modalPreviousImage = modalPreviousImage.bind(this);
+  //   establishImageIndex = establishImageIndex.bind(this);
+  //   setModalArtDetails = setModalArtDetails.bind(this);
+  //   keyAction = keyAction.bind(this);
+  //   modalDisplayForwardBackButtons = modalDisplayForwardBackButtons.bind(this);
+  //   landscapeOrPortrait = landscapeOrPortrait.bind(this);
 
 
-    this.state = {
-      filteredArt: [],
-      showingArt: '',
-      currentStatement: '',
-      displayModal: {'display': 'none'},
-      modalImageIndex: 0,
-      modalImageURL: '',
-      modalTitle: '',
-      modalYear: '',
-      modalDims: '',
-      modalMedia: '',
-      modalPrice: '',
-      modalImageOrientation: 'landscape'
-    };
-  }
+  //   this.state = {
+  //     filteredArt: [],
+  //     showingArt: '',
+  //     currentStmodal: '',
+  //    ModalyModal: {'display': 'none'},
+  //     modalImageIndex: 0,
+  //     modalImageURL: '',
+  //     modalTitle: '',
+  //     modalYear: '',
+  //     modalDims: '',
+  //     modalMedia: '',
+  //     modalPrice: '',
+  //     modalImageOrientation: 'landscape'
+  //   };
+  // }
 
-  // const [filteredArt, setFilteredArt] = useState([]);
-  // const [showingArt, setShowingArt] = useState('');
-  // const [currentStatement, setCurrentStatemet] = useState('');
-  // const [displayModal, setDisplayModal] = useState({'display': 'none'});
-  // const [modalImageIndex, setModalImageIndex] = useState(0);
-  // const [modalImageURL, setModalImageURL] = useState('');
-  // const [modalImageIndex, setModalImageIndex] = useState('');
-  // const [modalTitle, setModalTitle] = useState('');
-  // const [modalyear, setModalyear] = useState('');
-  // const [modalDims, setModalDims] = useState('');
-  // const [modalMedia, setModalMedia] = useState('');
-  // const [modalPrice, setModalPrice] = useState('');
-  // const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
+  const [filteredArt, setFilteredArt] = useState([]);
+  const [showingArt, setShowingArt] = useState('');
+  const [modalStatement, setModalStatement] = useState('');
+  const [displayModal, setDisplayModal] = useState({'display': 'none'});
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalImageURL, setModalImageURL] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalyear, setModalYear] = useState('');
+  const [modalDims, setModalDims] = useState('');
+  const [modalMedia, setModalMedia] = useState('');
+  const [modalPrice, setModalPrice] = useState('');
+  const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
   
 
 
@@ -70,40 +69,40 @@ export default class App extends React.Component {
 //             2) change the css display class from "none" to "block"
 //             3) a bunch of information accompanying each image
   // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
-  openModal(imageIndex) {
+  function openModal(imageIndex) {
     // console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
-    this.establishImageIndex(imageIndex)
+    establishImageIndex(imageIndex)
   }
 
   // 1) set state with the index of the image the user has clicked
   // 2) then, figure out if the back and forward buttons should be displayed
-  establishImageIndex(imageIndex){
-    this.setState({modalImageIndex: imageIndex}, () => {
-      // console.log("2) establishImageIndex():", this.state.modalImageIndex)
-      this.setModalArtDetails()
-      this.displayBlockModal()
-      this.modalDisplayForwardBackButtons()
+  function establishImageIndex(imageIndex){
+    setModalImageIndex(imageIndex, () => {
+      // console.log("2) establishImageIndex():", modalImageIndex)
+      setModalArtDetails()
+      displayBlockModal()
+      modalDisplayForwardBackButtons()
     })
   }
 
   // one job: add css display: block; to the modal
-  displayBlockModal() {
-    this.setState({displayModal: {'display': "block"}})
+  function displayBlockModal() {
+    setDisplayModal({'display': "block"})
     // console.log(`4) add css display: block; to the modal`)
   }
 
-  setModalArtDetails(imageIndex){
-    this.setState({modalTitle: this.state.filteredArt[this.state.modalImageIndex].title})
-    this.setState({modalImageOrientation: this.state.filteredArt[this.state.modalImageIndex].imageShape}, () => {
-      this.landscapeOrPortrait()
-    this.setState({modalImageURL: this.state.filteredArt[this.state.modalImageIndex].link})
-    this.setState({modalYear: this.state.filteredArt[this.state.modalImageIndex].year})
-    this.setState({modalMedia: this.state.filteredArt[this.state.modalImageIndex].media})
-    this.setState({modalDims: this.state.filteredArt[this.state.modalImageIndex].dims})
-    this.setState({modalPrice: this.state.filteredArt[this.state.modalImageIndex].price})
-    this.setState({modalStatement: this.state.filteredArt[this.state.modalImageIndex].statement})
-    })
-    // console.log("3) setModalArtDetails():", this.state.modalTitle, this.state.modalYear, this.state.modalMedia,)
+  function setModalArtDetails(imageIndex){
+    setModalTitle( filteredArt[modalImageIndex].title);
+    setModalImageOrientation( filteredArt[modalImageIndex].imageShape, () => {
+      landscapeOrPortrait()
+    })  
+    setModalImageURL(filteredArt[modalImageIndex].link)
+    setModalYear(filteredArt[modalImageIndex].year)
+    setModalMedia(filteredArt[modalImageIndex].media)
+    setModalDims(filteredArt[modalImageIndex].dims)
+    setModalPrice(filteredArt[modalImageIndex].price)
+    setModalStatement(filteredArt[modalImageIndex].statement)
+    // console.log("3) setModalArtDetails():", modalTitle, modalYear, modalMedia,)
   }
 
 
@@ -112,19 +111,19 @@ export default class App extends React.Component {
   // Every image has a key value pair in the .json where I indicate what type of image is it:
   // lanscape, portrait or square. This function sets the image max-width based on what
   // kind of image it is.
-  landscapeOrPortrait() {
-    let imageOrientation = this.state.modalImageOrientation
+  function landscapeOrPortrait() {
+    let imageOrientation = modalImageOrientation
     if (imageOrientation === "landscape") {
-        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "700px";
         document.querySelector('.modal-info-container').style.maxWidth = "700px";
     } else if (imageOrientation === "portrait") {
 
-        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "450px";
         document.querySelector('.modal-info-container').style.maxWidth = "450px";
     } else {
-        // console.log(`6)`, this.state.modalTitle, "is:", imageOrientation)
+        // console.log(`6)`, modalTitle, "is:", imageOrientation)
         document.querySelector('#modal-image').style.maxWidth = "500px";
         document.querySelector('.modal-info-container').style.maxWidth = "500px";
     }
@@ -133,18 +132,18 @@ export default class App extends React.Component {
 
   // Don't display the modal back arrows if the user is viewing the first image.
   // Don't display the modal forward arrows if the user is viewing the last image.
-  modalDisplayForwardBackButtons(){
-    if (this.state.modalImageIndex === this.state.filteredArt.length - 1) {
-      // console.log(`5) image index is:`, this.state.modalImageIndex , `Don't display next arrow`)
+  function modalDisplayForwardBackButtons(){
+    if (modalImageIndex === filteredArt.length - 1) {
+      // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
       document.getElementById('modal-next-button').style.display = 'none'
       document.getElementById('modal-back-button').style.display = 'block'
     }
-      else if (this.state.modalImageIndex === 0) {
-        // console.log(`5) image index is:`, this.state.modalImageIndex,  `Don't display back arrow`)
+      else if (modalImageIndex === 0) {
+        // console.log(`5) image index is:`, modalImageIndex,  `Don't display back arrow`)
         document.getElementById('modal-back-button').style.display = 'none'
         document.getElementById('modal-next-button').style.display = 'block'
       } else {
-          // console.log(`5) image index is:`, this.state.modalImageIndex,  `Both arrows should appear`)
+          // console.log(`5) image index is:`, modalImageIndex,  `Both arrows should appear`)
           document.getElementById('modal-back-button').style.display = 'block'
           document.getElementById('modal-next-button').style.display = 'block'
       }
@@ -154,16 +153,16 @@ export default class App extends React.Component {
 // the arrow buttons on the keyboard
 // if the user hits the back arrown on their keyboard on the first image,
 // the modal closes.
-  modalPreviousImage(imageIndex) {
-    // console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
+function modalPreviousImage(imageIndex) {
+    // console.log("modalNextImage() modalImageIndex is: ", modalImageIndex)
 
-    let previousImageIndex = this.state.modalImageIndex - 1
+    let previousImageIndex = modalImageIndex - 1
 
     if (previousImageIndex  < 0) {
-      this.closeModal()
+      closeModal()
       } else {
-        this.setState({modalImageIndex: previousImageIndex}, () => {
-        this.establishImageIndex(this.state.modalImageIndex)
+        setModalImageIndex(previousImageIndex, () => {
+        establishImageIndex(modalImageIndex)
         })
       }
   }
@@ -172,48 +171,48 @@ export default class App extends React.Component {
 // the arrow buttons on the keyboard.
 // If the user hits the forward arrow on their keyboard on the last image,
 // the modal closes.
-  modalNextImage(imageIndex) {
-    // console.log("modalNextImage() this.state.modalImageIndex is: ", this.state.modalImageIndex)
+function modalNextImage(imageIndex) {
+    // console.log("modalNextImage() modalImageIndex is: ", modalImageIndex)
 
-    let nextImageIndex =  this.state.modalImageIndex + 1
+    let nextImageIndex =  modalImageIndex + 1
 
-    if (nextImageIndex > this.state.filteredArt.length - 1) {
-      this.closeModal()
+    if (nextImageIndex > filteredArt.length - 1) {
+      closeModal()
     } else {
-      this.setState({modalImageIndex: nextImageIndex}, () => {
-        this.establishImageIndex(this.state.modalImageIndex)
+      setModalImageIndex(nextImageIndex, () => {
+        establishImageIndex(modalImageIndex)
       })
     }
   }
 
   // This simply changes the css display class from "block" to "none"
-  closeModal() {
-    this.setState({displayModal: {'display': "none"}})
+  function closeModal() {
+    setDisplayModal({'display': "none"})
   }
 
 
 //  ==================================
 //  Arrow keys
 //  ==================================
-  keyAction(event) {
+function keyAction(event) {
     // console.log("event:", event)
     let whichKey = event.keyCode;
     switch (whichKey) {
       case 39:
         console.log("forward arrow key pushed. Next image.")
-        this.modalNextImage()
+        modalNextImage()
       break;
       case 37:
         console.log("back arrow key pushed. Previous image")
-        this.modalPreviousImage()
+        modalPreviousImage()
       break;
       case 38:
         console.log("up arrow key pushed. Previous image.")
-        this.modalPreviousImage()
+        modalPreviousImage()
       break;
       case 40:
         console.log("down arrow key pushed Next image.")
-        this.modalNextImage()
+        modalNextImage()
       break;
     }
   }
@@ -224,20 +223,20 @@ export default class App extends React.Component {
 //  1) if includeingallery === true, return it...meaning keep it
 //  2) apply the above function as a filter to the states
 //  ==================================
-  includeInGalleryTrue(item){
+  function includeInGalleryTrue(item){
     return item.includeingallery === true;
   };
 
-  filterIncludeInGallery(){
-    this.setState({filteredArt: art.filter(this.includeInGalleryTrue)})
+  function filterIncludeInGallery(){
+    setFilteredArt(art.filter(includeInGalleryTrue))
   };
 
-  componentDidMount(){
+  function componentDidMount(){
     // This determines which images from the art json are shown
-    this.filterIncludeInGallery()
+    filterIncludeInGallery()
     // the hotkeys
     document.onkeyup = (event) => {
-      this.keyAction(event);
+      keyAction(event);
     }
   };
 
@@ -248,14 +247,13 @@ export default class App extends React.Component {
 //  ==================================
 //  The render
 //  ==================================
-  render(){
-    return (
+    return(
 
     <div className="App container">
 
       <aside id="sidebar">
-        <Header parentState={this.state}/>
-        <Navigation parentState={this.state}/>
+        <Header />
+        <Navigation />
         <Footer />
       </aside>
 
@@ -265,26 +263,24 @@ export default class App extends React.Component {
       <section className="content">
 
         <Gallery
-          parentState={this.state}
-          filteredArt={this.state.filteredArt}
-          openModal={this.openModal}
+          filteredArt={filteredArt}
+          openModal={openModal}
         />
 
         <Modal
-          parentState={this.state}
-          modalPreviousImage={this.modalPreviousImage}
-          modalNextImage={this.modalNextImage}
-          closeModal={this.closeModal}
+          modalPreviousImage={modalPreviousImage}
+          modalNextImage={modalNextImage}
+          closeModal={closeModal}
         />
 
-        <About parentState={this.state}/>
-        <Contact parentState={this.state}/>
-        <CV parentState={this.state}/>
+        <About />
+        <Contact />
+        <CV />
 
       </section>
     </div>
   );
-  }
+
 }
 
 

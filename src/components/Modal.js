@@ -13,7 +13,7 @@ export default function Modal(props) {
 
       <div
         className="modal-background"
-        style={props.parentState.displayModal}
+        style={props.displayModal}
         onClick={props.closeModal}
       >
 
@@ -23,9 +23,9 @@ export default function Modal(props) {
 
             <div
               id="modal-back-button"
-              style={props.parentState.modalDisplayForwardBackButtons}
+              style={props.modalDisplayForwardBackButtons}
               onClick={ () => {
-                let imageIndex = props.parentState.modalImageIndex - 1
+                let imageIndex = props.modalImageIndex - 1
                 props.modalPreviousImage(imageIndex)
               }}
                  >
@@ -51,18 +51,18 @@ export default function Modal(props) {
 
             <div className="modal-image-container">
               <img id="modal-image"
-                   src={props.parentState.modalImageURL}
+                   src={props.modalImageURL}
                    alt=""
                    />
             </div>
 
             <div className="modal-info-container">
-              <p><i>{props.parentState.modalTitle}</i></p>
-              <p>{props.parentState.modalYear}</p>
-              <p>{props.parentState.modalMedia}</p>
-              <p>{props.parentState.modalDims}</p>
-              <p>{props.parentState.modalPrice}</p>
-              <p className="modal-statement">{props.parentState.modalStatement}</p>
+              <p><i>{props.modalTitle}</i></p>
+              <p>{props.modalYear}</p>
+              <p>{props.modalMedia}</p>
+              <p>{props.modalDims}</p>
+              <p>{props.modalPrice}</p>
+              <p className="modal-statement">{props.modalStatement}</p>
             </div>
 
           </section>
@@ -89,10 +89,10 @@ export default function Modal(props) {
             </div>
 
             <div id="modal-next-button"
-                 style={props.parentState.modalDisplayForwardBackButtons}
+                 style={props.modalDisplayForwardBackButtons}
                  onClick={ () => {
 
-                    let imageIndex = props.parentState.modalImageIndex + 1
+                    let imageIndex = props.modalImageIndex + 1
                     props.modalNextImage(imageIndex)
                   }
                   }
