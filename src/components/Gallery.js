@@ -41,6 +41,7 @@ export default function Gallery(props) {
                                alt={item.title}
                                onClick={ () => {
                                  props.openModal(imageIndex)
+                                //  console.log("sup")
                                }
                                }
                               />
