@@ -52,8 +52,8 @@ export default function App(props) {
 
   // 1) set state with the index of the image the user has clicked
   function establishImageIndex(imageIndex){
-    console.log("imageIndex", imageIndex)
     setModalImageIndex(imageIndex)
+    console.log("after setModalImageIndex", imageIndex)
   }
   
   // I thought this only runs when [modalImageIndex] changes
