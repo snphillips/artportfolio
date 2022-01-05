@@ -358,13 +358,14 @@ Media Queries - dark mode
 ==========================*/
 @media (prefers-color-scheme: dark) {
   body {
-    color: #bfbfbf;
     color: #b3b3b3;
+    color: #bfbfbf;
     background-color: #1a1a1a;
   }
 
   a {
     color: #999;
+    color: #b3b3b3;
   }
 
   ul {

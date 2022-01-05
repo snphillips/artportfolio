@@ -14,6 +14,7 @@ import art from './ArtArrays/art';
 export default function App(props) {
 
   const [filteredArt, setFilteredArt] = useState([]);
+  // remove this line soon
   // const [showingArt, setShowingArt] = useState('');
   const [modalStatement, setModalStatement] = useState('');
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
@@ -26,7 +27,7 @@ export default function App(props) {
   const [modalPrice, setModalPrice] = useState('');
   const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
   
-  console.log("hi modalImageIndex:", modalImageIndex)
+  // console.log("hi modalImageIndex:", modalImageIndex)
 
   // We can make the useEffect hook not run on initial render
   // by creating a variable with useRef hook to keep tracking
@@ -46,14 +47,14 @@ export default function App(props) {
 //             3) a bunch of information accompanying each image
   // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
   function openModal(imageIndex) {
-    console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
+    // console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
     establishImageIndex(imageIndex)
   }
 
   // 1) set state with the index of the image the user has clicked
   function establishImageIndex(imageIndex){
     setModalImageIndex(imageIndex)
-    console.log("after setModalImageIndex", imageIndex)
+    // console.log("after setModalImageIndex", imageIndex)
   }
   
   // I thought this only runs when [modalImageIndex] changes
@@ -61,12 +62,12 @@ export default function App(props) {
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      console.log("First render. Not running useEffect()")
+      // console.log("First render. Not running useEffect()")
       return;
     } else {
 
       console.log("useEffect() is running. modalImageIndex:", modalImageIndex)
-      setModalArtDetails()
+      establishModalArtDetails()
       // 2) then, figure out if the back and forward buttons should be displayed
       displayBlockModal()
       modalDisplayForwardBackButtons()
@@ -82,7 +83,7 @@ export default function App(props) {
 
   // why is filteredArt an empty array right now?
   // Also, why is this triggering before the user clicks on an image? 
-  function setModalArtDetails(imageIndex){
+  function establishModalArtDetails(imageIndex){
     console.log("filteredArt", filteredArt )
     console.log("filteredArt[modalImageIndex]", filteredArt[modalImageIndex] )
     setModalTitle( filteredArt[modalImageIndex].title );
@@ -95,15 +96,16 @@ export default function App(props) {
     setModalDims(filteredArt[modalImageIndex].dims)
     setModalPrice(filteredArt[modalImageIndex].price)
     setModalStatement(filteredArt[modalImageIndex].statement)
-    console.log("3) setModalArtDetails():", modalTitle, modalYear, modalMedia,)
+    console.log("3) establishModalArtDetails():", modalTitle, modalYear, modalMedia,)
   }
 
 
-  // The art image dimensions are a mixture of landscape and portrait or square.
-  // They can't all be displayed with the same width or they'd blow out the user's screen.
-  // Every image has a key value pair in the .json where I indicate what type of image is it:
-  // lanscape, portrait or square. This function sets the image max-width based on what
-  // kind of image it is.
+  // The art image dimensions are a mixture of landscape and portrait
+  // or square. They can't all be displayed with the same width or
+  // they'd blow out the user's screen. Every image has a key value
+  // pair in the .json where I indicate what type of image is it:
+  // lanscape, portrait or square. This function sets the image 
+  // max-width based on what kind of image it is.
   function landscapeOrPortrait() {
     let imageOrientation = modalImageOrientation
     if (imageOrientation === "landscape") {
@@ -154,11 +156,19 @@ function modalPreviousImage(imageIndex) {
     if (previousImageIndex  < 0) {
       closeModal()
       } else {
-        setModalImageIndex(previousImageIndex, () => {
-        establishImageIndex(modalImageIndex)
-        })
+        setModalImageIndex(previousImageIndex
+          // , () => {
+          // establishImageIndex(modalImageIndex)
+        // }
+        )
       }
   }
+  
+  // This runs after setModalImageIndex changes
+  useEffect( () => {
+    console.log("useEffect triggering after setModalImageIndex updates")
+    establishImageIndex(modalImageIndex)
+  }, [setModalImageIndex])
 
 // this function applies both to the modal arrow buttons &
 // the arrow buttons on the keyboard.
@@ -183,13 +193,6 @@ function modalNextImage(imageIndex) {
     setDisplayModal({'display': "none"})
   }
 
-
-
-
-
-  
-  
-  
   // Run this when app first loads
   useEffect(() => {
 
@@ -218,19 +221,19 @@ function modalNextImage(imageIndex) {
         switch (whichKey) {
           case 39:
             console.log("forward arrow key pushed. Next image.")
-            modalNextImage()
+            this.modalNextImage()
           break;
           case 37:
             console.log("back arrow key pushed. Previous image")
-            modalPreviousImage()
+            this.modalPreviousImage()
           break;
           case 38:
             console.log("up arrow key pushed. Previous image.")
-            modalPreviousImage()
+            this.modalPreviousImage()
           break;
           case 40:
             console.log("down arrow key pushed Next image.")
-            modalNextImage()
+            this.modalNextImage()
           break;
         }
       }
