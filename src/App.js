@@ -184,52 +184,56 @@ function modalNextImage(imageIndex) {
   }
 
 
-//  ==================================
-//  Arrow keys
-//  ==================================
-function keyAction(event) {
-    // console.log("event:", event)
-    let whichKey = event.keyCode;
-    switch (whichKey) {
-      case 39:
-        console.log("forward arrow key pushed. Next image.")
-        modalNextImage()
-      break;
-      case 37:
-        console.log("back arrow key pushed. Previous image")
-        modalPreviousImage()
-      break;
-      case 38:
-        console.log("up arrow key pushed. Previous image.")
-        modalPreviousImage()
-      break;
-      case 40:
-        console.log("down arrow key pushed Next image.")
-        modalNextImage()
-      break;
-    }
-  }
 
 
-//  ==================================
-//  only display images from .json
-//  1) if includeingallery === true, return it...meaning keep it
-//  2) apply the above function as a filter to the states
-//  ==================================
-  function includeInGalleryTrue(item){
-    return item.includeingallery === true;
-  };
 
   
-  function filterIncludeInGallery(){ 
-    setFilteredArt( art.filter(includeInGalleryTrue) )
-    // console.log("filteredArt", filteredArt)
-  };
+  
+  
+  // Run this when app first loads
+  useEffect(() => {
 
-    // Similar to componentDidMount and componentDidUpdate:
-    useEffect(() => {
-      // This determines which images from the art json are shown
-      filterIncludeInGallery()
+    function filterIncludeInGallery(){ 
+      setFilteredArt( art.filter(includeInGalleryTrue) )
+      // console.log("filteredArt", filteredArt)
+    };
+      //  ==================================
+      // This determines which images from the art json should be shown
+      //  only display images from .json
+      //  1) if includeingallery === true, return it...meaning keep it
+      //  2) apply the above function as a filter to the states
+      //  ==================================
+        const includeInGalleryTrue = (item) => {
+          return item.includeingallery === true;
+        };
+
+       filterIncludeInGallery()
+
+      //  ==================================
+      //  Arrow keys
+      //  ==================================
+      const keyAction = (event) => {
+        // console.log("event:", event)
+        let whichKey = event.keyCode;
+        switch (whichKey) {
+          case 39:
+            console.log("forward arrow key pushed. Next image.")
+            modalNextImage()
+          break;
+          case 37:
+            console.log("back arrow key pushed. Previous image")
+            modalPreviousImage()
+          break;
+          case 38:
+            console.log("up arrow key pushed. Previous image.")
+            modalPreviousImage()
+          break;
+          case 40:
+            console.log("down arrow key pushed Next image.")
+            modalNextImage()
+          break;
+        }
+      }
       // the hotkeys
       document.onkeyup = (event) => {
         keyAction(event);
