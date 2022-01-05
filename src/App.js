@@ -18,7 +18,7 @@ export default function App(props) {
   // const [showingArt, setShowingArt] = useState('');
   const [modalStatement, setModalStatement] = useState('');
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
-  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalImageIndex, setModalImageIndex] = useState();
   const [modalImageURL, setModalImageURL] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [modalYear, setModalYear] = useState('');
@@ -57,16 +57,36 @@ export default function App(props) {
     // console.log("after setModalImageIndex", imageIndex)
   }
   
-  // I thought this only runs when [modalImageIndex] changes
-  // Why is it running when it doens't change?  
+  
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       // console.log("First render. Not running useEffect()")
       return;
-    } else {
+    } else 
+    {
+
+      function establishModalArtDetails(imageIndex){
+        setModalTitle(filteredArt[modalImageIndex].title);
+        setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
+        setModalImageURL(filteredArt[modalImageIndex].link)
+        setModalYear(filteredArt[modalImageIndex].year)
+        setModalMedia(filteredArt[modalImageIndex].media)
+        setModalDims(filteredArt[modalImageIndex].dims)
+        setModalPrice(filteredArt[modalImageIndex].price)
+        setModalStatement(filteredArt[modalImageIndex].statement)
+      }
+
+
 
       console.log("useEffect() is running. modalImageIndex:", modalImageIndex)
+      
+      // one job: add css display: block; to the modal
+      function displayBlockModal() {
+        setDisplayModal({'display': "block"})
+        // console.log(`Add css display: block; to the modal`)
+      }
+
       establishModalArtDetails()
       // 2) then, figure out if the back and forward buttons should be displayed
       displayBlockModal()
@@ -75,29 +95,13 @@ export default function App(props) {
     }
   }, [modalImageIndex]);
 
-  // one job: add css display: block; to the modal
-  function displayBlockModal() {
-    setDisplayModal({'display': "block"})
-    console.log(`Add css display: block; to the modal`)
-  }
+  // run whensetModalImageOrientation updates
+  useEffect( () => {
+    landscapeOrPortrait()
+  }, [setModalImageOrientation])
 
-  // why is filteredArt an empty array right now?
-  // Also, why is this triggering before the user clicks on an image? 
-  function establishModalArtDetails(imageIndex){
-    console.log("filteredArt", filteredArt )
-    console.log("filteredArt[modalImageIndex]", filteredArt[modalImageIndex] )
-    setModalTitle( filteredArt[modalImageIndex].title );
-    setModalImageOrientation( filteredArt[modalImageIndex].imageShape, () => {
-      landscapeOrPortrait()
-    })  
-    setModalImageURL(filteredArt[modalImageIndex].link)
-    setModalYear(filteredArt[modalImageIndex].year)
-    setModalMedia(filteredArt[modalImageIndex].media)
-    setModalDims(filteredArt[modalImageIndex].dims)
-    setModalPrice(filteredArt[modalImageIndex].price)
-    setModalStatement(filteredArt[modalImageIndex].statement)
-    console.log("3) establishModalArtDetails():", modalTitle, modalYear, modalMedia,)
-  }
+
+ 
 
 
   // The art image dimensions are a mixture of landscape and portrait
@@ -156,11 +160,7 @@ function modalPreviousImage(imageIndex) {
     if (previousImageIndex  < 0) {
       closeModal()
       } else {
-        setModalImageIndex(previousImageIndex
-          // , () => {
-          // establishImageIndex(modalImageIndex)
-        // }
-        )
+        setModalImageIndex(previousImageIndex)
       }
   }
   
@@ -182,11 +182,18 @@ function modalNextImage(imageIndex) {
     if (nextImageIndex > filteredArt.length - 1) {
       closeModal()
     } else {
-      setModalImageIndex(nextImageIndex, () => {
-        establishImageIndex(modalImageIndex)
-      })
+      setModalImageIndex(nextImageIndex)
     }
   }
+  
+  // run this when setModalImageIndex changes
+  useEffect( () => {
+    establishImageIndex(modalImageIndex)
+  }, [setModalImageIndex])
+
+
+
+
 
   // This simply changes the css display class from "block" to "none"
   function closeModal() {
