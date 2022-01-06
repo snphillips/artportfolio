@@ -11,13 +11,13 @@ to view all images in modal view
 export default function Modal(props) {
 
   console.log("props.displayModal", props.displayModal)
-
+  
     return (
 
       <div
         className="modal-background"
         style={props.displayModal}
-        onClick={props.closeModal}
+        // onClick={props.closeModal}
       >
 
         <div className="modal-content-container">
@@ -50,7 +50,10 @@ export default function Modal(props) {
           </section>
 
 
-          <section className="modal-image-and-info-container">
+          <section 
+            className="modal-image-and-info-container"
+            onClick={props.closeModal}
+            >
 
             <div className="modal-image-container">
               <img id="modal-image"
@@ -91,14 +94,13 @@ export default function Modal(props) {
               </span>
             </div>
 
-            <div id="modal-next-button"
-                 style={props.modalDisplayForwardBackButtons}
-                 onClick={ () => {
-
-                    let imageIndex = props.modalImageIndex + 1
-                    props.modalNextImage(imageIndex)
-                  }
-                  }
+            <div 
+              id="modal-next-button"
+              style={props.modalDisplayForwardBackButtons}
+              onClick={ () => {
+                let imageIndex = props.modalImageIndex + 1
+                props.modalNextImage(imageIndex)
+              }}
                  >
               <span>
                 <svg

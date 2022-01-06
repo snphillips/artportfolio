@@ -14,8 +14,6 @@ import art from './ArtArrays/art';
 export default function App(props) {
 
   const [filteredArt, setFilteredArt] = useState([]);
-  // remove this line soon
-  // const [showingArt, setShowingArt] = useState('');
   const [modalStatement, setModalStatement] = useState('');
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
   const [modalImageIndex, setModalImageIndex] = useState();
@@ -27,14 +25,14 @@ export default function App(props) {
   const [modalPrice, setModalPrice] = useState('');
   const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
   
-  // console.log("hi modalImageIndex:", modalImageIndex)
 
-  // We can make the useEffect hook not run on initial render
-  // by creating a variable with useRef hook to keep tracking
-  // of when the first render is done.
-  // We set the variable’s value to true initially.
-  // Then we the component is rendered the first time,
-  // we set the variable to false.
+  /*
+  We can make the useEffect hook not run on initial render
+  by creating a variable with useRef hook to keep tracking
+  of when the first render is done.
+  We set the variable’s value to true initially.
+  Then we the component is rendered the first time,
+  we set the variable to false.*/
   const firstUpdate = useRef(true);
 
 
@@ -45,23 +43,19 @@ export default function App(props) {
 //  setStates: 1) to indicate which image the user has clicked
 //             2) change the css display class from "none" to "block"
 //             3) a bunch of information accompanying each image
-  // openModal(modalURL, modalTitle, modalYear, modalMedia, modalDims, modalPrice, modalStatement, modalImageOrient) {
   function openModal(imageIndex) {
-    // console.log("1) opening modal via openModal() and imageIndex is:", imageIndex)
     establishImageIndex(imageIndex)
   }
 
   // 1) set state with the index of the image the user has clicked
   function establishImageIndex(imageIndex){
     setModalImageIndex(imageIndex)
-    // console.log("after setModalImageIndex", imageIndex)
   }
   
   
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      // console.log("First render. Not running useEffect()")
       return;
     } else 
     {
@@ -77,14 +71,11 @@ export default function App(props) {
         setModalStatement(filteredArt[modalImageIndex].statement)
       }
 
-
-
       console.log("useEffect() is running. modalImageIndex:", modalImageIndex)
       
       // one job: add css display: block; to the modal
       function displayBlockModal() {
         setDisplayModal({'display': "block"})
-        // console.log(`Add css display: block; to the modal`)
       }
 
       establishModalArtDetails()
@@ -153,32 +144,29 @@ export default function App(props) {
 // if the user hits the back arrown on their keyboard on the first image,
 // the modal closes.
 function modalPreviousImage(imageIndex) {
-    // console.log("modalNextImage() modalImageIndex is: ", modalImageIndex)
 
     let previousImageIndex = modalImageIndex - 1
 
     if (previousImageIndex  < 0) {
       closeModal()
-      } else {
-        setModalImageIndex(previousImageIndex)
-      }
+    } else {
+      setModalImageIndex(previousImageIndex)
+    }
   }
   
   // This runs after setModalImageIndex changes
   useEffect( () => {
-    console.log("useEffect triggering after setModalImageIndex updates")
     establishImageIndex(modalImageIndex)
   }, [setModalImageIndex])
-
-// this function applies both to the modal arrow buttons &
-// the arrow buttons on the keyboard.
-// If the user hits the forward arrow on their keyboard on the last image,
-// the modal closes.
-function modalNextImage(imageIndex) {
-    // console.log("modalNextImage() modalImageIndex is: ", modalImageIndex)
-
+  
+  // this function applies both to the modal arrow buttons &
+  // the arrow buttons on the keyboard.
+  // If the user hits the forward arrow on their keyboard on the last image,
+  // the modal closes.
+  function modalNextImage(imageIndex) {
+    
     let nextImageIndex =  modalImageIndex + 1
-
+    
     if (nextImageIndex > filteredArt.length - 1) {
       closeModal()
     } else {
@@ -192,12 +180,10 @@ function modalNextImage(imageIndex) {
   }, [setModalImageIndex])
 
 
-
-
-
   // This simply changes the css display class from "block" to "none"
   function closeModal() {
-    setDisplayModal({'display': "none"})
+    console.log("close modal")
+    setDisplayModal({'display': 'none'})
   }
 
   // Run this when app first loads
