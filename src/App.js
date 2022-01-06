@@ -14,7 +14,6 @@ import art from './ArtArrays/art';
 export default function App(props) {
 
   const [filteredArt, setFilteredArt] = useState([]);
-  const [modalStatement, setModalStatement] = useState('');
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
   const [modalImageIndex, setModalImageIndex] = useState();
   const [modalImageURL, setModalImageURL] = useState('');
@@ -23,6 +22,7 @@ export default function App(props) {
   const [modalDims, setModalDims] = useState('');
   const [modalMedia, setModalMedia] = useState('');
   const [modalPrice, setModalPrice] = useState('');
+  const [modalStatement, setModalStatement] = useState('');
   const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
   
 
@@ -36,7 +36,8 @@ export default function App(props) {
   */
   const firstUpdate = useRef(true);
 
-/*  ==================================
+ /*
+ ==================================
  modal: the expanded image
  ==================================
  1) Indicate which image the user has clicked
@@ -51,10 +52,10 @@ export default function App(props) {
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      console.log("Hey! modalImageIndex", modalImageIndex)
+      // console.log("First update! modalImageIndex should be undeined", modalImageIndex)
       return;
     } else {
-      console.log("Hey! modalImageIndex", modalImageIndex)
+      // console.log("Not first update. modalImageIndex", modalImageIndex)
       function establishModalArtDetails(imageIndex){
         setModalTitle(filteredArt[modalImageIndex].title);
         setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
@@ -75,16 +76,16 @@ export default function App(props) {
       */
       function modalDisplayForwardBackButtons(){
         if (modalImageIndex === filteredArt.length - 1) {
-          console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
+          // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
           document.getElementById('modal-next-button').style.display = 'none'
           document.getElementById('modal-back-button').style.display = 'block'
         }
           else if (modalImageIndex === 0) {
-            // console.log(`5) image index is:`, modalImageIndex,  `Don't display back arrow`)
+            // console.log(`Image index is:`, modalImageIndex,  `Don't display back arrow`)
             document.getElementById('modal-back-button').style.display = 'none'
             document.getElementById('modal-next-button').style.display = 'block'
           } else {
-              // console.log(`5) image index is:`, modalImageIndex,  `Both arrows should appear`)
+              // console.log(`Image index is:`, modalImageIndex,  `Both arrows should appear`)
               document.getElementById('modal-back-button').style.display = 'block'
               document.getElementById('modal-next-button').style.display = 'block'
           }
@@ -94,38 +95,40 @@ export default function App(props) {
   }, [modalImageIndex]);
 
 
-  // run whensetModalImageOrientation updates
-  useEffect( () => {
-    landscapeOrPortrait()
-  }, [setModalImageOrientation])
+  // run when setModalImageOrientation updates
+  // not working right now. Is it running at the wrong time?
+  useEffect( (modalImageOrientation) => {
+    /* 
+    The art image dimensions are a mixture of landscape and portrait
+    or square. They can't all be displayed with the same width or
+    they'd blow out the user's screen. Every image has a key value
+    pair in the .json where I indicate what type of image is it:
+    lanscape, portrait or square. This function sets the image 
+    max-width based on what kind of image it is. 
+    */
+    function landscapeOrPortrait() {
 
+      let imageOrientation = modalImageOrientation 
 
-  /* 
-  The art image dimensions are a mixture of landscape and portrait
-  or square. They can't all be displayed with the same width or
-  they'd blow out the user's screen. Every image has a key value
-  pair in the .json where I indicate what type of image is it:
-  lanscape, portrait or square. This function sets the image 
-  max-width based on what kind of image it is. 
-  */
-  function landscapeOrPortrait() {
-    let imageOrientation = modalImageOrientation
-    if (imageOrientation === "landscape") {
-        console.log(`6)`, modalTitle, "is:", imageOrientation)
-        document.querySelector('#modal-image').style.maxWidth = "700px";
-        document.querySelector('.modal-info-container').style.maxWidth = "700px";
-    } else if (imageOrientation === "portrait") {
-
-        console.log(`6)`, modalTitle, "is:", imageOrientation)
-        document.querySelector('#modal-image').style.maxWidth = "450px";
-        document.querySelector('.modal-info-container').style.maxWidth = "450px";
-    } else {
-        console.log(`6)`, modalTitle, "is:", imageOrientation)
-        document.querySelector('#modal-image').style.maxWidth = "500px";
-        document.querySelector('.modal-info-container').style.maxWidth = "500px";
+      if (imageOrientation === "landscape") {
+          console.log(modalTitle, "is:", imageOrientation)
+          document.querySelector('#modal-image').style.maxWidth = "700px";
+          document.querySelector('.modal-info-container').style.maxWidth = "700px";
+      } else if (imageOrientation === "portrait") {
+  
+          console.log(modalTitle, "is:", imageOrientation)
+          document.querySelector('#modal-image').style.maxWidth = "450px";
+          document.querySelector('.modal-info-container').style.maxWidth = "450px";
+      } else {
+          console.log(modalTitle, "is:", imageOrientation)
+          document.querySelector('#modal-image').style.maxWidth = "500px";
+          document.querySelector('.modal-info-container').style.maxWidth = "500px";
+      }
     }
+    landscapeOrPortrait()
+  }, [modalImageIndex])
 
-  }
+
 
 /*
 This function applies both to the arrow buttons on the site &
@@ -134,9 +137,7 @@ Tf the user hits the back arrown on their keyboard on the
 first image, the modal closes.
 */
 function modalPreviousImage(imageIndex) {
-
     let previousImageIndex = modalImageIndex - 1
-
     if (previousImageIndex  < 0) {
       closeModal()
     } else {
@@ -152,9 +153,7 @@ function modalPreviousImage(imageIndex) {
   the modal closes.
   */
   function modalNextImage(imageIndex) {
-    
     let nextImageIndex =  modalImageIndex + 1
-    
     if (nextImageIndex > filteredArt.length - 1) {
       closeModal()
     } else {
@@ -210,6 +209,8 @@ function modalPreviousImage(imageIndex) {
             console.log("down arrow key pushed Next image.")
             this.modalNextImage()
           break;
+          default:
+            // console.log("default")
         }
       }
       // the hotkeys
@@ -254,6 +255,7 @@ function modalPreviousImage(imageIndex) {
           modalTitle={modalTitle}
           modalYear={modalYear}
           modalDims={modalDims}
+          modalImageOrientation={modalImageOrientation}
         />
 
         <About />

@@ -10,7 +10,7 @@ to view all images in modal view
 
 export default function Modal(props) {
 
-  console.log("props.displayModal", props.displayModal)
+  // console.log("props.displayModal", props.displayModal)
   
     return (
 
