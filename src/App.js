@@ -59,7 +59,7 @@ export default function App(props) {
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
-      setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
+      setModalImageOrientation(filteredArt[modalImageIndex].imageShape)  
       setModalTitle(filteredArt[modalImageIndex].title);
       setModalImageURL(filteredArt[modalImageIndex].link)
       setModalYear(filteredArt[modalImageIndex].year)
