@@ -43,9 +43,9 @@ export default function App(props) {
  1) Indicate which image the user has clicked
  2) Change the css display class from "none" to "block"
  3) In the useEffect(), update a bunch of information
-    accompanying each image */
+    accompanying each image 
+ */
   function openModal(imageIndex) {
-    console.log(filteredArt[imageIndex].imageShape)
     setModalImageIndex(imageIndex) 
     setDisplayModal({'display': "block"})
   }
@@ -67,7 +67,6 @@ export default function App(props) {
       setModalDims(filteredArt[modalImageIndex].dims)
       setModalPrice(filteredArt[modalImageIndex].price)
       setModalStatement(filteredArt[modalImageIndex].statement)
-      // landscapeOrPortrait()
 
 
       /* 
@@ -76,7 +75,7 @@ export default function App(props) {
       the first image. Don't display the modal forward arrows if
       the user is viewing the last image. 
       */
-      function modalDisplayForwardBackButtons(){
+
         if (modalImageIndex === filteredArt.length - 1) {
           // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
           document.getElementById('modal-next-button').style.display = 'none'
@@ -91,8 +90,6 @@ export default function App(props) {
               document.getElementById('modal-back-button').style.display = 'block'
               document.getElementById('modal-next-button').style.display = 'block'
           }
-      }
-          modalDisplayForwardBackButtons()
         }
   }, [modalImageIndex]);
 
