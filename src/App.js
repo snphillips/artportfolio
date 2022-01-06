@@ -45,9 +45,12 @@ export default function App(props) {
  3) In the useEffect(), update a bunch of information
     accompanying each image */
   function openModal(imageIndex) {
-    setModalImageIndex(imageIndex)
+    console.log(filteredArt[imageIndex].imageShape)
+    setModalImageIndex(imageIndex) 
     setDisplayModal({'display': "block"})
   }
+
+
   // This only runs if the modalImageIndex chages
   useEffect(() => {
     if (firstUpdate.current) {
@@ -56,17 +59,16 @@ export default function App(props) {
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
-      function establishModalArtDetails(imageIndex){
-        setModalTitle(filteredArt[modalImageIndex].title);
-        setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
-        setModalImageURL(filteredArt[modalImageIndex].link)
-        setModalYear(filteredArt[modalImageIndex].year)
-        setModalMedia(filteredArt[modalImageIndex].media)
-        setModalDims(filteredArt[modalImageIndex].dims)
-        setModalPrice(filteredArt[modalImageIndex].price)
-        setModalStatement(filteredArt[modalImageIndex].statement)
-      }
-      establishModalArtDetails()
+      setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
+      setModalTitle(filteredArt[modalImageIndex].title);
+      setModalImageURL(filteredArt[modalImageIndex].link)
+      setModalYear(filteredArt[modalImageIndex].year)
+      setModalMedia(filteredArt[modalImageIndex].media)
+      setModalDims(filteredArt[modalImageIndex].dims)
+      setModalPrice(filteredArt[modalImageIndex].price)
+      setModalStatement(filteredArt[modalImageIndex].statement)
+      // landscapeOrPortrait()
+
 
       /* 
       Figure out if the back and forward buttons should be displayed.
@@ -94,39 +96,27 @@ export default function App(props) {
         }
   }, [modalImageIndex]);
 
-
-  // run when setModalImageOrientation updates
-  // not working right now. Is it running at the wrong time?
-  useEffect( (modalImageOrientation) => {
-    /* 
-    The art image dimensions are a mixture of landscape and portrait
-    or square. They can't all be displayed with the same width or
-    they'd blow out the user's screen. Every image has a key value
-    pair in the .json where I indicate what type of image is it:
-    lanscape, portrait or square. This function sets the image 
-    max-width based on what kind of image it is. 
-    */
-    function landscapeOrPortrait() {
-
-      let imageOrientation = modalImageOrientation 
-
-      if (imageOrientation === "landscape") {
-          console.log(modalTitle, "is:", imageOrientation)
+  /* 
+  The art image dimensions are a mixture of landscape and portrait
+  or square. They can't all be displayed with the same width or
+  they'd blow out the user's screen. Every image has a key value
+  pair in the .json where I indicate what type of image is it:
+  lanscape, portrait or square. This function sets the image 
+  max-width based on what kind of image it is. 
+  */
+  useEffect( () => {
+      if (modalImageOrientation === "landscape") {
           document.querySelector('#modal-image').style.maxWidth = "700px";
           document.querySelector('.modal-info-container').style.maxWidth = "700px";
-      } else if (imageOrientation === "portrait") {
+      } else if (modalImageOrientation === "portrait") {
   
-          console.log(modalTitle, "is:", imageOrientation)
           document.querySelector('#modal-image').style.maxWidth = "450px";
           document.querySelector('.modal-info-container').style.maxWidth = "450px";
       } else {
-          console.log(modalTitle, "is:", imageOrientation)
           document.querySelector('#modal-image').style.maxWidth = "500px";
           document.querySelector('.modal-info-container').style.maxWidth = "500px";
       }
-    }
-    landscapeOrPortrait()
-  }, [modalImageIndex])
+  }, [modalImageOrientation])
 
 
 
