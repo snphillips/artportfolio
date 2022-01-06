@@ -32,7 +32,8 @@ export default function App(props) {
   of when the first render is done.
   We set the variable’s value to true initially.
   Then we the component is rendered the first time,
-  we set the variable to false.*/
+  we set the variable to false.
+  */
   const firstUpdate = useRef(true);
 
 
@@ -40,26 +41,30 @@ export default function App(props) {
 //  ==================================
 //  modal: the expanded image
 //  ==================================
-//  setStates: 1) to indicate which image the user has clicked
-//             2) change the css display class from "none" to "block"
-//             3) a bunch of information accompanying each image
+//  1) Indicate which image the user has clicked
+//  2) Change the css display class from "none" to "block"
+//  3) Update a bunch of information accompanying each image
   function openModal(imageIndex) {
-    establishImageIndex(imageIndex)
+    setModalImageIndex(imageIndex)
+    setDisplayModal({'display': "block"})
   }
 
-  // 1) set state with the index of the image the user has clicked
-  function establishImageIndex(imageIndex){
-    setModalImageIndex(imageIndex)
-  }
+  // // 1) set state with the index of the image the user has clicked
+  // function establishImageIndex(imageIndex){
+  //   setModalImageIndex(imageIndex)
+  // }
   
-  
+  // This only runs if the modalImageIndex chages, 
+  // BUT we need it to run even if the modalImageIndex is the 
+  // same as it's previous value (if user clicks on image, closes it
+  // then opens the same one again)
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
+      console.log("Hey! modalImageIndex", modalImageIndex)
       return;
-    } else 
-    {
-
+    } else {
+      console.log("Hey! modalImageIndex", modalImageIndex)
       function establishModalArtDetails(imageIndex){
         setModalTitle(filteredArt[modalImageIndex].title);
         setModalImageOrientation( filteredArt[modalImageIndex].imageShape)  
@@ -71,20 +76,21 @@ export default function App(props) {
         setModalStatement(filteredArt[modalImageIndex].statement)
       }
 
-      console.log("useEffect() is running. modalImageIndex:", modalImageIndex)
+      // console.log("useEffect() is running. modalImageIndex:", modalImageIndex)
       
       // one job: add css display: block; to the modal
-      function displayBlockModal() {
-        setDisplayModal({'display': "block"})
-      }
+      // function displayBlockModal() {
+      //   setDisplayModal({'display': "block"})
+      // }
 
       establishModalArtDetails()
-      // 2) then, figure out if the back and forward buttons should be displayed
-      displayBlockModal()
+      // 2) then, figure out if the back and forward buttons
+      // should be displayed
+      // displayBlockModal()
       modalDisplayForwardBackButtons()
-
     }
   }, [modalImageIndex]);
+
 
   // run whensetModalImageOrientation updates
   useEffect( () => {
@@ -95,12 +101,14 @@ export default function App(props) {
  
 
 
-  // The art image dimensions are a mixture of landscape and portrait
-  // or square. They can't all be displayed with the same width or
-  // they'd blow out the user's screen. Every image has a key value
-  // pair in the .json where I indicate what type of image is it:
-  // lanscape, portrait or square. This function sets the image 
-  // max-width based on what kind of image it is.
+  /* 
+  The art image dimensions are a mixture of landscape and portrait
+  or square. They can't all be displayed with the same width or
+  they'd blow out the user's screen. Every image has a key value
+  pair in the .json where I indicate what type of image is it:
+  lanscape, portrait or square. This function sets the image 
+  max-width based on what kind of image it is. 
+  */
   function landscapeOrPortrait() {
     let imageOrientation = modalImageOrientation
     if (imageOrientation === "landscape") {
@@ -156,8 +164,10 @@ function modalPreviousImage(imageIndex) {
   
   // This runs after setModalImageIndex changes
   useEffect( () => {
-    establishImageIndex(modalImageIndex)
-  }, [setModalImageIndex])
+  //   establishImageIndex(modalImageIndex)
+  // }, [setModalImageIndex]
+  }
+  )
   
   // this function applies both to the modal arrow buttons &
   // the arrow buttons on the keyboard.
@@ -176,8 +186,11 @@ function modalPreviousImage(imageIndex) {
   
   // run this when setModalImageIndex changes
   useEffect( () => {
-    establishImageIndex(modalImageIndex)
-  }, [setModalImageIndex])
+  //   establishImageIndex(modalImageIndex)
+  
+  // }, 
+  // [setModalImageIndex]
+  })
 
 
   // This simply changes the css display class from "block" to "none"

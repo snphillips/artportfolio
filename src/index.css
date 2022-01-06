@@ -385,6 +385,7 @@ Media Queries - dark mode
 
   .modal-info-container p {
     color: #b3b3b3;
+    color: #e2e2e9;
   }
 
   img:hover {
