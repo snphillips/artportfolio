@@ -16,18 +16,7 @@ export default function App(props) {
   const [filteredArt, setFilteredArt] = useState([]);
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
   const [modalImageIndex, setModalImageIndex] = useState();
-
-  const [modalImageURL, setModalImageURL] = useState('');
-  const [modalTitle, setModalTitle] = useState('');
-  const [modalYear, setModalYear] = useState('');
-  const [modalMedia, setModalMedia] = useState('');
-  const [modalDims, setModalDims] = useState('');
-  const [modalPrice, setModalPrice] = useState('');
-  const [modalStatement, setModalStatement] = useState('');
-  const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
-
-  const [modalState, setModalState] = useState(
-    {
+  const [modalState, setModalState] = useState({
       modalImageOrientation: 'landscape',
       modalImageURL: '',
       modalTitle: '',
@@ -36,11 +25,9 @@ export default function App(props) {
       modalDims: '',
       modalPrice: '',
       modalStatement:''
-   }
-  );
+   });
 
   
-
   /*
   We can make the useEffect hook not run on initial render
   by creating a variable with useRef hook to keep tracking
@@ -74,15 +61,6 @@ export default function App(props) {
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
-      // setModalImageOrientation(filteredArt[modalImageIndex].imageShape)  
-      // setModalTitle(filteredArt[modalImageIndex].title)
-      // setModalImageURL(filteredArt[modalImageIndex].link)
-      // setModalYear(filteredArt[modalImageIndex].year)
-      // setModalDims(filteredArt[modalImageIndex].dims)
-      // setModalMedia(filteredArt[modalImageIndex].media)
-      // setModalPrice(filteredArt[modalImageIndex].price)
-      // setModalStatement(filteredArt[modalImageIndex].statement)
-
       setModalState( (prevState) => {
         return {
           modalImageOrientation: filteredArt[modalImageIndex].imageShape,
@@ -125,9 +103,9 @@ export default function App(props) {
   /* 
   The art image dimensions are a mixture of landscape and portrait
   or square. They can't all be displayed with the same width or
-  they'd blow out the user's screen. Every image has a key value
-  pair in the .json where I indicate what type of image is it:
-  lanscape, portrait or square. This function sets the image 
+  some images would blow out the user's screen. Every image has a 
+  key value pair in the .json where I indicate what type of image
+  is it: lanscape, portrait or square. This function sets the image 
   max-width based on what kind of image it is. 
   */
   useEffect( () => {
@@ -149,7 +127,7 @@ export default function App(props) {
 /*
 This function applies both to the arrow buttons on the site &
 the arrow buttons on the keyboard.
-Tf the user hits the back arrown on their keyboard on the
+If the user hits the back arrown on their keyboard on the
 first image, the modal closes.
 */
 function modalPreviousImage(imageIndex) {
@@ -264,14 +242,6 @@ function modalPreviousImage(imageIndex) {
           modalNextImage={modalNextImage}
           displayModal={displayModal}
           closeModal={closeModal}
-          modalImageOrientation={modalImageOrientation}
-          modalMedia={modalMedia}
-          modalImageURL={modalImageURL}
-          modalPrice={modalPrice}
-          modalStatement={modalStatement}
-          modalTitle={modalTitle}
-          modalYear={modalYear}
-          modalDims={modalDims}
           modalState={modalState}
         />
 
