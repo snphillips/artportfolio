@@ -57,18 +57,25 @@ export default function Modal(props) {
 
             <div className="modal-image-container">
               <img id="modal-image"
-                   src={props.modalImageURL}
+                  //  src={props.modalImageURL}
+                   src={props.modalState.modalImageURL}
                    alt=""
                    />
             </div>
 
             <div className="modal-info-container">
-              <p><i>{props.modalTitle}</i></p>
-              <p>{props.modalYear}</p>
-              <p>{props.modalMedia}</p>
-              <p>{props.modalDims}</p>
-              <p>{props.modalPrice}</p>
-              <p className="modal-statement">{props.modalStatement}</p>
+              {/* <p><i>{props.modalTitle}</i></p> */}
+              <p><i>{props.modalState.modalTitle}</i></p>
+              {/* <p>{props.modalYear}</p> */}
+              <p>{props.modalState.modalYear}</p>
+              {/* <p>{props.modalMedia}</p> */}
+              <p>{props.modalState.modalMedia}</p>
+              {/* <p>{props.modalDims}</p> */}
+              <p>{props.modalState.ModalmodalDims}</p>
+              {/* <p>{props.modalPrice}</p> */}
+              <p>{props.modalState.modalPrice}</p>
+              {/* <p className="modal-statement">{props.modalStatement}</p> */}
+              <p className="modal-statement">{props.modalState.modalStatement}</p>
             </div>
 
           </section>

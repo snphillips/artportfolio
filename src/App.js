@@ -16,14 +16,29 @@ export default function App(props) {
   const [filteredArt, setFilteredArt] = useState([]);
   const [displayModal, setDisplayModal] = useState({'display': 'none'});
   const [modalImageIndex, setModalImageIndex] = useState();
+
   const [modalImageURL, setModalImageURL] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [modalYear, setModalYear] = useState('');
-  const [modalDims, setModalDims] = useState('');
   const [modalMedia, setModalMedia] = useState('');
+  const [modalDims, setModalDims] = useState('');
   const [modalPrice, setModalPrice] = useState('');
   const [modalStatement, setModalStatement] = useState('');
   const [modalImageOrientation, setModalImageOrientation] = useState('landscape');
+
+  const [modalState, setModalState] = useState(
+    {
+      modalImageOrientation: 'landscape',
+      modalImageURL: '',
+      modalTitle: '',
+      modalYear: '',
+      modalMedia: '',
+      modalDims: '',
+      modalPrice: '',
+      modalStatement:''
+   }
+  );
+
   
 
   /*
@@ -59,14 +74,28 @@ export default function App(props) {
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
-      setModalImageOrientation(filteredArt[modalImageIndex].imageShape)  
-      setModalTitle(filteredArt[modalImageIndex].title);
-      setModalImageURL(filteredArt[modalImageIndex].link)
-      setModalYear(filteredArt[modalImageIndex].year)
-      setModalMedia(filteredArt[modalImageIndex].media)
-      setModalDims(filteredArt[modalImageIndex].dims)
-      setModalPrice(filteredArt[modalImageIndex].price)
-      setModalStatement(filteredArt[modalImageIndex].statement)
+      // setModalImageOrientation(filteredArt[modalImageIndex].imageShape)  
+      // setModalTitle(filteredArt[modalImageIndex].title)
+      // setModalImageURL(filteredArt[modalImageIndex].link)
+      // setModalYear(filteredArt[modalImageIndex].year)
+      // setModalDims(filteredArt[modalImageIndex].dims)
+      // setModalMedia(filteredArt[modalImageIndex].media)
+      // setModalPrice(filteredArt[modalImageIndex].price)
+      // setModalStatement(filteredArt[modalImageIndex].statement)
+
+      setModalState( (prevState) => {
+        return {
+          modalImageOrientation: filteredArt[modalImageIndex].imageShape,
+          modalTitle: filteredArt[modalImageIndex].title,
+          modalImageURL: filteredArt[modalImageIndex].link,
+          modalYear: filteredArt[modalImageIndex].year,
+          modalDims: filteredArt[modalImageIndex].dims,
+          modalMedia: filteredArt[modalImageIndex].media,
+          modalPrice: filteredArt[modalImageIndex].price,
+          modalStatement:filteredArt[modalImageIndex].statement,
+        }
+
+      })
 
 
       /* 
@@ -102,10 +131,10 @@ export default function App(props) {
   max-width based on what kind of image it is. 
   */
   useEffect( () => {
-      if (modalImageOrientation === "landscape") {
+      if (modalState.modalImageOrientation === "landscape") {
           document.querySelector('#modal-image').style.maxWidth = "700px";
           document.querySelector('.modal-info-container').style.maxWidth = "700px";
-      } else if (modalImageOrientation === "portrait") {
+      } else if (modalState.modalImageOrientation === "portrait") {
   
           document.querySelector('#modal-image').style.maxWidth = "450px";
           document.querySelector('.modal-info-container').style.maxWidth = "450px";
@@ -113,7 +142,7 @@ export default function App(props) {
           document.querySelector('#modal-image').style.maxWidth = "500px";
           document.querySelector('.modal-info-container').style.maxWidth = "500px";
       }
-  }, [modalImageOrientation])
+  }, [modalState.modalImageOrientation])
 
 
 
@@ -231,10 +260,11 @@ function modalPreviousImage(imageIndex) {
         />
 
         <Modal
-          displayModal={displayModal}
           modalPreviousImage={modalPreviousImage}
           modalNextImage={modalNextImage}
+          displayModal={displayModal}
           closeModal={closeModal}
+          modalImageOrientation={modalImageOrientation}
           modalMedia={modalMedia}
           modalImageURL={modalImageURL}
           modalPrice={modalPrice}
@@ -242,7 +272,7 @@ function modalPreviousImage(imageIndex) {
           modalTitle={modalTitle}
           modalYear={modalYear}
           modalDims={modalDims}
-          modalImageOrientation={modalImageOrientation}
+          modalState={modalState}
         />
 
         <About />
