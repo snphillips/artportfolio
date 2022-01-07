@@ -162,7 +162,9 @@ function modalPreviousImage(imageIndex) {
     setDisplayModal({'display': 'none'})
   }
 
-  // Run this when app first loads
+  // Run this useEffect when app first loads
+  // The passed in empty array doesn't change,
+  // so this useEffect doesn't run again
   useEffect(() => {
     function filterIncludeInGallery(){ 
       setFilteredArt( art.filter(includeInGalleryTrue) )
