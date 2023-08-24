@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './index.css';
-import Header from './components/Header';
-import CV from './components/CV';
-import Navigation from './components/Navigation';
-import Contact from './components/Contact';
-import About from './components/About';
-import Gallery from './components/Gallery';
+import Header from './components/Header.tsx';
+import CV from './components/CV.tsx';
+import Navigation from './components/Navigation.tsx';
+import Contact from './components/Contact.tsx';
+import About from './components/About.tsx';
+import Gallery from './components/Gallery.tsx';
 import Modal from './components/Modal';
-import Footer from './components/Footer';
+import Footer from './components/Footer.tsx';
 import art from './ArtArrays/art';
 
 export default function App() {
   const [filteredArt, setFilteredArt] = useState([]);
+  // TODO: replace with boolean. Add style someplace else
   const [displayModal, setDisplayModal] = useState({ display: 'none' });
   const [modalImageIndex, setModalImageIndex] = useState();
   const [modalState, setModalState] = useState({
@@ -49,11 +50,10 @@ export default function App() {
     setDisplayModal({ display: 'block' });
   }
 
-  // This only runs if the modalImageIndex chages
+  // This only runs if the modalImageIndex changes
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      // console.log("First update! modalImageIndex should be undeined", modalImageIndex)
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
@@ -78,15 +78,12 @@ export default function App() {
       */
 
       if (modalImageIndex === filteredArt.length - 1) {
-        // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
         document.getElementById('modal-next-button').style.display = 'none';
         document.getElementById('modal-back-button').style.display = 'block';
       } else if (modalImageIndex === 0) {
-        // console.log(`Image index is:`, modalImageIndex,  `Don't display back arrow`)
         document.getElementById('modal-back-button').style.display = 'none';
         document.getElementById('modal-next-button').style.display = 'block';
       } else {
-        // console.log(`Image index is:`, modalImageIndex,  `Both arrows should appear`)
         document.getElementById('modal-back-button').style.display = 'block';
         document.getElementById('modal-next-button').style.display = 'block';
       }
@@ -98,7 +95,7 @@ export default function App() {
   or square. They can't all be displayed with the same width or
   some images would blow out the user's screen. Every image has a 
   key value pair in the .json where I indicate what type of image
-  is it: lanscape, portrait or square. This function sets the image 
+  is it: landscape, portrait or square. This function sets the image 
   max-width based on what kind of image it is. 
   */
   useEffect(() => {
@@ -117,7 +114,7 @@ export default function App() {
   /*
 This function applies both to the arrow buttons on the site &
 the arrow buttons on the keyboard.
-If the user hits the back arrown on their keyboard on the
+If the user hits the back arrow on their keyboard on the
 first image, the modal closes.
 */
   function modalPreviousImage(imageIndex) {
@@ -144,9 +141,7 @@ first image, the modal closes.
     }
   }
 
-  // This simply changes the css display class from "block" to "none"
   function closeModal() {
-    // console.log("close modal")
     setDisplayModal({ display: 'none' });
   }
 
@@ -174,7 +169,6 @@ first image, the modal closes.
     //  Arrow keys
     //  ==================================
     const keyAction = (event) => {
-      // console.log("event:", event)
       let whichKey = event.keyCode;
       switch (whichKey) {
         case 39:
@@ -194,7 +188,6 @@ first image, the modal closes.
           this.modalNextImage();
           break;
         default:
-        // console.log("default")
       }
     };
     // the hotkeys

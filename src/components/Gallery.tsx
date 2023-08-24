@@ -1,7 +1,12 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 
-export default function Gallery({ filteredArt, openModal }) {
+type Props = {
+  filteredArt: any[],
+  openModal: (number) => void
+};
+
+export default function Gallery({ filteredArt, openModal }: Props) {
   // For use with Masonry package
   const breakpointColumnsObj = {
     default: 4,
@@ -9,6 +14,8 @@ export default function Gallery({ filteredArt, openModal }) {
     700: 2,
     500: 1,
   };
+
+  console.log('filtered art', filteredArt)
 
   return (
     <section id='gallery'>
