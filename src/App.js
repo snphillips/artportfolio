@@ -6,14 +6,15 @@ import Navigation from './components/Navigation.tsx';
 import Contact from './components/Contact.tsx';
 import About from './components/About.tsx';
 import Gallery from './components/Gallery.tsx';
-import Modal from './components/Modal';
+import Modal from './components/Modal.tsx';
 import Footer from './components/Footer.tsx';
 import art from './ArtArrays/art';
 
 export default function App() {
   const [filteredArt, setFilteredArt] = useState([]);
   // TODO: replace with boolean. Add style someplace else
-  const [displayModal, setDisplayModal] = useState({ display: 'none' });
+  // const [displayModal, setDisplayModal] = useState({ display: 'none' });
+  const [displayModal, setDisplayModal] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState();
   const [modalState, setModalState] = useState({
     modalImageOrientation: 'landscape',
@@ -47,7 +48,8 @@ export default function App() {
  */
   function openModal(imageIndex) {
     setModalImageIndex(imageIndex);
-    setDisplayModal({ display: 'block' });
+    // setDisplayModal({ display: 'block' });
+    setDisplayModal(true);
   }
 
   // This only runs if the modalImageIndex changes
@@ -98,18 +100,20 @@ export default function App() {
   is it: landscape, portrait or square. This function sets the image 
   max-width based on what kind of image it is. 
   */
-  useEffect(() => {
-    if (modalState.modalImageOrientation === 'landscape') {
-      document.querySelector('#modal-image').style.maxWidth = '700px';
-      document.querySelector('.modal-info-container').style.maxWidth = '700px';
-    } else if (modalState.modalImageOrientation === 'portrait') {
-      document.querySelector('#modal-image').style.maxWidth = '450px';
-      document.querySelector('.modal-info-container').style.maxWidth = '450px';
-    } else {
-      document.querySelector('#modal-image').style.maxWidth = '500px';
-      document.querySelector('.modal-info-container').style.maxWidth = '500px';
-    }
-  }, [modalState.modalImageOrientation]);
+  // TODO: this is commented out b/c it was crashing app. Why?
+  // TODO: refactor to avoid querySelectors?
+  // useEffect(() => {
+  //   if (modalState.modalImageOrientation === 'landscape') {
+  //     document.querySelector('#modal-image').style.maxWidth = '700px';
+  //     document.querySelector('.modal-info-container').style.maxWidth = '700px';
+  //   } else if (modalState.modalImageOrientation === 'portrait') {
+  //     document.querySelector('#modal-image').style.maxWidth = '450px';
+  //     document.querySelector('.modal-info-container').style.maxWidth = '450px';
+  //   } else {
+  //     document.querySelector('#modal-image').style.maxWidth = '500px';
+  //     document.querySelector('.modal-info-container').style.maxWidth = '500px';
+  //   }
+  // }, [modalState.modalImageOrientation]);
 
   /*
 This function applies both to the arrow buttons on the site &
@@ -142,7 +146,8 @@ first image, the modal closes.
   }
 
   function closeModal() {
-    setDisplayModal({ display: 'none' });
+    // setDisplayModal({ display: 'none' });
+    setDisplayModal(false);
   }
 
   // Run this useEffect when app first loads

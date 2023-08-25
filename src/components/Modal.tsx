@@ -1,4 +1,5 @@
 import React from 'react';
+import { modalStateType } from '../types'
 
 /* =========================================================
 When the user clicks on an image, a modal opens up.
@@ -6,6 +7,17 @@ The modal closes when the user clicks "close" X button.
 There are forward and back buttons that allow the user
 to view all images in modal view
 ========================================================= */
+
+type Props = {
+  // TODO: refactor displayModal & modalDisplayForwardBackButtons should be booleans
+  displayModal: boolean;
+  modalDisplayForwardBackButtons: any;
+  modalImageIndex: number;
+  modalPreviousImage: any;
+  closeModal: () => void;
+  modalState: modalStateType;
+  modalNextImage: (arg: number) => void;
+};
 
 export default function Modal({
   displayModal,
@@ -15,9 +27,11 @@ export default function Modal({
   closeModal,
   modalState,
   modalNextImage,
-}) {
+}: Props) {
   return (
-    <div className='modal-background' style={displayModal}>
+    <>
+    {displayModal && 
+    <div className='modal-background'>
       <div className='modal-content-container'>
         <section className='modal-left-container'>
           <div
@@ -57,7 +71,7 @@ export default function Modal({
             </p>
             <p>{modalState.modalYear}</p>
             <p>{modalState.modalMedia}</p>
-            <p>{modalState.ModalmodalDims}</p>
+            <p>{modalState.modalDims}</p>
             <p>{modalState.modalPrice}</p>
             <p className='modal-statement'>{modalState.modalStatement}</p>
           </div>
@@ -109,5 +123,7 @@ export default function Modal({
         </section>
       </div>
     </div>
+  }
+  </>
   );
 }
