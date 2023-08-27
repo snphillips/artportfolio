@@ -1,5 +1,4 @@
 import React from 'react';
-import { modalStateType } from '../types'
 
 /* =========================================================
 When the user clicks on an image, a modal opens up.
@@ -8,38 +7,23 @@ There are forward and back buttons that allow the user
 to view all images in modal view
 ========================================================= */
 
-type Props = {
-  // TODO: refactor displayModal & modalDisplayForwardBackButtons should be booleans
-  displayModal: boolean;
-  modalDisplayForwardBackButtons: any;
-  modalImageIndex: number;
-  modalPreviousImage: any;
-  closeModal: () => void;
-  modalState: modalStateType;
-  modalNextImage: (arg: number) => void;
-};
+export default function Modal(props) {
+  // console.log("props.displayModal", props.displayModal)
 
-export default function Modal({
-  displayModal,
-  modalDisplayForwardBackButtons,
-  modalImageIndex,
-  modalPreviousImage,
-  closeModal,
-  modalState,
-  modalNextImage,
-}: Props) {
   return (
-    <>
-    {displayModal && 
-    <div className='modal-background'>
+    <div
+      className='modal-background'
+      style={props.displayModal}
+      // onClick={props.closeModal}
+    >
       <div className='modal-content-container'>
         <section className='modal-left-container'>
           <div
             id='modal-back-button'
-            style={modalDisplayForwardBackButtons}
+            style={props.modalDisplayForwardBackButtons}
             onClick={() => {
-              let imageIndex = modalImageIndex - 1;
-              modalPreviousImage(imageIndex);
+              let imageIndex = props.modalImageIndex - 1;
+              props.modalPreviousImage(imageIndex);
             }}
           >
             <span>
@@ -60,25 +44,36 @@ export default function Modal({
           </div>
         </section>
 
-        <section className='modal-image-and-info-container' onClick={closeModal}>
+        <section className='modal-image-and-info-container' onClick={props.closeModal}>
           <div className='modal-image-container'>
-            <img id='modal-image' src={modalState.modalImageURL} alt='' />
+            <img
+              id='modal-image'
+              //  src={props.modalImageURL}
+              src={props.modalState.modalImageURL}
+              alt=''
+            />
           </div>
 
           <div className='modal-info-container'>
+            {/* <p><i>{props.modalTitle}</i></p> */}
             <p>
-              <i>{modalState.modalTitle}</i>
+              <i>{props.modalState.modalTitle}</i>
             </p>
-            <p>{modalState.modalYear}</p>
-            <p>{modalState.modalMedia}</p>
-            <p>{modalState.modalDims}</p>
-            <p>{modalState.modalPrice}</p>
-            <p className='modal-statement'>{modalState.modalStatement}</p>
+            {/* <p>{props.modalYear}</p> */}
+            <p>{props.modalState.modalYear}</p>
+            {/* <p>{props.modalMedia}</p> */}
+            <p>{props.modalState.modalMedia}</p>
+            {/* <p>{props.modalDims}</p> */}
+            <p>{props.modalState.ModalmodalDims}</p>
+            {/* <p>{props.modalPrice}</p> */}
+            <p>{props.modalState.modalPrice}</p>
+            {/* <p className="modal-statement">{props.modalStatement}</p> */}
+            <p className='modal-statement'>{props.modalState.modalStatement}</p>
           </div>
         </section>
 
         <section className='modal-right-container'>
-          <div className='modal-close-button' onClick={closeModal}>
+          <div className='modal-close-button' onClick={props.closeModal}>
             <span>
               <svg
                 viewBox='0 0 24 24'
@@ -98,10 +93,10 @@ export default function Modal({
 
           <div
             id='modal-next-button'
-            style={modalDisplayForwardBackButtons}
+            style={props.modalDisplayForwardBackButtons}
             onClick={() => {
-              let imageIndex = modalImageIndex + 1;
-              modalNextImage(imageIndex);
+              let imageIndex = props.modalImageIndex + 1;
+              props.modalNextImage(imageIndex);
             }}
           >
             <span>
@@ -123,7 +118,5 @@ export default function Modal({
         </section>
       </div>
     </div>
-  }
-  </>
   );
 }
