@@ -9,6 +9,6 @@ export type ModalStateType = {
   modalStatement: string,
 }
 
-export enum ModalPropertiesMaxWidthType {
-  '450px', '500px', '700px'
-}
+export type ModalPropertiesMaxWidthType = (
+  '450px' |  '500px' | '700px'
+)

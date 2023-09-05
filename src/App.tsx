@@ -9,15 +9,16 @@ import Gallery from './components/Gallery.tsx';
 import Modal from './components/Modal.tsx';
 import Footer from './components/Footer.tsx';
 import art from './ArtArrays/art';
+import {  ModalStateType, ModalPropertiesMaxWidthType } from './types.ts'
 
 export default function App() {
   const [filteredArt, setFilteredArt] = useState([]);
   const [displayModal, setDisplayModal] = useState(false);
   const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
   const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
-  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState('500px');
-  const [modalImageIndex, setModalImageIndex] = useState();
-  const [modalState, setModalState] = useState({
+  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('500px');
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalState, setModalState] = useState<ModalStateType>({
     modalImageOrientation: 'landscape',
     modalImageURL: '',
     modalTitle: '',
@@ -29,7 +30,7 @@ export default function App() {
   });
 
   /*
-  We can make the useEffect hook not run on initial render
+  We can make a useEffect hook not run on initial render
   by creating a variable with useRef hook to keep tracking
   of when the first render is done.
   Set the variable’s value to true initially.
@@ -51,7 +52,6 @@ export default function App() {
     setDisplayModal(true);
   }
 
-  // This only runs if the modalImageIndex changes
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
@@ -129,7 +129,6 @@ first image, the modal closes.
     }
   }
 
-  // This simply changes the css display class from "block" to "none"
   function closeModal() {
     setDisplayModal(false);
   }
@@ -201,6 +200,7 @@ first image, the modal closes.
         <Gallery filteredArt={filteredArt} openModal={openModal} />
 
         <Modal
+          modalImageIndex={modalImageIndex}
           modalPreviousImage={modalPreviousImage}
           modalNextImage={modalNextImage}
           displayModal={displayModal}
