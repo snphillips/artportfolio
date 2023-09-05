@@ -159,19 +159,15 @@ first image, the modal closes.
       let whichKey = event.keyCode;
       switch (whichKey) {
         case 39:
-          console.log('forward arrow key pushed. Next image.');
           this.modalNextImage();
           break;
         case 37:
-          console.log('back arrow key pushed. Previous image');
           this.modalPreviousImage();
           break;
         case 38:
-          console.log('up arrow key pushed. Previous image.');
           this.modalPreviousImage();
           break;
         case 40:
-          console.log('down arrow key pushed Next image.');
           this.modalNextImage();
           break;
         default:
