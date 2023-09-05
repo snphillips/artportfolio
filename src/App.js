@@ -42,14 +42,12 @@ export default function App() {
  ==================================
  modal: the expanded image
  ==================================
- 1) Indicate which image the user has clicked
- 2) Change the css display class from "none" to "block"
- 3) In the useEffect(), update a bunch of information
+ 1) In openModal, indicate which image the user has clicked and display modal
+ 2) In the useEffect(), update a bunch of information
     accompanying each image 
  */
   function openModal(imageIndex) {
     setModalImageIndex(imageIndex);
-    // setDisplayModal({ display: 'block' });
     setDisplayModal(true);
   }
 
@@ -57,11 +55,9 @@ export default function App() {
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      // console.log("First update! modalImageIndex should be undefined", modalImageIndex)
       return;
     } else {
-      // console.log("Not first update. modalImageIndex", modalImageIndex)
-      setModalState((prevState) => {
+      setModalState(() => {
         return {
           modalImageOrientation: filteredArt[modalImageIndex].imageShape,
           modalTitle: filteredArt[modalImageIndex].title,
@@ -74,47 +70,15 @@ export default function App() {
         };
       });
 
-      /* 
-      Figure out if the back and forward buttons should be displayed.
-      Don't display the modal back arrows if the user is viewing
-      the first image. Don't display the modal forward arrows if
-      the user is viewing the last image. 
-      */
-
-      //     if (modalImageIndex === filteredArt.length - 1) {
-      //       console.log(`image index is:`, modalImageIndex, `Don't display next arrow`);
-      //       document.getElementById('modal-next-button').style.display = 'none';
-      //       document.getElementById('modal-back-button').style.display = 'block';
-      //     } else if (modalImageIndex === 0) {
-      //       console.log(`Image index is:`, modalImageIndex, `Don't display back arrow`);
-      //       document.getElementById('modal-back-button').style.display = 'none';
-      //       document.getElementById('modal-next-button').style.display = 'block';
-      //     } else {
-      //       console.log(`Image index is:`, modalImageIndex, `Both arrows should appear`);
-      //       document.getElementById('modal-back-button').style.display = 'block';
-      //       document.getElementById('modal-next-button').style.display = 'block';
-      //     }
-      //   }
-      // }, [modalImageIndex]);
-
       if (modalImageIndex === filteredArt.length - 1) {
-        console.log(`image index is:`, modalImageIndex, `Don't display next arrow`);
         setDisplayModalBackButton(true);
         setDisplayModalNextButton(false);
-        // document.getElementById('modal-next-button').style.display = 'none';
-        // document.getElementById('modal-back-button').style.display = 'block';
       } else if (modalImageIndex === 0) {
-        console.log(`Image index is:`, modalImageIndex, `Don't display back arrow`);
         setDisplayModalBackButton(false);
         setDisplayModalNextButton(true);
-        // document.getElementById('modal-back-button').style.display = 'none';
-        // document.getElementById('modal-next-button').style.display = 'block';
       } else {
-        console.log(`Image index is:`, modalImageIndex, `Both arrows should appear`);
         setDisplayModalBackButton(true);
         setDisplayModalNextButton(true);
-        // document.getElementById('modal-back-button').style.display = 'block';
-        // document.getElementById('modal-next-button').style.display = 'block';
       }
     }
   }, [modalImageIndex]);
@@ -141,7 +105,7 @@ the arrow buttons on the keyboard.
 If the user hits the back arrow on their keyboard on the
 first image, the modal closes.
 */
-  function modalPreviousImage(imageIndex) {
+  function modalPreviousImage() {
     let previousImageIndex = modalImageIndex - 1;
     if (previousImageIndex < 0) {
       closeModal();
@@ -156,7 +120,7 @@ first image, the modal closes.
   If the user hits the forward arrow on their keyboard on the last image,
   the modal closes.
   */
-  function modalNextImage(imageIndex) {
+  function modalNextImage() {
     let nextImageIndex = modalImageIndex + 1;
     if (nextImageIndex > filteredArt.length - 1) {
       closeModal();
@@ -167,7 +131,6 @@ first image, the modal closes.
 
   // This simply changes the css display class from "block" to "none"
   function closeModal() {
-    // setDisplayModal({ display: 'none' });
     setDisplayModal(false);
   }
 
@@ -181,7 +144,7 @@ first image, the modal closes.
     //  ==================================
     // This determines which images from the art json should be shown
     //  only display images from .json
-    //  1) if includeingallery === true, return it...meaning keep it
+    //  1) if includeInGallery === true, return it...meaning keep it
     //  2) apply the above function as a filter to the states
     //  ==================================
     const includeInGalleryTrue = (item) => {

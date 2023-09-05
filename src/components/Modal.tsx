@@ -10,7 +10,6 @@ to view all images in modal view
 type Props = {
   displayModal: boolean;
   closeModal: () => void;
-  modalDisplayForwardBackButtons: any;
   modalImageIndex: number;
   modalState: any;
   modalNextImage: any;
@@ -23,7 +22,6 @@ type Props = {
 export default function Modal({
   displayModal,
   closeModal,
-  modalDisplayForwardBackButtons,
   modalImageIndex,
   modalPreviousImage,
   modalState,
@@ -39,16 +37,12 @@ export default function Modal({
   return (
     <>
       {displayModal && (
-        <div
-          className='modal-background'
-          onClick={closeModal}
-        >
-          <div className='modal-content-container'>
+        <div className='modal-background'>
+          <div  className='modal-content-container'>
             <section className='modal-left-container'>
             { displayModalBackButton &&
               <div
                 id='modal-back-button'
-                // style={modalDisplayForwardBackButtons}
                 onClick={() => {
                   let imageIndex = modalImageIndex - 1;
                   modalPreviousImage(imageIndex);
@@ -118,7 +112,6 @@ export default function Modal({
               {displayModalNextButton && 
               <div
                 id='modal-next-button'
-                // style={modalDisplayForwardBackButtons}
                 onClick={() => {
                   let imageIndex = modalImageIndex + 1;
                   modalNextImage(imageIndex);
