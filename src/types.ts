@@ -1,4 +1,4 @@
-export type modalStateType = {
+export type ModalStateType = {
   modalImageOrientation: 'landscape' | 'portrait' | 'square',
   modalImageURL: string,
   modalTitle: string,
@@ -7,4 +7,8 @@ export type modalStateType = {
   modalDims: string,
   modalPrice: string,
   modalStatement: string,
+}
+
+export enum ModalPropertiesMaxWidthType {
+  '450px', '500px', '700px'
 }

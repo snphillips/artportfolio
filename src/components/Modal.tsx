@@ -1,4 +1,5 @@
 import React from 'react';
+import { ModalStateType, ModalPropertiesMaxWidthType }  from '../types'
 
 /* =========================================================
 When the user clicks on an image, a modal opens up.
@@ -11,10 +12,10 @@ type Props = {
   displayModal: boolean;
   closeModal: () => void;
   modalImageIndex: number;
-  modalState: any;
-  modalNextImage: any;
-  modalPreviousImage: any;
-  modalPropertiesMaxWidth: any;
+  modalState: ModalStateType;
+  modalNextImage: (parameter: number) => void;
+  modalPreviousImage: (parameter: number) => void;
+  modalPropertiesMaxWidth: ModalPropertiesMaxWidthType;
   displayModalNextButton: boolean;
   displayModalBackButton: boolean;
 };
@@ -30,9 +31,6 @@ export default function Modal({
   displayModalNextButton,
   displayModalBackButton
 }: Props) {
-  console.log("displayModal:", displayModal)
-  console.log("modalState.modalImageOrientation:", modalState.modalImageOrientation)
-
 
   return (
     <>
