@@ -1,0 +1,13 @@
+{
+  "cSpell.words": [
+    "Kimmel",
+    "Langone",
+    "Printshop"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+],
+}

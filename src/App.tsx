@@ -1,20 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './index.css';
-import Header from './components/Header';
-import CV from './components/CV';
-import Navigation from './components/Navigation';
-import Contact from './components/Contact';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Modal from './components/Modal';
-import Footer from './components/Footer';
+import Header from './components/Header.tsx';
+import CV from './components/CV.tsx';
+import Navigation from './components/Navigation.tsx';
+import Contact from './components/Contact.tsx';
+import About from './components/About.tsx';
+import Gallery from './components/Gallery.tsx';
+import Modal from './components/Modal.tsx';
+import Footer from './components/Footer.tsx';
 import art from './ArtArrays/art';
+import {  ModalStateType, ModalPropertiesMaxWidthType } from './types.ts'
 
 export default function App() {
   const [filteredArt, setFilteredArt] = useState([]);
-  const [displayModal, setDisplayModal] = useState({ display: 'none' });
-  const [modalImageIndex, setModalImageIndex] = useState();
-  const [modalState, setModalState] = useState({
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
+  const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
+  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState<ModalPropertiesMaxWidthType>('500px');
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalState, setModalState] = useState<ModalStateType>({
     modalImageOrientation: 'landscape',
     modalImageURL: '',
     modalTitle: '',
@@ -27,7 +31,7 @@ export default function App() {
 
   /*
   We can make a useEffect hook not run on initial render
-  by creating a variable with useRef hook to keep track
+  by creating a variable with useRef hook to keep tracking
   of when the first render is done.
   Set the variable’s value to true initially.
   When the component is rendered the first time,
@@ -39,25 +43,21 @@ export default function App() {
  ==================================
  modal: the expanded image
  ==================================
- 1) Indicate which image the user has clicked
- 2) Change the css display class from "none" to "block"
- 3) In the useEffect(), update a bunch of information
+ 1) In openModal, indicate which image the user has clicked and display modal
+ 2) In the useEffect(), update a bunch of information
     accompanying each image 
  */
   function openModal(imageIndex) {
     setModalImageIndex(imageIndex);
-    setDisplayModal({ display: 'block' });
+    setDisplayModal(true);
   }
 
-  // This only runs if the modalImageIndex chages
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      // console.log("First update! modalImageIndex should be undeined", modalImageIndex)
       return;
     } else {
-      // console.log("Not first update. modalImageIndex", modalImageIndex)
-      setModalState((prevState) => {
+      setModalState(() => {
         return {
           modalImageOrientation: filteredArt[modalImageIndex].imageShape,
           modalTitle: filteredArt[modalImageIndex].title,
@@ -70,25 +70,15 @@ export default function App() {
         };
       });
 
-      /* 
-      Figure out if the back and forward buttons should be displayed.
-      Don't display the modal back arrows if the user is viewing
-      the first image. Don't display the modal forward arrows if
-      the user is viewing the last image. 
-      */
-
       if (modalImageIndex === filteredArt.length - 1) {
-        // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
-        document.getElementById('modal-next-button').style.display = 'none';
-        document.getElementById('modal-back-button').style.display = 'block';
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(false);
       } else if (modalImageIndex === 0) {
-        // console.log(`Image index is:`, modalImageIndex,  `Don't display back arrow`)
-        document.getElementById('modal-back-button').style.display = 'none';
-        document.getElementById('modal-next-button').style.display = 'block';
+        setDisplayModalBackButton(false);
+        setDisplayModalNextButton(true);
       } else {
-        // console.log(`Image index is:`, modalImageIndex,  `Both arrows should appear`)
-        document.getElementById('modal-back-button').style.display = 'block';
-        document.getElementById('modal-next-button').style.display = 'block';
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(true);
       }
     }
   }, [modalImageIndex]);
@@ -98,29 +88,24 @@ export default function App() {
   or square. They can't all be displayed with the same width or
   some images would blow out the user's screen. Every image has a 
   key value pair in the .json where I indicate what type of image
-  is it: lanscape, portrait or square. This function sets the image 
+  is it: landscape, portrait or square. This function sets the image 
   max-width based on what kind of image it is. 
   */
   useEffect(() => {
     if (modalState.modalImageOrientation === 'landscape') {
-      document.querySelector('#modal-image').style.maxWidth = '700px';
-      document.querySelector('.modal-info-container').style.maxWidth = '700px';
+      setModalPropertiesMaxWidth('700px');
     } else if (modalState.modalImageOrientation === 'portrait') {
-      document.querySelector('#modal-image').style.maxWidth = '450px';
-      document.querySelector('.modal-info-container').style.maxWidth = '450px';
-    } else {
-      document.querySelector('#modal-image').style.maxWidth = '500px';
-      document.querySelector('.modal-info-container').style.maxWidth = '500px';
+      setModalPropertiesMaxWidth('450px');
     }
   }, [modalState.modalImageOrientation]);
 
   /*
 This function applies both to the arrow buttons on the site &
 the arrow buttons on the keyboard.
-If the user hits the back arrown on their keyboard on the
+If the user hits the back arrow on their keyboard on the
 first image, the modal closes.
 */
-  function modalPreviousImage(imageIndex) {
+  function modalPreviousImage() {
     let previousImageIndex = modalImageIndex - 1;
     if (previousImageIndex < 0) {
       closeModal();
@@ -135,7 +120,7 @@ first image, the modal closes.
   If the user hits the forward arrow on their keyboard on the last image,
   the modal closes.
   */
-  function modalNextImage(imageIndex) {
+  function modalNextImage() {
     let nextImageIndex = modalImageIndex + 1;
     if (nextImageIndex > filteredArt.length - 1) {
       closeModal();
@@ -144,10 +129,8 @@ first image, the modal closes.
     }
   }
 
-  // This simply changes the css display class from "block" to "none"
   function closeModal() {
-    // console.log("close modal")
-    setDisplayModal({ display: 'none' });
+    setDisplayModal(false);
   }
 
   // Run this useEffect when app first loads
@@ -156,12 +139,11 @@ first image, the modal closes.
   useEffect(() => {
     function filterIncludeInGallery() {
       setFilteredArt(art.filter(includeInGalleryTrue));
-      // console.log("filteredArt", filteredArt)
     }
     //  ==================================
     // This determines which images from the art json should be shown
     //  only display images from .json
-    //  1) if includeingallery === true, return it...meaning keep it
+    //  1) if includeInGallery === true, return it...meaning keep it
     //  2) apply the above function as a filter to the states
     //  ==================================
     const includeInGalleryTrue = (item) => {
@@ -174,7 +156,6 @@ first image, the modal closes.
     //  Arrow keys
     //  ==================================
     const keyAction = (event) => {
-      // console.log("event:", event)
       let whichKey = event.keyCode;
       switch (whichKey) {
         case 39:
@@ -194,7 +175,6 @@ first image, the modal closes.
           this.modalNextImage();
           break;
         default:
-        // console.log("default")
       }
     };
     // the hotkeys
@@ -220,11 +200,15 @@ first image, the modal closes.
         <Gallery filteredArt={filteredArt} openModal={openModal} />
 
         <Modal
+          modalImageIndex={modalImageIndex}
           modalPreviousImage={modalPreviousImage}
           modalNextImage={modalNextImage}
           displayModal={displayModal}
           closeModal={closeModal}
           modalState={modalState}
+          modalPropertiesMaxWidth={modalPropertiesMaxWidth}
+          displayModalNextButton={displayModalNextButton}
+          displayModalBackButton={displayModalBackButton}
         />
 
         <About />
