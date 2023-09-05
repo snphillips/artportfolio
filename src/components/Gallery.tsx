@@ -15,8 +15,6 @@ export default function Gallery({ filteredArt, openModal }: Props) {
     500: 1,
   };
 
-  console.log('filtered art', filteredArt)
-
   return (
     <section id='gallery'>
       <div className='gallery'>

@@ -6,13 +6,16 @@ import Navigation from './components/Navigation.tsx';
 import Contact from './components/Contact.tsx';
 import About from './components/About.tsx';
 import Gallery from './components/Gallery.tsx';
-import Modal from './components/Modal';
+import Modal from './components/Modal.tsx';
 import Footer from './components/Footer.tsx';
 import art from './ArtArrays/art';
 
-export default function App(props) {
+export default function App() {
   const [filteredArt, setFilteredArt] = useState([]);
-  const [displayModal, setDisplayModal] = useState({ display: 'none' });
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayModalNextButton, setDisplayModalNextButton] = useState(false);
+  const [displayModalBackButton, setDisplayModalBackButton] = useState(false);
+  const [modalPropertiesMaxWidth, setModalPropertiesMaxWidth] = useState('500px');
   const [modalImageIndex, setModalImageIndex] = useState();
   const [modalState, setModalState] = useState({
     modalImageOrientation: 'landscape',
@@ -46,14 +49,15 @@ export default function App(props) {
  */
   function openModal(imageIndex) {
     setModalImageIndex(imageIndex);
-    setDisplayModal({ display: 'block' });
+    // setDisplayModal({ display: 'block' });
+    setDisplayModal(true);
   }
 
-  // This only runs if the modalImageIndex chages
+  // This only runs if the modalImageIndex changes
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
-      // console.log("First update! modalImageIndex should be undeined", modalImageIndex)
+      // console.log("First update! modalImageIndex should be undefined", modalImageIndex)
       return;
     } else {
       // console.log("Not first update. modalImageIndex", modalImageIndex)
@@ -77,18 +81,40 @@ export default function App(props) {
       the user is viewing the last image. 
       */
 
+      //     if (modalImageIndex === filteredArt.length - 1) {
+      //       console.log(`image index is:`, modalImageIndex, `Don't display next arrow`);
+      //       document.getElementById('modal-next-button').style.display = 'none';
+      //       document.getElementById('modal-back-button').style.display = 'block';
+      //     } else if (modalImageIndex === 0) {
+      //       console.log(`Image index is:`, modalImageIndex, `Don't display back arrow`);
+      //       document.getElementById('modal-back-button').style.display = 'none';
+      //       document.getElementById('modal-next-button').style.display = 'block';
+      //     } else {
+      //       console.log(`Image index is:`, modalImageIndex, `Both arrows should appear`);
+      //       document.getElementById('modal-back-button').style.display = 'block';
+      //       document.getElementById('modal-next-button').style.display = 'block';
+      //     }
+      //   }
+      // }, [modalImageIndex]);
+
       if (modalImageIndex === filteredArt.length - 1) {
-        // console.log(`5) image index is:`, modalImageIndex , `Don't display next arrow`)
-        document.getElementById('modal-next-button').style.display = 'none';
-        document.getElementById('modal-back-button').style.display = 'block';
+        console.log(`image index is:`, modalImageIndex, `Don't display next arrow`);
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(false);
+        // document.getElementById('modal-next-button').style.display = 'none';
+        // document.getElementById('modal-back-button').style.display = 'block';
       } else if (modalImageIndex === 0) {
-        // console.log(`Image index is:`, modalImageIndex,  `Don't display back arrow`)
-        document.getElementById('modal-back-button').style.display = 'none';
-        document.getElementById('modal-next-button').style.display = 'block';
+        console.log(`Image index is:`, modalImageIndex, `Don't display back arrow`);
+        setDisplayModalBackButton(false);
+        setDisplayModalNextButton(true);
+        // document.getElementById('modal-back-button').style.display = 'none';
+        // document.getElementById('modal-next-button').style.display = 'block';
       } else {
-        // console.log(`Image index is:`, modalImageIndex,  `Both arrows should appear`)
-        document.getElementById('modal-back-button').style.display = 'block';
-        document.getElementById('modal-next-button').style.display = 'block';
+        console.log(`Image index is:`, modalImageIndex, `Both arrows should appear`);
+        setDisplayModalBackButton(true);
+        setDisplayModalNextButton(true);
+        // document.getElementById('modal-back-button').style.display = 'block';
+        // document.getElementById('modal-next-button').style.display = 'block';
       }
     }
   }, [modalImageIndex]);
@@ -98,26 +124,21 @@ export default function App(props) {
   or square. They can't all be displayed with the same width or
   some images would blow out the user's screen. Every image has a 
   key value pair in the .json where I indicate what type of image
-  is it: lanscape, portrait or square. This function sets the image 
+  is it: landscape, portrait or square. This function sets the image 
   max-width based on what kind of image it is. 
   */
   useEffect(() => {
     if (modalState.modalImageOrientation === 'landscape') {
-      document.querySelector('#modal-image').style.maxWidth = '700px';
-      document.querySelector('.modal-info-container').style.maxWidth = '700px';
+      setModalPropertiesMaxWidth('700px');
     } else if (modalState.modalImageOrientation === 'portrait') {
-      document.querySelector('#modal-image').style.maxWidth = '450px';
-      document.querySelector('.modal-info-container').style.maxWidth = '450px';
-    } else {
-      document.querySelector('#modal-image').style.maxWidth = '500px';
-      document.querySelector('.modal-info-container').style.maxWidth = '500px';
+      setModalPropertiesMaxWidth('450px');
     }
   }, [modalState.modalImageOrientation]);
 
   /*
 This function applies both to the arrow buttons on the site &
 the arrow buttons on the keyboard.
-If the user hits the back arrown on their keyboard on the
+If the user hits the back arrow on their keyboard on the
 first image, the modal closes.
 */
   function modalPreviousImage(imageIndex) {
@@ -146,8 +167,8 @@ first image, the modal closes.
 
   // This simply changes the css display class from "block" to "none"
   function closeModal() {
-    // console.log("close modal")
-    setDisplayModal({ display: 'none' });
+    // setDisplayModal({ display: 'none' });
+    setDisplayModal(false);
   }
 
   // Run this useEffect when app first loads
@@ -156,7 +177,6 @@ first image, the modal closes.
   useEffect(() => {
     function filterIncludeInGallery() {
       setFilteredArt(art.filter(includeInGalleryTrue));
-      // console.log("filteredArt", filteredArt)
     }
     //  ==================================
     // This determines which images from the art json should be shown
@@ -174,7 +194,6 @@ first image, the modal closes.
     //  Arrow keys
     //  ==================================
     const keyAction = (event) => {
-      // console.log("event:", event)
       let whichKey = event.keyCode;
       switch (whichKey) {
         case 39:
@@ -194,7 +213,6 @@ first image, the modal closes.
           this.modalNextImage();
           break;
         default:
-        // console.log("default")
       }
     };
     // the hotkeys
@@ -225,6 +243,9 @@ first image, the modal closes.
           displayModal={displayModal}
           closeModal={closeModal}
           modalState={modalState}
+          modalPropertiesMaxWidth={modalPropertiesMaxWidth}
+          displayModalNextButton={displayModalNextButton}
+          displayModalBackButton={displayModalBackButton}
         />
 
         <About />

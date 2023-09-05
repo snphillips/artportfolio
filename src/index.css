@@ -212,7 +212,7 @@ h3 {
  Modal
 ================================*/
 .modal-background {
-  display: none;
+  /* display: none; */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 5vh; /* Location of the box */
@@ -239,7 +239,6 @@ h3 {
   background: #fff;
   margin: 0 auto;
   max-width: 800px;
-  /*border: 1px solid blue;*/
 }
 
 #modal-next-button:hover,
